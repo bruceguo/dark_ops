@@ -2,10 +2,10 @@
 #coding:utf-8
 from flask import Flask
 from flask import request
-from flask import url_for 
-from flask import render_template 
+from flask import render_template
+from flask import jsonify,abort 
 app=Flask(__name__)
-@app.route('/',methods=['PUT','POST','GET'])
+@app.route('/',methods=['GET'])
 def index():
     return render_template('index.html')
 if __name__=='__main__':
