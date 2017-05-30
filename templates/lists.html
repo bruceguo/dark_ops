@@ -21,174 +21,33 @@
 				<thead>
 					<tr>
 						<th>编号</th>
-						<th>姓名</th>
-						<th>性别</th>
-						<th>年龄</th>
-						<th>兴趣爱好</th>
-						<th>座右铭</th>
+						<th>minion id</th>
+						<th>dark_version</th>
+						<th>new_config_version</th>
+						<th>old_config_version</th>
+						<th>boot_time</th>
+						<th>update_time</th>
+						<th>status</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr data-assign="1">
-						<td>1</td>
-						<td>飞星</td>
-						<td>男</td>
-						<td>28</td>
-						<td>摄影 郊游</td>
-						<td>心若向阳便是晴天</td>
+                    {% for host in hostlist %}
+					<tr>
+						<td>{{host.id}}</td>
+						<td>{{host.mid}}</td>
+						<td>{{host.dark_version}}</td>
+						<td>{{host.new_config_version}}</td>
+						<td>{{host.old_config_version}}</td>
+						<td>{{host.boot_time}}</td>
+						<td>{{host.update_time}}</td>
+                        {% if host.status %}
+						<td><i class="fa fa-circle fa-2x" ></i></td>
+                        {% else %}
+						<td><i class="fa fa-info-circle fa-2x" style="color:red"></i></td>
+                        {%endif%}
+
 					</tr>
-					<tr data-assign="2">
-						<td>2</td>
-						<td>李四</td>
-						<td>男</td>
-						<td>28</td>
-						<td>摄影 郊游</td>
-						<td>心若向阳便是晴天</td>
-					</tr>
-					<tr data-assign="3">
-						<td>3</td>
-						<td>王老五</td>
-						<td>男</td>
-						<td>28</td>
-						<td>摄影 郊游</td>
-						<td>心若向阳便是晴天</td>
-					</tr>
-					<tr data-assign="4">
-						<td>4</td>
-						<td>张六哥</td>
-						<td>男</td>
-						<td>28</td>
-						<td>摄影 郊游</td>
-						<td>心若向阳便是晴天</td>
-					</tr>
-					<tr data-assign="5">
-						<td>5</td>
-						<td>始发站</td>
-						<td>男</td>
-						<td>28</td>
-						<td>摄影 郊游</td>
-						<td>心若向阳便是晴天</td>
-					</tr>
-					<tr data-assign="6">
-						<td>6</td>
-						<td>残花刘</td>
-						<td>男</td>
-						<td>28</td>
-						<td>摄影 郊游</td>
-						<td>心若向阳便是晴天</td>
-					</tr>
-					<tr data-assign="7">
-						<td>7</td>
-						<td>新若瑄</td>
-						<td>男</td>
-						<td>28</td>
-						<td>摄影 郊游</td>
-						<td>心若向阳便是晴天</td>
-					</tr>
-					<tr data-assign="8">
-						<td>8</td>
-						<td>张三</td>
-						<td>男</td>
-						<td>28</td>
-						<td>摄影 郊游</td>
-						<td>心若向阳便是晴天</td>
-					</tr>
-					<tr data-assign="9">
-						<td>9</td>
-						<td>张三</td>
-						<td>男</td>
-						<td>28</td>
-						<td>摄影 郊游</td>
-						<td>心若向阳便是晴天</td>
-					</tr>
-					<tr data-assign="10">
-						<td>10</td>
-						<td>张三</td>
-						<td>男</td>
-						<td>28</td>
-						<td>摄影 郊游</td>
-						<td>心若向阳便是晴天</td>
-					</tr>
-					<tr data-assign="9">
-						<td>9</td>
-						<td>张三</td>
-						<td>男</td>
-						<td>28</td>
-						<td>摄影 郊游</td>
-						<td>心若向阳便是晴天</td>
-					</tr>
-					<tr data-assign="10">
-						<td>10</td>
-						<td>张三</td>
-						<td>男</td>
-						<td>28</td>
-						<td>摄影 郊游</td>
-						<td>心若向阳便是晴天</td>
-					</tr>
-					<tr data-assign="9">
-						<td>9</td>
-						<td>张三</td>
-						<td>男</td>
-						<td>28</td>
-						<td>摄影 郊游</td>
-						<td>心若向阳便是晴天</td>
-					</tr>
-					<tr data-assign="10">
-						<td>10</td>
-						<td>张三</td>
-						<td>男</td>
-						<td>28</td>
-						<td>摄影 郊游</td>
-						<td>心若向阳便是晴天</td>
-					</tr>
-					<tr data-assign="9">
-						<td>9</td>
-						<td>张三</td>
-						<td>男</td>
-						<td>28</td>
-						<td>摄影 郊游</td>
-						<td>心若向阳便是晴天</td>
-					</tr>
-					<tr data-assign="10">
-						<td>10</td>
-						<td>张三</td>
-						<td>男</td>
-						<td>28</td>
-						<td>摄影 郊游</td>
-						<td>心若向阳便是晴天</td>
-					</tr>
-					<tr data-assign="9">
-						<td>9</td>
-						<td>张三</td>
-						<td>男</td>
-						<td>28</td>
-						<td>摄影 郊游</td>
-						<td>心若向阳便是晴天</td>
-					</tr>
-					<tr data-assign="10">
-						<td>10</td>
-						<td>张三</td>
-						<td>男</td>
-						<td>28</td>
-						<td>摄影 郊游</td>
-						<td>心若向阳便是晴天</td>
-					</tr>
-					<tr data-assign="9">
-						<td>9</td>
-						<td>张三</td>
-						<td>男</td>
-						<td>28</td>
-						<td>摄影 郊游</td>
-						<td>心若向阳便是晴天</td>
-					</tr>
-					<tr data-assign="10">
-						<td>10</td>
-						<td>张三</td>
-						<td>男</td>
-						<td>28</td>
-						<td>摄影 郊游</td>
-						<td>心若向阳便是晴天</td>
-					</tr>
+                    {% endfor %}
 				</tbody>
 			</table>
 		</div>
