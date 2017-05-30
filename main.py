@@ -21,7 +21,9 @@ def home():
     return render_template('home.html')
 @app.route('/api/collect_dark_status',methods=['POST'])
 def collect_info():
-    print request.values
-    return jsonify({"status":"ok"})
+    if request.values.get("mid",None) request.values.get("update_time",None):
+        #print request.values.get("mid",None):
+    else:
+        return jsonify({"error":1,"message":"mid and update_time is required"}),10010
 if __name__=='__main__':
     app.run(host='0.0.0.0',port=80,debug=True)
