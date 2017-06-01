@@ -22,13 +22,15 @@
 				<thead>
 					<tr>
 						<th>编号</th>
-						<th>minion id</th>
-						<th>dark_version</th>
-						<th>new_config_version</th>
-						<th>old_config_version</th>
-						<th>boot_time</th>
-						<th>update_time</th>
-						<th>status</th>
+						<th>区域代码</th>
+						<th>dark版本</th>
+						<th>服务器配置版本</th>
+						<th>dark配置版本</th>
+						<th>dark启动时间</th>
+						<th>dark进程数</th>
+						<th>更新时间</th>
+						<th>状态</th>
+						<th>备注</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -40,12 +42,14 @@
 						<td>{{host.new_config_version}}</td>
 						<td>{{host.old_config_version}}</td>
 						<td>{{host.boot_time}}</td>
+						<td>{{host.dark_num}}</td>
 						<td>{{host.update_time}}</td>
                         {% if host.status %}
-						<td><i class="fa fa-circle  media-object" style="color:green"></i></td>
+						<td><i class="fa fa-circle fa-2x " style="color:green"></i></td>
                         {% else %}
-						<td><i class="fa fa-info-circle media-object" style="color:red"></i></td>
+						<td><i class="fa fa-info-circle fa-2x" style="color:red"></i></td>
                         {%endif%}
+						<td>{{host.message}}</td>
 
 					</tr>
                     {% endfor %}
