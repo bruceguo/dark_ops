@@ -25,8 +25,7 @@
 						<th>编号</th>
 						<th>区域代码</th>
 						<th>dark版本</th>
-						<th>服务器配置版本</th>
-						<th>dark配置版本</th>
+						<th>配置文件同步状态</th>
 						<th>dark启动时间</th>
 						<th>dark进程数</th>
 						<th>更新时间</th>
@@ -40,8 +39,11 @@
 						<td>{{host.id}}</td>
 						<td>{{host.mid}}</td>
 						<td>{{host.dark_version}}</td>
-						<td>{{host.new_config_version}}</td>
-						<td>{{host.old_config_version}}</td>
+						{% if host.new_config_version == host.old_config_version %}
+						<td><i class="fa fa-circle fa-2x " style="color:green"></i></td>
+                        {% else %}
+						<td><i class="fa fa-info-circle fa-2x" style="color:red"></i></td>
+                        {%endif%}
 						<td>{{host.boot_time}}</td>
 						<td>{{host.dark_num}}</td>
 						<td>{{host.update_time}}</td>
