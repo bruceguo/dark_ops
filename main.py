@@ -18,11 +18,13 @@ def list():
     for host in hostlist:
         if time.time() - time.mktime(time.strptime(str(host.update_time),"%Y-%m-%d %H:%M:%S")) > 300:
             host.message=u"dark上报异常"
+            host.status=0
         else:
             if host.new_config_version==host.old_config_version and host.boot_time !="" and host.dark_num != 0:
                 host.message=u"dark程序正常"
             else:
                 host.message=u"dark程序异常"
+                host.status=0
         hostresult.append(host)
 
     return render_template('lists.html',hostlist=hostresult)
