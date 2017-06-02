@@ -18,9 +18,8 @@
 <body>
 	<div class="container">
 		<div class="handle-btn">
-			<button class="layui-btn layui-btn-small" data-url="/addhost"><i class="layui-icon">&#xe654;</i>添加</button>
-			<button class="layui-btn layui-btn-small layui-btn-normal" data-url="edit.html"><i class="layui-icon">&#xe642;</i>编辑</button>
-			<button class="layui-btn layui-btn-small layui-btn-danger" data-url="delete.html"><i class="layui-icon">&#xe640;</i> 删除</button>
+			<button class="layui-btn layui-btn-small" data-url="/addhost"><i class="layui-icon">&#xe642;</i>修改分光口个数</button>
+			<button class="layui-btn layui-btn-small layui-btn-danger" ><i class="layui-icon">&#xe640;</i> 删除</button>
 		</div>
 
 		<div class="table-list">
@@ -40,7 +39,7 @@
 				</thead>
 				<tbody>
                     {% for host in hostlist %}
-					<tr data-mid={{host.id}}>
+					<tr data-mid={{host.mid}}>
 						<td>{{host.id}}</td>
 						<td>{{host.mid}}</td>
 						<td>{{host.dark_version}}</td>

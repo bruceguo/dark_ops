@@ -38,19 +38,26 @@ function(exports) {
                 }
             }
         },
-        submit: function(url, data) {
+        submit: function(url, data,st) {
             $.ajax({
                 type: "post",
                 url: url,
                 data: data,
+                dataType: "json",
                 success: function(result) {
-                return result
+                console.log(result.error)
+                if (result.error == 0) {
+                    st.remove();
+                    api.alert("已删除")
+                    }else{
+                        api.alert(result.msg);
+                        }
               }
             })
         },
         alert: function(msg) {
             layer.alert(msg, {
-                title: "错误提示",
+                title: "提示",
                 move: false
             })
         },
@@ -75,15 +82,15 @@ function(exports) {
             if (!mid) {
                 return {
                     s: 1,
-                    msg: "请为操作行设置参数"
+                    msg: "无法获取mid"
+                }
+            }else{
+                return {
+                    mid:mid,
+                    msg:"获取mid成功",
+                    st:st
                 }
             }
-          st.remove()
-          var deleteid={"mid":mid};
-          var url ="";
-          var result_info=api.submit(url,deleteid);
-          console.log(result_info);
-            
         },
         urlDataValue: function(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");

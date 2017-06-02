@@ -39,23 +39,25 @@ function() {
     function() {
         var t = o(this);
         var url = t.data("url");
-        if (!url) {
-            m.alert("请设置操作链接");
-            return false
-        }
         if (t.hasClass("layui-btn-danger") || t.hasClass("layui-btn-normal")) {
             var urlParam = m.selectTrData();
             if (urlParam.s == 1) {
                 m.alert(urlParam.msg);
                 return false
             }
-            url = url + (url.indexOf("?") > 0 ? "&": "?") + urlParam.data;
             if (t.hasClass("layui-btn-danger")) {
-                layer.confirm("确认要删除吗？",
+                layer.confirm("确认要删除吗?", {
+                      btn: ['yes','no']
+                },
+                function(index) {
+                  var deleteid={"mid":urlParam.mid};
+                  var url ="/api/del_host";
+                  m.submit(url,deleteid,urlParam.st);
+                  layer.close(index);
+                },
                 function() {
-                    location.href = url
+                    layer.msg('已取消', {icon: 1});
                 });
-                return false
             }
         }
         if (t.hasClass("layui-btn-warm")) {
@@ -69,6 +71,14 @@ function() {
             parent.layui.element().tabChange("top-tab", id);
             return false
         }
-        m.open(url, t.html())
+        if (url){
+            var urlParamchange = m.selectTrData();
+            if (urlParamchange.s == 1) {
+                m.alert(urlParamchange.msg);
+                return false
+            }
+             m.open(url, t.html())
+            }
+
     })
 });

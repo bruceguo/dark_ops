@@ -13,7 +13,6 @@ def index():
 @app.route('/list',methods=['GET'])
 def list():
     hostlist=dark_status.query.all()
-    #hostlist=[host.message="dark" if host.new_config_version==host.old_config_version and host.boot_time !="" else host.message="dark" for host in hostlist]
     hostresult=[]
     for host in hostlist:
         if time.time() - time.mktime(time.strptime(str(host.update_time),"%Y-%m-%d %H:%M:%S")) > 300:
@@ -34,8 +33,16 @@ def addhost():
 @app.route('/home',methods=['GET'])
 def home():
     hoststotal=len(dark_status.query.all())
-    normalnum=len(dark_status.query.filter_by(status=1).all())
-    print hoststotal
+    hostresult=[]
+    for host in dark_status.query.filter_by(status=1).all():
+        if time.time() - time.mktime(time.strptime(str(host.update_time),"%Y-%m-%d %H:%M:%S")) > 300:
+            pass
+        else:
+            if host.new_config_version==host.old_config_version and host.boot_time !="" and host.dark_num != 0:
+                hostresult.append(host)
+            else:
+                pass
+    normalnum=len(hostresult)
     return render_template('home.html',hoststotal=hoststotal,normalnum=normalnum)
 @app.route('/api/collect_dark_status',methods=['POST'])
 def collect_info():
@@ -77,5 +84,22 @@ def collect_info():
             return jsonify({"error":0,"message":"status update succeed."}),201
     else:
         return jsonify({"error":1,"message":"mid and update_time is required"}),10010
+@app.route('/api/del_host',methods=['POST'])
+def delte_host():
+    print  request.values
+    mid=request.values.get("mid",None)
+    if mid:
+        try:
+            midhost= dark_status.query.filter_by(mid=mid).first()
+            db.session.delete(midhost)
+            db.session.commit()
+        except Exception,e:
+            print e.message
+            return jsonify({"error":1,"msg":str(e)})
+        else:
+            return jsonify({"error":0})
+    else:
+        return jsonify({"error":1,"msg":"mid not find"})
+
 if __name__=='__main__':
-    app.run(host='0.0.0.0',port=80,debug=True)
+    app.run()
