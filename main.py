@@ -76,6 +76,7 @@ def collect_info():
             query_result.new_config_version=request.values["new_config_version"].split("-")[-1]
             query_result.old_config_version=request.values["old_config_version"].split("-")[-1]
             query_result.update_time=request.values["update_time"]
+            query_result.dark_num=request.values["dark_num"]
             if request.values["boot_time"]=="":
                 pass
             else:
@@ -102,4 +103,4 @@ def delte_host():
         return jsonify({"error":1,"msg":"mid not find"})
 
 if __name__=='__main__':
-    app.run()
+    app.run(debug=ture)
