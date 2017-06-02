@@ -24,7 +24,7 @@
 		</div>
 
 		<div class="table-list">
-			<table class="layui-table" lay-skin="line">
+			<table id = "darkinfo-table" class="layui-table" lay-skin="line">
 				<thead>
 					<tr>
 						<th>编号</th>
@@ -40,7 +40,7 @@
 				</thead>
 				<tbody>
                     {% for host in hostlist %}
-					<tr>
+					<tr data-mid={{host.id}}>
 						<td>{{host.id}}</td>
 						<td>{{host.mid}}</td>
 						<td>{{host.dark_version}}</td>
