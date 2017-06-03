@@ -21,9 +21,9 @@
 			<button class="layui-btn layui-btn-small" data-url="/addhost"><i class="layui-icon">&#xe642;</i>修改分光口个数</button>
 			<button class="layui-btn layui-btn-small layui-btn-danger" ><i class="layui-icon">&#xe640;</i> 删除</button>
 {% if totalinfo.error == 0 %}
-<button class="layui-btn layui-btn-small"><marquee  scrollAmount=2 behavior = "nlternate" onmouseover=this.stop() onmouseout=this.start() align=center width=500>实时状态：所有节点dark进程正常</marquee></button>
+<button class="layui-btn layui-btn-small layui-btn-radius"><marquee  scrollAmount=2 behavior = "nlternate" onmouseover=this.stop() onmouseout=this.start() align=center width=500>实时状态：所有节点dark进程正常</marquee></button>
 {% else %}
-<button class="layui-btn layui-btn-small"><marquee  scrollAmount=2 behavior = "nlternate" onmouseover=this.stop() onmouseout=this.start() align=center width=500>实时状态：{{totalinfo.error}}个节点异常，请注意！</marquee></button>
+<button class="layui-btn layui-btn-small layui-btn-radius"><marquee  scrollAmount=2 behavior = "nlternate" onmouseover=this.stop() onmouseout=this.start() align=center width=500  ><font color=red>实时状态：{{totalinfo.error}}个节点异常，请注意！</font></marquee></button>
 {% endif %}
 
 		</div>
