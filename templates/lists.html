@@ -20,6 +20,12 @@
 		<div class="handle-btn">
 			<button class="layui-btn layui-btn-small" data-url="/addhost"><i class="layui-icon">&#xe642;</i>修改分光口个数</button>
 			<button class="layui-btn layui-btn-small layui-btn-danger" ><i class="layui-icon">&#xe640;</i> 删除</button>
+{% if totalinfo.error == 0 %}
+<button class="layui-btn layui-btn-small"><marquee  scrollAmount=2 behavior = "nlternate" onmouseover=this.stop() onmouseout=this.start() align=center width=500>实时状态：所有节点dark进程正常</marquee></button>
+{% else %}
+<button class="layui-btn layui-btn-small"><marquee  scrollAmount=2 behavior = "nlternate" onmouseover=this.stop() onmouseout=this.start() align=center width=500>实时状态：{{total.error}}个节点异常，请注意！</marquee></button>
+{% endif %}
+
 		</div>
 
 		<div class="table-list">
@@ -48,7 +54,11 @@
                         {% else %}
 						<td><i class="fa fa-info-circle fa-2x" style="color:red"></i></td>
                         {%endif%}
+						{% if host.dark_num < 1 %}
+						<td>dark未启动</td>
+                                                {% else %}
 						<td>{{host.boot_time}}</td>
+                                                {% endif %}
 						<td>{{host.dark_num}}</td>
 						<td>{{host.update_time}}</td>
                         {% if host.status %}

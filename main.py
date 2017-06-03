@@ -14,19 +14,22 @@ def index():
 def list():
     hostlist=dark_status.query.all()
     hostresult=[]
+    totalinfo={"error":0}
     for host in hostlist:
         if time.time() - time.mktime(time.strptime(str(host.update_time),"%Y-%m-%d %H:%M:%S")) > 300:
             host.message=u"dark上报异常"
             host.status=0
+            totalinfo["error"]+=1
         else:
             if host.new_config_version==host.old_config_version and host.boot_time !="" and host.dark_num != 0:
                 host.message=u"dark程序正常"
             else:
                 host.message=u"dark程序异常"
                 host.status=0
+                totalinfo["error"]+=1
         hostresult.append(host)
 
-    return render_template('lists.html',hostlist=hostresult)
+    return render_template('lists.html',hostlist=hostresult,totalinfo=totalinfo)
 @app.route('/addhost',methods=['GET'])
 def addhost():
     return render_template('add.html')
