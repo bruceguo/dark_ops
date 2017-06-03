@@ -1,16 +1,55 @@
 #!/usr/biu/env python2.7
 #coding:utf-8
-from flask import Flask
+from flask import Flask,session,redirect,url_for,escape
 from flask import request
 from flask import render_template
 from flask import jsonify,abort 
 from model import db,dark_status,app
+from functools import wraps
 import time
 import json
+def login_required(func):
+    @wraps(func)
+    def decorated_function(*args, **kwargs):
+        print session.get("logged_in")
+        if session.get("logged_in") and session.get("username") != None:
+            return func(*args, **kwargs)
+        return redirect(url_for('login', next=request.url))
+    return decorated_function
+
+@app.route('/logout')
+def loginout():
+    session.pop('logged_in', None)
+    session.pop('username', None)
+    return redirect(url_for("login"))
+    
+@app.route('/login',methods=['GET','POST'])
+def login():
+    error = None
+    print request.values
+    if request.method == 'POST':
+        if request.values['name'] != app.config['USERNAME']:
+            error='Invalid username'
+            print error
+        elif request.values['password'] != app.config['PASSWORD']:
+            error = 'Invalid password'
+            print error
+        else:
+            print "yes"
+            session['logged_in'] = True
+            session['username'] = request.values['name'] 
+            return redirect(url_for("index"))
+            print "yes"
+    return render_template("login.html")
+
 @app.route('/',methods=['GET'])
+@login_required
 def index():
-    return render_template('index.html')
+    username=session.get("username")
+    return render_template("index.html",username=username) 
+
 @app.route('/list',methods=['GET'])
+@login_required
 def list():
     hostlist=dark_status.query.all()
     hostresult=[]
@@ -31,9 +70,11 @@ def list():
 
     return render_template('lists.html',hostlist=hostresult,totalinfo=totalinfo)
 @app.route('/addhost',methods=['GET'])
+@login_required
 def addhost():
     return render_template('add.html')
 @app.route('/home',methods=['GET'])
+@login_required
 def home():
     hoststotal=len(dark_status.query.all())
     hostresult=[]
@@ -89,6 +130,7 @@ def collect_info():
     else:
         return jsonify({"error":1,"message":"mid and update_time is required"}),10010
 @app.route('/api/del_host',methods=['POST'])
+@login_required
 def delte_host():
     print  request.values
     mid=request.values.get("mid",None)
@@ -106,4 +148,4 @@ def delte_host():
         return jsonify({"error":1,"msg":"mid not find"})
 
 if __name__=='__main__':
-    app.run(debug=ture)
+    app.run(host="0.0.0.0",port=80,debug=True)

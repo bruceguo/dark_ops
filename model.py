@@ -14,6 +14,9 @@ class MyEncoder(json.JSONEncoder):
 app=Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI']='mysql://root:chinatt_1347@localhost:3306/darkinfo'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=True
+app.config['USERNAME']="admin"
+app.config['PASSWORD']="admin888"
+app.config['SECRET_KEY'] = 'jjskdjlkasjdlfjalk'
 db = SQLAlchemy(app)
 manager = Manager(app)
 class dark_status(db.Model):
