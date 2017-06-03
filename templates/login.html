@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>后台管理系统|GTF-Admin</title>
-    <link rel="stylesheet" href="layui/css/layui.css"/>
-    <link rel="stylesheet" href="css/admin.css"/>
-	<style>html{background-image: url(img/bg.png);}</style>
+    <title>后台管理系统</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css"/>
+    <link rel="stylesheet" href="/static/css/admin.css"/>
+	<style>html{background-image: url(/static/img/bg.png);}</style>
 </head>
 <body>
     <div class="admin-login">
@@ -26,15 +26,6 @@
 						<input type="password" name="password" autocomplete="off" placeholder="请输入管理员密码" class="layui-input" lay-verify="required|password">
 					</div>
 				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">验证码</label>
-					<div class="layui-input-inline input-code">
-						<input type="text" name="code" autocomplete="off" placeholder="请输入验证码" class="layui-input" lay-verify="required|number|code">
-					</div>
-					<div class="layui-input-inline code">
-						<div><img src="img/code.png" alt="验证码"/></div>
-					</div>
-				</div>
 				<div class="layui-form-item submit-login">
 					<button class="layui-btn layui-btn-radius" lay-submit lay-filter="login">确认登录</button>
 				</div>
@@ -42,7 +33,7 @@
 		</fieldset>
 	</div>
 
-    <script type="text/javascript" src="layui/layui.js"></script>
+    <script type="text/javascript" src="/static/layui/layui.js"></script>
     <script type="text/javascript">
 		layui.use(['form'],function(){
 			var $ = layui.jquery;
@@ -54,17 +45,7 @@
 					}
 				},
 				password: [/(.+){6,}$/, '密码长度不能少于6位'],
-				code: function(value){
-					if(value.length != 4){
-						return '请输入4位数字验证码';
-					}
-				}
 			});
-			form.on('submit(login)', function(data){
-				var formData = sczw.getFormData($(data.elem).parents("form"));
-				sczw.layerSubmit("<{:url('index')}>",formData);
-				return false
-			})
 		})
 	</script>
 </body>
