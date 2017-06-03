@@ -20,21 +20,6 @@ function() {
             elem: tb
         })
     }
-    if (o(tp).length && totalPage) {
-        layui.laypage({
-            cont: tp.substr(1),
-            pages: totalPage,
-            curr: m.urlDataValue("p") ? m.urlDataValue("p") : 1,
-            skip: true,
-            jump: function(obj, first) {
-                if (!first) {
-                    var url = location.href;
-                    var isB = url.indexOf("?") > 0 ? "&": "?";
-                    location.href = url.indexOf("p=") > 0 ? url.replace(/p=\d+/, "p=" + obj.curr) : url + isB + "p=" + obj.curr
-                }
-            }
-        })
-    }
     b.on("click", "button",
     function() {
         var t = o(this);
