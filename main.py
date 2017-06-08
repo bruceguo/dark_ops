@@ -67,7 +67,7 @@ def list():
                 host.status=0
                 totalinfo["error"]+=1
         hostresult.append(host)
-
+    hostresult=sorted(hostresult,key=lambda x:x.status)
     return render_template('lists.html',hostlist=hostresult,totalinfo=totalinfo)
 @app.route('/addhost',methods=['GET'])
 @login_required
@@ -148,4 +148,4 @@ def delte_host():
         return jsonify({"error":1,"msg":"mid not find"})
 
 if __name__=='__main__':
-    app.run(host="0.0.0.0",port=80,debug=True)
+    app.run()
