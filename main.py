@@ -53,6 +53,7 @@ def index():
 def list():
     hostlist=dark_status.query.all()
     hostresult=[]
+    hostresult_web=[]
     totalinfo={"error":0}
     for host in hostlist:
         if time.time() - time.mktime(time.strptime(str(host.update_time),"%Y-%m-%d %H:%M:%S")) > 300:
