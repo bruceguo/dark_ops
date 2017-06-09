@@ -1,13 +1,33 @@
 #!/usr/biu/env python2.7
 #coding:utf-8
-from flask import Flask,session,redirect,url_for,escape
+from flask import session,redirect,url_for,escape
 from flask import request
 from flask import render_template
 from flask import jsonify,abort 
 from model import db,dark_status,app
+from flask_apscheduler import APScheduler
 from functools import wraps
+import logging
 import time
 import json
+#日志模式初始化
+logging.basicConfig(level="DEBUG",
+                format='%(asctime)s  %(levelname)s %(message)s',
+                datefmt='%Y-%m-%d %H:%M:%S',
+                filename='./log/dark_status.log',
+                filemode='a')
+class Config(object):
+    JOBS = [
+        {
+            'id': 'wxwarn',
+            'func': 'jobs:wxwarn',
+            'args': ["dark"],
+            'trigger': 'interval',
+            'seconds': 60
+        }
+    ]
+
+    SCHEDULER_API_ENABLED = False
 def login_required(func):
     @wraps(func)
     def decorated_function(*args, **kwargs):
@@ -17,11 +37,11 @@ def login_required(func):
         return redirect(url_for('login', next=request.url))
     return decorated_function
 
-@app.route('/logout')
-def loginout():
-    session.pop('logged_in', None)
-    session.pop('username', None)
-    return redirect(url_for("login"))
+#@app.route('/logout')
+#def loginout():
+#    session.pop('logged_in', None)
+#    session.pop('username', None)
+#    return redirect(url_for("login"))
     
 @app.route('/login',methods=['GET','POST'])
 def login():
@@ -154,4 +174,8 @@ def delte_host():
         return jsonify({"error":1,"msg":"mid not find"})
 
 if __name__=='__main__':
-    app.run()
+    app.config.from_object(Config())
+    scheduler = APScheduler()
+    scheduler.init_app(app)
+    scheduler.start()
+    app.run(host="0.0.0.0",port=8888)

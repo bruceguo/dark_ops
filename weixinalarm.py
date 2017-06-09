@@ -42,19 +42,13 @@ class weixinalarm:
         send_url="https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token="+access_token
         send_info={
 		"touser" : "@all",
-		"msgtype" : "news",
+		"msgtype" : "text",
 		"agentid" : 1000005,
-                "news":{
-                "articles" : [
-                 {
-               "title" : title,
-               "description" : description,
-               "url" : "http://www.yslongbi.com/category/star_news/?starId=22",
-               "picurl" : "http://bimg.tubaba.com.cn/http://img5.imgtn.bdimg.com/it/u=3850328790,3088893369&fm=23&gp=0.jpg"
-                   }
-                 ]
-                 }
+        "text":{
+            "content":title+":"+description
+            }
 		}
+        print send_info
         send_info_urlencode = json.dumps(send_info,ensure_ascii=False)
         req=urllib2.Request(url = send_url,data =send_info_urlencode)
         response=urllib2.urlopen(req)

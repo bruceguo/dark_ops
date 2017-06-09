@@ -1,0 +1,678 @@
+2017-06-09 14:34:17  INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2017-06-09 14:34:17  INFO Added job "wxwarn" to job store "default"
+2017-06-09 14:34:17  INFO Scheduler started
+2017-06-09 14:34:17  DEBUG Looking for jobs to run
+2017-06-09 14:34:17  DEBUG Next wakeup is due at 2017-06-09 14:35:17.220308+08:00 (in 59.989158 seconds)
+2017-06-09 14:34:17  INFO  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2017-06-09 14:34:49  INFO 192.168.201.94 - - [09/Jun/2017 14:34:49] "GET / HTTP/1.1" 200 -
+2017-06-09 14:34:49  INFO 192.168.201.94 - - [09/Jun/2017 14:34:49] "GET /static/layui/css/layui.css HTTP/1.1" 304 -
+2017-06-09 14:34:49  INFO 192.168.201.94 - - [09/Jun/2017 14:34:49] "GET /static/css/admin.css HTTP/1.1" 304 -
+2017-06-09 14:34:49  INFO 192.168.201.94 - - [09/Jun/2017 14:34:49] "GET /static/font-awesome-4.7.0/css/font-awesome.min.css HTTP/1.1" 304 -
+2017-06-09 14:34:49  INFO 192.168.201.94 - - [09/Jun/2017 14:34:49] "GET /static/layui/layui.js HTTP/1.1" 304 -
+2017-06-09 14:34:49  INFO 192.168.201.94 - - [09/Jun/2017 14:34:49] "GET /static/js/admin.js HTTP/1.1" 200 -
+2017-06-09 14:34:49  INFO 192.168.201.94 - - [09/Jun/2017 14:34:49] "GET /static/layui/font/iconfont.woff?v=1.0.9 HTTP/1.1" 304 -
+2017-06-09 14:34:49  INFO 192.168.201.94 - - [09/Jun/2017 14:34:49] "GET /static/layui/lay/modules/element.js HTTP/1.1" 304 -
+2017-06-09 14:34:50  INFO 192.168.201.94 - - [09/Jun/2017 14:34:50] "GET /static/layui/lay/modules/jquery.js HTTP/1.1" 304 -
+2017-06-09 14:34:50  INFO 192.168.201.94 - - [09/Jun/2017 14:34:50] "GET /static/layui/lay/modules/layer.js HTTP/1.1" 304 -
+2017-06-09 14:34:50  INFO 192.168.201.94 - - [09/Jun/2017 14:34:50] "GET /static/layui/css/modules/layer/default/layer.css?v=3.0.3303 HTTP/1.1" 304 -
+2017-06-09 14:34:50  INFO 192.168.201.94 - - [09/Jun/2017 14:34:50] "GET /home HTTP/1.1" 200 -
+2017-06-09 14:34:50  INFO 192.168.201.94 - - [09/Jun/2017 14:34:50] "GET /static/layui/css/layui.css HTTP/1.1" 304 -
+2017-06-09 14:34:50  INFO 192.168.201.94 - - [09/Jun/2017 14:34:50] "GET /static/css/admin.css HTTP/1.1" 304 -
+2017-06-09 14:34:50  INFO 192.168.201.94 - - [09/Jun/2017 14:34:50] "GET /static/assets/css/vendor/bootstrap/bootstrap.min.css HTTP/1.1" 304 -
+2017-06-09 14:34:50  INFO 192.168.201.94 - - [09/Jun/2017 14:34:50] "GET /static/assets/css/vendor/animate/animate.min.css HTTP/1.1" 304 -
+2017-06-09 14:34:50  INFO 192.168.201.94 - - [09/Jun/2017 14:34:50] "GET /static/font-awesome-4.7.0/css/font-awesome.min.css HTTP/1.1" 304 -
+2017-06-09 14:34:50  INFO 192.168.201.94 - - [09/Jun/2017 14:34:50] "GET /static/assets/js/vendor/mmenu/css/jquery.mmenu.all.css HTTP/1.1" 304 -
+2017-06-09 14:34:50  INFO 192.168.201.94 - - [09/Jun/2017 14:34:50] "GET /static/assets/js/vendor/videobackground/css/jquery.videobackground.css HTTP/1.1" 304 -
+2017-06-09 14:34:50  INFO 192.168.201.94 - - [09/Jun/2017 14:34:50] "GET /static/assets/css/vendor/bootstrap-checkbox.css HTTP/1.1" 304 -
+2017-06-09 14:34:50  INFO 192.168.201.94 - - [09/Jun/2017 14:34:50] "GET /static/assets/css/minimal.css HTTP/1.1" 304 -
+2017-06-09 14:34:50  INFO 192.168.201.94 - - [09/Jun/2017 14:34:50] "GET /static/layui/layui.js HTTP/1.1" 304 -
+2017-06-09 14:34:50  INFO 192.168.201.94 - - [09/Jun/2017 14:34:50] "GET /static/assets/js/jquery.js HTTP/1.1" 304 -
+2017-06-09 14:34:50  INFO 192.168.201.94 - - [09/Jun/2017 14:34:50] "GET /static/assets/js/vendor/mmenu/js/jquery.mmenu.min.js HTTP/1.1" 304 -
+2017-06-09 14:34:50  INFO 192.168.201.94 - - [09/Jun/2017 14:34:50] "GET /static/assets/js/vendor/sparkline/jquery.sparkline.min.js HTTP/1.1" 304 -
+2017-06-09 14:34:50  INFO 192.168.201.94 - - [09/Jun/2017 14:34:50] "GET /static/assets/js/vendor/nicescroll/jquery.nicescroll.min.js HTTP/1.1" 304 -
+2017-06-09 14:34:50  INFO 192.168.201.94 - - [09/Jun/2017 14:34:50] "GET /static/assets/js/vendor/animate-numbers/jquery.animateNumbers.js HTTP/1.1" 304 -
+2017-06-09 14:34:50  INFO 192.168.201.94 - - [09/Jun/2017 14:34:50] "GET /static/assets/js/vendor/videobackground/jquery.videobackground.js HTTP/1.1" 304 -
+2017-06-09 14:34:50  INFO 192.168.201.94 - - [09/Jun/2017 14:34:50] "GET /static/assets/js/vendor/blockui/jquery.blockUI.js HTTP/1.1" 304 -
+2017-06-09 14:34:50  INFO 192.168.201.94 - - [09/Jun/2017 14:34:50] "GET /static/assets/js/minimal.min.js HTTP/1.1" 304 -
+2017-06-09 14:34:57  INFO 192.168.201.94 - - [09/Jun/2017 14:34:57] "GET /list HTTP/1.1" 200 -
+2017-06-09 14:34:57  INFO 192.168.201.94 - - [09/Jun/2017 14:34:57] "GET /static/layui/font/iconfont.woff?v=1.0.9 HTTP/1.1" 304 -
+2017-06-09 14:35:17  DEBUG Looking for jobs to run
+2017-06-09 14:35:17  DEBUG Next wakeup is due at 2017-06-09 14:36:17.220308+08:00 (in 59.999155 seconds)
+2017-06-09 14:35:17  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 14:36:17 CST)" (scheduled at 2017-06-09 14:35:17.220308+08:00)
+2017-06-09 14:35:17  ERROR Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 14:36:17 CST)" raised an exception
+Traceback (most recent call last):
+  File "/usr/local/python27/lib/python2.7/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/opt/dark_web_config/jobs.py", line 11, in wxwarn
+    host_list=dark_status.query.all()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 498, in __get__
+    return type.query_class(mapper, session=self.sa.session())
+  File "/usr/local/python27/lib/python2.7/site-packages/sqlalchemy/orm/scoping.py", line 78, in __call__
+    return self.registry()
+  File "/usr/local/python27/lib/python2.7/site-packages/sqlalchemy/util/_collections.py", line 990, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "/usr/local/python27/lib/python2.7/site-packages/sqlalchemy/orm/session.py", line 2861, in __call__
+    return self.class_(**local_kw)
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 145, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 922, in engine
+    return self.get_engine()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 941, in get_engine
+    return connector.get_engine()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 533, in get_engine
+    uri = self.get_uri()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 524, in get_uri
+    return self._app.config['SQLALCHEMY_DATABASE_URI']
+  File "/usr/local/python27/lib/python2.7/site-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+  File "/usr/local/python27/lib/python2.7/site-packages/werkzeug/local.py", line 306, in _get_current_object
+    return self.__local()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask/globals.py", line 51, in _find_app
+    raise RuntimeError(_app_ctx_err_msg)
+RuntimeError: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+to interface with the current application object in a way.  To solve
+this set up an application context with app.app_context().  See the
+documentation for more information.
+2017-06-09 14:40:04  INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2017-06-09 14:40:04  INFO Added job "wxwarn" to job store "default"
+2017-06-09 14:40:04  INFO Scheduler started
+2017-06-09 14:40:04  DEBUG Looking for jobs to run
+2017-06-09 14:40:04  DEBUG Next wakeup is due at 2017-06-09 14:41:04.492923+08:00 (in 59.990500 seconds)
+2017-06-09 14:40:04  INFO  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2017-06-09 14:40:18  INFO 192.168.201.94 - - [09/Jun/2017 14:40:18] "GET / HTTP/1.1" 200 -
+2017-06-09 14:40:18  INFO 192.168.201.94 - - [09/Jun/2017 14:40:18] "GET /static/layui/css/layui.css HTTP/1.1" 304 -
+2017-06-09 14:40:18  INFO 192.168.201.94 - - [09/Jun/2017 14:40:18] "GET /static/css/admin.css HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/font-awesome-4.7.0/css/font-awesome.min.css HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/layui/layui.js HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/js/admin.js HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/layui/font/iconfont.woff?v=1.0.9 HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/layui/lay/modules/element.js HTTP/1.1" 200 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/layui/lay/modules/jquery.js HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/layui/lay/modules/layer.js HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/layui/css/modules/layer/default/layer.css?v=3.0.3303 HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /home HTTP/1.1" 200 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/layui/css/layui.css HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/css/admin.css HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/assets/css/vendor/bootstrap/bootstrap.min.css HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/assets/css/vendor/animate/animate.min.css HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/font-awesome-4.7.0/css/font-awesome.min.css HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/assets/js/vendor/mmenu/css/jquery.mmenu.all.css HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/assets/js/vendor/videobackground/css/jquery.videobackground.css HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/assets/css/vendor/bootstrap-checkbox.css HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/assets/css/minimal.css HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/layui/layui.js HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/assets/js/jquery.js HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/assets/js/vendor/mmenu/js/jquery.mmenu.min.js HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/assets/js/vendor/sparkline/jquery.sparkline.min.js HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/assets/js/vendor/nicescroll/jquery.nicescroll.min.js HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/assets/js/vendor/animate-numbers/jquery.animateNumbers.js HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/assets/js/vendor/videobackground/jquery.videobackground.js HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/assets/js/vendor/blockui/jquery.blockUI.js HTTP/1.1" 304 -
+2017-06-09 14:40:19  INFO 192.168.201.94 - - [09/Jun/2017 14:40:19] "GET /static/assets/js/minimal.min.js HTTP/1.1" 304 -
+2017-06-09 14:40:29  INFO 192.168.201.94 - - [09/Jun/2017 14:40:29] "GET /list HTTP/1.1" 200 -
+2017-06-09 14:40:29  INFO 192.168.201.94 - - [09/Jun/2017 14:40:29] "GET /static/layui/font/iconfont.woff?v=1.0.9 HTTP/1.1" 304 -
+2017-06-09 14:41:04  DEBUG Looking for jobs to run
+2017-06-09 14:41:04  DEBUG Next wakeup is due at 2017-06-09 14:42:04.492923+08:00 (in 59.998414 seconds)
+2017-06-09 14:41:04  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 14:42:04 CST)" (scheduled at 2017-06-09 14:41:04.492923+08:00)
+2017-06-09 14:41:04  ERROR Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 14:42:04 CST)" raised an exception
+Traceback (most recent call last):
+  File "/usr/local/python27/lib/python2.7/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/opt/dark_web_config/jobs.py", line 11, in wxwarn
+    host_list=dark_status.query.all()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 498, in __get__
+    return type.query_class(mapper, session=self.sa.session())
+  File "/usr/local/python27/lib/python2.7/site-packages/sqlalchemy/orm/scoping.py", line 78, in __call__
+    return self.registry()
+  File "/usr/local/python27/lib/python2.7/site-packages/sqlalchemy/util/_collections.py", line 990, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "/usr/local/python27/lib/python2.7/site-packages/sqlalchemy/orm/session.py", line 2861, in __call__
+    return self.class_(**local_kw)
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 145, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 922, in engine
+    return self.get_engine()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 941, in get_engine
+    return connector.get_engine()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 533, in get_engine
+    uri = self.get_uri()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 524, in get_uri
+    return self._app.config['SQLALCHEMY_DATABASE_URI']
+  File "/usr/local/python27/lib/python2.7/site-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+  File "/usr/local/python27/lib/python2.7/site-packages/werkzeug/local.py", line 306, in _get_current_object
+    return self.__local()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask/globals.py", line 51, in _find_app
+    raise RuntimeError(_app_ctx_err_msg)
+RuntimeError: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+to interface with the current application object in a way.  To solve
+this set up an application context with app.app_context().  See the
+documentation for more information.
+2017-06-09 14:42:33  INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2017-06-09 14:42:33  INFO Added job "wxwarn" to job store "default"
+2017-06-09 14:42:33  INFO Scheduler started
+2017-06-09 14:42:33  DEBUG Looking for jobs to run
+2017-06-09 14:42:33  DEBUG Next wakeup is due at 2017-06-09 14:43:33.613166+08:00 (in 59.991937 seconds)
+2017-06-09 14:42:33  INFO  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2017-06-09 14:43:33  DEBUG Looking for jobs to run
+2017-06-09 14:43:33  DEBUG Next wakeup is due at 2017-06-09 14:44:33.613166+08:00 (in 59.998206 seconds)
+2017-06-09 14:43:33  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 14:44:33 CST)" (scheduled at 2017-06-09 14:43:33.613166+08:00)
+2017-06-09 14:43:34  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 14:44:33 CST)" executed successfully
+2017-06-09 14:44:33  DEBUG Looking for jobs to run
+2017-06-09 14:44:33  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 14:44:33 CST)" (scheduled at 2017-06-09 14:44:33.613166+08:00)
+2017-06-09 14:44:33  DEBUG Next wakeup is due at 2017-06-09 14:45:33.613166+08:00 (in 59.912330 seconds)
+2017-06-09 14:44:34  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 14:45:33 CST)" executed successfully
+2017-06-09 14:45:20  INFO 192.168.201.94 - - [09/Jun/2017 14:45:20] "GET /home HTTP/1.1" 200 -
+2017-06-09 14:45:20  INFO 192.168.201.94 - - [09/Jun/2017 14:45:20] "GET /static/layui/css/layui.css HTTP/1.1" 304 -
+2017-06-09 14:45:20  INFO 192.168.201.94 - - [09/Jun/2017 14:45:20] "GET /static/css/admin.css HTTP/1.1" 304 -
+2017-06-09 14:45:20  INFO 192.168.201.94 - - [09/Jun/2017 14:45:20] "GET /static/assets/css/vendor/bootstrap/bootstrap.min.css HTTP/1.1" 304 -
+2017-06-09 14:45:20  INFO 192.168.201.94 - - [09/Jun/2017 14:45:20] "GET /static/assets/css/vendor/animate/animate.min.css HTTP/1.1" 304 -
+2017-06-09 14:45:20  INFO 192.168.201.94 - - [09/Jun/2017 14:45:20] "GET /static/font-awesome-4.7.0/css/font-awesome.min.css HTTP/1.1" 304 -
+2017-06-09 14:45:20  INFO 192.168.201.94 - - [09/Jun/2017 14:45:20] "GET /static/assets/js/vendor/mmenu/css/jquery.mmenu.all.css HTTP/1.1" 304 -
+2017-06-09 14:45:20  INFO 192.168.201.94 - - [09/Jun/2017 14:45:20] "GET /static/assets/js/vendor/videobackground/css/jquery.videobackground.css HTTP/1.1" 304 -
+2017-06-09 14:45:20  INFO 192.168.201.94 - - [09/Jun/2017 14:45:20] "GET /static/assets/css/vendor/bootstrap-checkbox.css HTTP/1.1" 304 -
+2017-06-09 14:45:20  INFO 192.168.201.94 - - [09/Jun/2017 14:45:20] "GET /static/assets/css/minimal.css HTTP/1.1" 304 -
+2017-06-09 14:45:20  INFO 192.168.201.94 - - [09/Jun/2017 14:45:20] "GET /static/layui/layui.js HTTP/1.1" 304 -
+2017-06-09 14:45:20  INFO 192.168.201.94 - - [09/Jun/2017 14:45:20] "GET /static/assets/js/jquery.js HTTP/1.1" 304 -
+2017-06-09 14:45:20  INFO 192.168.201.94 - - [09/Jun/2017 14:45:20] "GET /static/assets/js/vendor/mmenu/js/jquery.mmenu.min.js HTTP/1.1" 304 -
+2017-06-09 14:45:20  INFO 192.168.201.94 - - [09/Jun/2017 14:45:20] "GET /static/assets/js/vendor/sparkline/jquery.sparkline.min.js HTTP/1.1" 304 -
+2017-06-09 14:45:20  INFO 192.168.201.94 - - [09/Jun/2017 14:45:20] "GET /static/assets/js/vendor/nicescroll/jquery.nicescroll.min.js HTTP/1.1" 304 -
+2017-06-09 14:45:20  INFO 192.168.201.94 - - [09/Jun/2017 14:45:20] "GET /static/assets/js/vendor/animate-numbers/jquery.animateNumbers.js HTTP/1.1" 304 -
+2017-06-09 14:45:20  INFO 192.168.201.94 - - [09/Jun/2017 14:45:20] "GET /static/assets/js/vendor/videobackground/jquery.videobackground.js HTTP/1.1" 304 -
+2017-06-09 14:45:20  INFO 192.168.201.94 - - [09/Jun/2017 14:45:20] "GET /static/assets/js/vendor/blockui/jquery.blockUI.js HTTP/1.1" 304 -
+2017-06-09 14:45:20  INFO 192.168.201.94 - - [09/Jun/2017 14:45:20] "GET /static/assets/js/minimal.min.js HTTP/1.1" 304 -
+2017-06-09 14:45:33  DEBUG Looking for jobs to run
+2017-06-09 14:45:33  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 14:45:33 CST)" (scheduled at 2017-06-09 14:45:33.613166+08:00)
+2017-06-09 14:45:33  DEBUG Next wakeup is due at 2017-06-09 14:46:33.613166+08:00 (in 59.964820 seconds)
+2017-06-09 14:45:34  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 14:46:33 CST)" executed successfully
+2017-06-09 14:46:33  DEBUG Looking for jobs to run
+2017-06-09 14:46:33  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 14:46:33 CST)" (scheduled at 2017-06-09 14:46:33.613166+08:00)
+2017-06-09 14:46:33  DEBUG Next wakeup is due at 2017-06-09 14:47:33.613166+08:00 (in 59.989397 seconds)
+2017-06-09 14:46:33  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 14:47:33 CST)" executed successfully
+2017-06-09 14:47:33  DEBUG Looking for jobs to run
+2017-06-09 14:47:33  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 14:47:33 CST)" (scheduled at 2017-06-09 14:47:33.613166+08:00)
+2017-06-09 14:47:33  DEBUG Next wakeup is due at 2017-06-09 14:48:33.613166+08:00 (in 59.982730 seconds)
+2017-06-09 14:47:33  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 14:48:33 CST)" executed successfully
+2017-06-09 14:48:43  INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2017-06-09 14:48:43  INFO Added job "wxwarn" to job store "default"
+2017-06-09 14:48:43  INFO Scheduler started
+2017-06-09 14:48:43  DEBUG Looking for jobs to run
+2017-06-09 14:48:43  DEBUG Next wakeup is due at 2017-06-09 14:49:43.125530+08:00 (in 59.987089 seconds)
+2017-06-09 14:48:43  INFO  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2017-06-09 14:49:26  INFO 192.168.201.94 - - [09/Jun/2017 14:49:26] "GET / HTTP/1.1" 200 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/layui/css/layui.css HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/css/admin.css HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/font-awesome-4.7.0/css/font-awesome.min.css HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/layui/layui.js HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/js/admin.js HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/layui/lay/modules/element.js HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/layui/font/iconfont.woff?v=1.0.9 HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/layui/lay/modules/jquery.js HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/layui/lay/modules/layer.js HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/layui/css/modules/layer/default/layer.css?v=3.0.3303 HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /home HTTP/1.1" 200 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/layui/css/layui.css HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/css/admin.css HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/assets/css/vendor/bootstrap/bootstrap.min.css HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/assets/css/vendor/animate/animate.min.css HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/font-awesome-4.7.0/css/font-awesome.min.css HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/assets/js/vendor/mmenu/css/jquery.mmenu.all.css HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/assets/js/vendor/videobackground/css/jquery.videobackground.css HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/assets/css/vendor/bootstrap-checkbox.css HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/assets/css/minimal.css HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/layui/layui.js HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/assets/js/jquery.js HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/assets/js/vendor/mmenu/js/jquery.mmenu.min.js HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/assets/js/vendor/sparkline/jquery.sparkline.min.js HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/assets/js/vendor/nicescroll/jquery.nicescroll.min.js HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/assets/js/vendor/animate-numbers/jquery.animateNumbers.js HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/assets/js/vendor/videobackground/jquery.videobackground.js HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/assets/js/vendor/blockui/jquery.blockUI.js HTTP/1.1" 304 -
+2017-06-09 14:49:27  INFO 192.168.201.94 - - [09/Jun/2017 14:49:27] "GET /static/assets/js/minimal.min.js HTTP/1.1" 304 -
+2017-06-09 14:49:29  INFO 192.168.201.94 - - [09/Jun/2017 14:49:29] "GET /list HTTP/1.1" 200 -
+2017-06-09 14:49:29  INFO 192.168.201.94 - - [09/Jun/2017 14:49:29] "GET /static/layui/font/iconfont.woff?v=1.0.9 HTTP/1.1" 304 -
+2017-06-09 14:49:43  DEBUG Looking for jobs to run
+2017-06-09 14:49:43  DEBUG Next wakeup is due at 2017-06-09 14:50:43.125530+08:00 (in 59.997384 seconds)
+2017-06-09 14:49:43  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 14:50:43 CST)" (scheduled at 2017-06-09 14:49:43.125530+08:00)
+2017-06-09 14:49:43  ERROR Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 14:50:43 CST)" raised an exception
+Traceback (most recent call last):
+  File "/usr/local/python27/lib/python2.7/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/opt/dark_web_config/jobs.py", line 11, in wxwarn
+    host_list=dark_status.query.all()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 498, in __get__
+    return type.query_class(mapper, session=self.sa.session())
+  File "/usr/local/python27/lib/python2.7/site-packages/sqlalchemy/orm/scoping.py", line 78, in __call__
+    return self.registry()
+  File "/usr/local/python27/lib/python2.7/site-packages/sqlalchemy/util/_collections.py", line 990, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "/usr/local/python27/lib/python2.7/site-packages/sqlalchemy/orm/session.py", line 2861, in __call__
+    return self.class_(**local_kw)
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 145, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 922, in engine
+    return self.get_engine()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 941, in get_engine
+    return connector.get_engine()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 533, in get_engine
+    uri = self.get_uri()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 524, in get_uri
+    return self._app.config['SQLALCHEMY_DATABASE_URI']
+  File "/usr/local/python27/lib/python2.7/site-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+  File "/usr/local/python27/lib/python2.7/site-packages/werkzeug/local.py", line 306, in _get_current_object
+    return self.__local()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask/globals.py", line 51, in _find_app
+    raise RuntimeError(_app_ctx_err_msg)
+RuntimeError: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+to interface with the current application object in a way.  To solve
+this set up an application context with app.app_context().  See the
+documentation for more information.
+2017-06-09 14:50:29  INFO 192.168.201.94 - - [09/Jun/2017 14:50:29] "GET /list HTTP/1.1" 200 -
+2017-06-09 14:50:30  INFO 192.168.201.94 - - [09/Jun/2017 14:50:30] "GET /static/layui/css/layui.css HTTP/1.1" 304 -
+2017-06-09 14:50:30  INFO 192.168.201.94 - - [09/Jun/2017 14:50:30] "GET /static/css/admin.css HTTP/1.1" 304 -
+2017-06-09 14:50:30  INFO 192.168.201.94 - - [09/Jun/2017 14:50:30] "GET /static/font-awesome-4.7.0/css/font-awesome.min.css HTTP/1.1" 304 -
+2017-06-09 14:50:30  INFO 192.168.201.94 - - [09/Jun/2017 14:50:30] "GET /static/layui/layui.js HTTP/1.1" 304 -
+2017-06-09 14:50:30  INFO 192.168.201.94 - - [09/Jun/2017 14:50:30] "GET /static/js/gtf.js HTTP/1.1" 304 -
+2017-06-09 14:50:30  INFO 192.168.201.94 - - [09/Jun/2017 14:50:30] "GET /static/js/main.js HTTP/1.1" 304 -
+2017-06-09 14:50:30  INFO 192.168.201.94 - - [09/Jun/2017 14:50:30] "GET /static/layui/font/iconfont.woff?v=1.0.9 HTTP/1.1" 304 -
+2017-06-09 14:50:30  INFO 192.168.201.94 - - [09/Jun/2017 14:50:30] "GET /static/layui/lay/modules/jquery.js HTTP/1.1" 304 -
+2017-06-09 14:50:30  INFO 192.168.201.94 - - [09/Jun/2017 14:50:30] "GET /static/layui/lay/modules/layer.js HTTP/1.1" 304 -
+2017-06-09 14:50:30  INFO 192.168.201.94 - - [09/Jun/2017 14:50:30] "GET /static/layui/css/modules/layer/default/layer.css?v=3.0.3303 HTTP/1.1" 304 -
+2017-06-09 14:50:43  DEBUG Looking for jobs to run
+2017-06-09 14:50:43  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 14:50:43 CST)" (scheduled at 2017-06-09 14:50:43.125530+08:00)
+2017-06-09 14:50:43  ERROR Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 14:50:43 CST)" raised an exception
+Traceback (most recent call last):
+  File "/usr/local/python27/lib/python2.7/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/opt/dark_web_config/jobs.py", line 11, in wxwarn
+    host_list=dark_status.query.all()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 498, in __get__
+    return type.query_class(mapper, session=self.sa.session())
+  File "/usr/local/python27/lib/python2.7/site-packages/sqlalchemy/orm/scoping.py", line 78, in __call__
+    return self.registry()
+  File "/usr/local/python27/lib/python2.7/site-packages/sqlalchemy/util/_collections.py", line 990, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "/usr/local/python27/lib/python2.7/site-packages/sqlalchemy/orm/session.py", line 2861, in __call__
+    return self.class_(**local_kw)
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 145, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 922, in engine
+    return self.get_engine()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 941, in get_engine
+    return connector.get_engine()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 533, in get_engine
+    uri = self.get_uri()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 524, in get_uri
+    return self._app.config['SQLALCHEMY_DATABASE_URI']
+  File "/usr/local/python27/lib/python2.7/site-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+  File "/usr/local/python27/lib/python2.7/site-packages/werkzeug/local.py", line 306, in _get_current_object
+    return self.__local()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask/globals.py", line 51, in _find_app
+    raise RuntimeError(_app_ctx_err_msg)
+RuntimeError: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+to interface with the current application object in a way.  To solve
+this set up an application context with app.app_context().  See the
+documentation for more information.
+2017-06-09 14:50:43  DEBUG Next wakeup is due at 2017-06-09 14:51:43.125530+08:00 (in 59.998156 seconds)
+2017-06-09 14:51:30  INFO 192.168.201.94 - - [09/Jun/2017 14:51:30] "GET /list HTTP/1.1" 200 -
+2017-06-09 14:51:30  INFO 192.168.201.94 - - [09/Jun/2017 14:51:30] "GET /static/layui/css/layui.css HTTP/1.1" 304 -
+2017-06-09 14:51:30  INFO 192.168.201.94 - - [09/Jun/2017 14:51:30] "GET /static/css/admin.css HTTP/1.1" 304 -
+2017-06-09 14:51:30  INFO 192.168.201.94 - - [09/Jun/2017 14:51:30] "GET /static/font-awesome-4.7.0/css/font-awesome.min.css HTTP/1.1" 304 -
+2017-06-09 14:51:30  INFO 192.168.201.94 - - [09/Jun/2017 14:51:30] "GET /static/layui/layui.js HTTP/1.1" 304 -
+2017-06-09 14:51:30  INFO 192.168.201.94 - - [09/Jun/2017 14:51:30] "GET /static/js/gtf.js HTTP/1.1" 304 -
+2017-06-09 14:51:30  INFO 192.168.201.94 - - [09/Jun/2017 14:51:30] "GET /static/js/main.js HTTP/1.1" 304 -
+2017-06-09 14:51:30  INFO 192.168.201.94 - - [09/Jun/2017 14:51:30] "GET /static/layui/font/iconfont.woff?v=1.0.9 HTTP/1.1" 304 -
+2017-06-09 14:51:30  INFO 192.168.201.94 - - [09/Jun/2017 14:51:30] "GET /static/layui/lay/modules/jquery.js HTTP/1.1" 304 -
+2017-06-09 14:51:30  INFO 192.168.201.94 - - [09/Jun/2017 14:51:30] "GET /static/layui/lay/modules/layer.js HTTP/1.1" 304 -
+2017-06-09 14:51:30  INFO 192.168.201.94 - - [09/Jun/2017 14:51:30] "GET /static/layui/css/modules/layer/default/layer.css?v=3.0.3303 HTTP/1.1" 304 -
+2017-06-09 14:51:43  DEBUG Looking for jobs to run
+2017-06-09 14:51:43  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 14:51:43 CST)" (scheduled at 2017-06-09 14:51:43.125530+08:00)
+2017-06-09 14:51:43  ERROR Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 14:51:43 CST)" raised an exception
+Traceback (most recent call last):
+  File "/usr/local/python27/lib/python2.7/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/opt/dark_web_config/jobs.py", line 11, in wxwarn
+    host_list=dark_status.query.all()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 498, in __get__
+    return type.query_class(mapper, session=self.sa.session())
+  File "/usr/local/python27/lib/python2.7/site-packages/sqlalchemy/orm/scoping.py", line 78, in __call__
+    return self.registry()
+  File "/usr/local/python27/lib/python2.7/site-packages/sqlalchemy/util/_collections.py", line 990, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "/usr/local/python27/lib/python2.7/site-packages/sqlalchemy/orm/session.py", line 2861, in __call__
+    return self.class_(**local_kw)
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 145, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 922, in engine
+    return self.get_engine()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 941, in get_engine
+    return connector.get_engine()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 533, in get_engine
+    uri = self.get_uri()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 524, in get_uri
+    return self._app.config['SQLALCHEMY_DATABASE_URI']
+  File "/usr/local/python27/lib/python2.7/site-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+  File "/usr/local/python27/lib/python2.7/site-packages/werkzeug/local.py", line 306, in _get_current_object
+    return self.__local()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask/globals.py", line 51, in _find_app
+    raise RuntimeError(_app_ctx_err_msg)
+RuntimeError: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+to interface with the current application object in a way.  To solve
+this set up an application context with app.app_context().  See the
+documentation for more information.
+2017-06-09 14:51:43  DEBUG Next wakeup is due at 2017-06-09 14:52:43.125530+08:00 (in 59.992513 seconds)
+2017-06-09 14:56:56  INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2017-06-09 14:56:56  INFO Added job "wxwarn" to job store "default"
+2017-06-09 14:56:56  INFO Scheduler started
+2017-06-09 14:56:56  DEBUG Looking for jobs to run
+2017-06-09 14:56:56  DEBUG Next wakeup is due at 2017-06-09 14:57:56.342160+08:00 (in 59.991928 seconds)
+2017-06-09 14:56:56  INFO  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2017-06-09 14:57:56  DEBUG Looking for jobs to run
+2017-06-09 14:57:56  DEBUG Next wakeup is due at 2017-06-09 14:58:56.342160+08:00 (in 59.998597 seconds)
+2017-06-09 14:57:56  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 14:58:56 CST)" (scheduled at 2017-06-09 14:57:56.342160+08:00)
+2017-06-09 14:57:56  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 14:58:56 CST)" executed successfully
+2017-06-09 14:59:08  INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2017-06-09 14:59:09  INFO Added job "wxwarn" to job store "default"
+2017-06-09 14:59:09  INFO Scheduler started
+2017-06-09 14:59:09  DEBUG Looking for jobs to run
+2017-06-09 14:59:09  DEBUG Next wakeup is due at 2017-06-09 15:00:08.997766+08:00 (in 59.987309 seconds)
+2017-06-09 14:59:09  INFO  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2017-06-09 15:00:08  DEBUG Looking for jobs to run
+2017-06-09 15:00:09  DEBUG Next wakeup is due at 2017-06-09 15:01:08.997766+08:00 (in 59.998179 seconds)
+2017-06-09 15:00:09  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:01:08 CST)" (scheduled at 2017-06-09 15:00:08.997766+08:00)
+2017-06-09 15:00:09  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:01:08 CST)" executed successfully
+2017-06-09 15:01:51  INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2017-06-09 15:01:51  INFO Added job "wxwarn" to job store "default"
+2017-06-09 15:01:51  INFO Scheduler started
+2017-06-09 15:01:51  DEBUG Looking for jobs to run
+2017-06-09 15:01:51  DEBUG Next wakeup is due at 2017-06-09 15:02:51.616420+08:00 (in 59.987846 seconds)
+2017-06-09 15:01:51  INFO  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2017-06-09 15:02:51  DEBUG Looking for jobs to run
+2017-06-09 15:02:51  DEBUG Next wakeup is due at 2017-06-09 15:03:51.616420+08:00 (in 59.997934 seconds)
+2017-06-09 15:02:51  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:03:51 CST)" (scheduled at 2017-06-09 15:02:51.616420+08:00)
+2017-06-09 15:02:52  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:03:51 CST)" executed successfully
+2017-06-09 15:04:38  INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2017-06-09 15:04:38  INFO Added job "wxwarn" to job store "default"
+2017-06-09 15:04:38  INFO Scheduler started
+2017-06-09 15:04:38  DEBUG Looking for jobs to run
+2017-06-09 15:04:38  DEBUG Next wakeup is due at 2017-06-09 15:05:38.423785+08:00 (in 59.992249 seconds)
+2017-06-09 15:04:38  INFO  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2017-06-09 15:05:38  DEBUG Looking for jobs to run
+2017-06-09 15:05:38  DEBUG Next wakeup is due at 2017-06-09 15:06:38.423785+08:00 (in 59.997048 seconds)
+2017-06-09 15:05:38  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:06:38 CST)" (scheduled at 2017-06-09 15:05:38.423785+08:00)
+2017-06-09 15:05:38  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:06:38 CST)" executed successfully
+2017-06-09 15:06:38  DEBUG Looking for jobs to run
+2017-06-09 15:06:38  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:06:38 CST)" (scheduled at 2017-06-09 15:06:38.423785+08:00)
+2017-06-09 15:06:38  DEBUG Next wakeup is due at 2017-06-09 15:07:38.423785+08:00 (in 59.995653 seconds)
+2017-06-09 15:06:38  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:07:38 CST)" executed successfully
+2017-06-09 15:15:48  INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2017-06-09 15:15:48  INFO Added job "wxwarn" to job store "default"
+2017-06-09 15:15:48  INFO Scheduler started
+2017-06-09 15:15:48  DEBUG Looking for jobs to run
+2017-06-09 15:15:48  DEBUG Next wakeup is due at 2017-06-09 15:16:48.456757+08:00 (in 59.990204 seconds)
+2017-06-09 15:15:48  INFO  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2017-06-09 15:16:48  DEBUG Looking for jobs to run
+2017-06-09 15:16:48  DEBUG Next wakeup is due at 2017-06-09 15:17:48.456757+08:00 (in 59.996897 seconds)
+2017-06-09 15:16:48  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:17:48 CST)" (scheduled at 2017-06-09 15:16:48.456757+08:00)
+2017-06-09 15:16:48  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:17:48 CST)" executed successfully
+2017-06-09 15:17:48  DEBUG Looking for jobs to run
+2017-06-09 15:17:48  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:17:48 CST)" (scheduled at 2017-06-09 15:17:48.456757+08:00)
+2017-06-09 15:17:48  DEBUG Next wakeup is due at 2017-06-09 15:18:48.456757+08:00 (in 59.995922 seconds)
+2017-06-09 15:17:48  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:18:48 CST)" executed successfully
+2017-06-09 15:18:48  DEBUG Looking for jobs to run
+2017-06-09 15:18:48  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:18:48 CST)" (scheduled at 2017-06-09 15:18:48.456757+08:00)
+2017-06-09 15:18:48  DEBUG Next wakeup is due at 2017-06-09 15:19:48.456757+08:00 (in 59.982517 seconds)
+2017-06-09 15:18:48  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:19:48 CST)" executed successfully
+2017-06-09 15:24:34  INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2017-06-09 15:24:34  INFO Added job "wxwarn" to job store "default"
+2017-06-09 15:24:34  INFO Scheduler started
+2017-06-09 15:24:34  DEBUG Looking for jobs to run
+2017-06-09 15:24:34  DEBUG Next wakeup is due at 2017-06-09 15:25:34.201167+08:00 (in 59.987160 seconds)
+2017-06-09 15:24:34  INFO  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2017-06-09 15:25:34  DEBUG Looking for jobs to run
+2017-06-09 15:25:34  DEBUG Next wakeup is due at 2017-06-09 15:26:34.201167+08:00 (in 59.997517 seconds)
+2017-06-09 15:25:34  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:26:34 CST)" (scheduled at 2017-06-09 15:25:34.201167+08:00)
+2017-06-09 15:25:34  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:26:34 CST)" executed successfully
+2017-06-09 15:26:11  INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2017-06-09 15:26:11  INFO Added job "wxwarn" to job store "default"
+2017-06-09 15:26:11  INFO Scheduler started
+2017-06-09 15:26:11  DEBUG Looking for jobs to run
+2017-06-09 15:26:11  DEBUG Next wakeup is due at 2017-06-09 15:27:11.261858+08:00 (in 59.988666 seconds)
+2017-06-09 15:26:11  INFO  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2017-06-09 15:27:11  DEBUG Looking for jobs to run
+2017-06-09 15:27:11  DEBUG Next wakeup is due at 2017-06-09 15:28:11.261858+08:00 (in 59.998352 seconds)
+2017-06-09 15:27:11  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:28:11 CST)" (scheduled at 2017-06-09 15:27:11.261858+08:00)
+2017-06-09 15:27:11  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:28:11 CST)" executed successfully
+2017-06-09 15:28:11  DEBUG Looking for jobs to run
+2017-06-09 15:28:11  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:28:11 CST)" (scheduled at 2017-06-09 15:28:11.261858+08:00)
+2017-06-09 15:28:11  DEBUG Next wakeup is due at 2017-06-09 15:29:11.261858+08:00 (in 59.994250 seconds)
+2017-06-09 15:28:11  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:29:11 CST)" executed successfully
+2017-06-09 15:29:11  DEBUG Looking for jobs to run
+2017-06-09 15:29:11  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:29:11 CST)" (scheduled at 2017-06-09 15:29:11.261858+08:00)
+2017-06-09 15:29:11  DEBUG Next wakeup is due at 2017-06-09 15:30:11.261858+08:00 (in 59.988103 seconds)
+2017-06-09 15:29:11  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:30:11 CST)" executed successfully
+2017-06-09 15:30:21  INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2017-06-09 15:30:21  INFO Added job "wxwarn" to job store "default"
+2017-06-09 15:30:21  INFO Scheduler started
+2017-06-09 15:30:21  DEBUG Looking for jobs to run
+2017-06-09 15:30:21  DEBUG Next wakeup is due at 2017-06-09 15:31:21.144484+08:00 (in 59.987360 seconds)
+2017-06-09 15:30:21  INFO  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2017-06-09 15:31:21  DEBUG Looking for jobs to run
+2017-06-09 15:31:21  DEBUG Next wakeup is due at 2017-06-09 15:32:21.144484+08:00 (in 59.997732 seconds)
+2017-06-09 15:31:21  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:32:21 CST)" (scheduled at 2017-06-09 15:31:21.144484+08:00)
+2017-06-09 15:31:21  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:32:21 CST)" executed successfully
+2017-06-09 15:37:28  INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2017-06-09 15:37:28  INFO Added job "wxwarn" to job store "default"
+2017-06-09 15:37:28  INFO Scheduler started
+2017-06-09 15:37:28  DEBUG Looking for jobs to run
+2017-06-09 15:37:28  DEBUG Next wakeup is due at 2017-06-09 15:38:28.671699+08:00 (in 59.988660 seconds)
+2017-06-09 15:37:28  INFO  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2017-06-09 15:38:28  DEBUG Looking for jobs to run
+2017-06-09 15:38:28  DEBUG Next wakeup is due at 2017-06-09 15:39:28.671699+08:00 (in 59.998964 seconds)
+2017-06-09 15:38:28  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:39:28 CST)" (scheduled at 2017-06-09 15:38:28.671699+08:00)
+2017-06-09 15:38:29  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:39:28 CST)" executed successfully
+2017-06-09 15:39:28  DEBUG Looking for jobs to run
+2017-06-09 15:39:28  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:39:28 CST)" (scheduled at 2017-06-09 15:39:28.671699+08:00)
+2017-06-09 15:39:28  DEBUG Next wakeup is due at 2017-06-09 15:40:28.671699+08:00 (in 59.998058 seconds)
+2017-06-09 15:39:29  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:40:28 CST)" executed successfully
+2017-06-09 15:40:28  DEBUG Looking for jobs to run
+2017-06-09 15:40:28  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:40:28 CST)" (scheduled at 2017-06-09 15:40:28.671699+08:00)
+2017-06-09 15:40:28  DEBUG Next wakeup is due at 2017-06-09 15:41:28.671699+08:00 (in 59.983102 seconds)
+2017-06-09 15:40:29  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:41:28 CST)" executed successfully
+2017-06-09 15:41:28  DEBUG Looking for jobs to run
+2017-06-09 15:41:28  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:41:28 CST)" (scheduled at 2017-06-09 15:41:28.671699+08:00)
+2017-06-09 15:41:28  DEBUG Next wakeup is due at 2017-06-09 15:42:28.671699+08:00 (in 59.987021 seconds)
+2017-06-09 15:41:29  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:42:28 CST)" executed successfully
+2017-06-09 15:42:28  DEBUG Looking for jobs to run
+2017-06-09 15:42:28  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:42:28 CST)" (scheduled at 2017-06-09 15:42:28.671699+08:00)
+2017-06-09 15:42:28  DEBUG Next wakeup is due at 2017-06-09 15:43:28.671699+08:00 (in 59.982744 seconds)
+2017-06-09 15:42:29  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:43:28 CST)" executed successfully
+2017-06-09 15:44:00  INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2017-06-09 15:44:00  INFO Added job "wxwarn" to job store "default"
+2017-06-09 15:44:00  INFO Scheduler started
+2017-06-09 15:44:00  DEBUG Looking for jobs to run
+2017-06-09 15:44:00  DEBUG Next wakeup is due at 2017-06-09 15:45:00.280596+08:00 (in 59.988247 seconds)
+2017-06-09 15:44:00  INFO  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2017-06-09 15:45:00  DEBUG Looking for jobs to run
+2017-06-09 15:45:00  DEBUG Next wakeup is due at 2017-06-09 15:46:00.280596+08:00 (in 59.998235 seconds)
+2017-06-09 15:45:00  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:46:00 CST)" (scheduled at 2017-06-09 15:45:00.280596+08:00)
+2017-06-09 15:45:00  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:46:00 CST)" executed successfully
+2017-06-09 15:47:29  INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2017-06-09 15:47:29  INFO Added job "wxwarn" to job store "default"
+2017-06-09 15:47:29  INFO Scheduler started
+2017-06-09 15:47:29  DEBUG Looking for jobs to run
+2017-06-09 15:47:29  DEBUG Next wakeup is due at 2017-06-09 15:48:29.388195+08:00 (in 59.981594 seconds)
+2017-06-09 15:47:29  INFO  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2017-06-09 15:48:29  DEBUG Looking for jobs to run
+2017-06-09 15:48:29  DEBUG Next wakeup is due at 2017-06-09 15:49:29.388195+08:00 (in 59.997031 seconds)
+2017-06-09 15:48:29  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:49:29 CST)" (scheduled at 2017-06-09 15:48:29.388195+08:00)
+2017-06-09 15:48:30  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:49:29 CST)" executed successfully
+2017-06-09 15:50:03  INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2017-06-09 15:50:03  INFO Added job "wxwarn" to job store "default"
+2017-06-09 15:50:03  INFO Scheduler started
+2017-06-09 15:50:03  DEBUG Looking for jobs to run
+2017-06-09 15:50:03  DEBUG Next wakeup is due at 2017-06-09 15:51:03.534360+08:00 (in 59.988768 seconds)
+2017-06-09 15:50:08  INFO  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2017-06-09 15:50:45  INFO 192.168.201.94 - - [09/Jun/2017 15:50:45] "GET / HTTP/1.1" 200 -
+2017-06-09 15:50:45  INFO 192.168.201.94 - - [09/Jun/2017 15:50:45] "GET /static/layui/css/layui.css HTTP/1.1" 304 -
+2017-06-09 15:50:45  INFO 192.168.201.94 - - [09/Jun/2017 15:50:45] "GET /static/css/admin.css HTTP/1.1" 304 -
+2017-06-09 15:50:45  INFO 192.168.201.94 - - [09/Jun/2017 15:50:45] "GET /static/font-awesome-4.7.0/css/font-awesome.min.css HTTP/1.1" 304 -
+2017-06-09 15:50:45  INFO 192.168.201.94 - - [09/Jun/2017 15:50:45] "GET /static/layui/layui.js HTTP/1.1" 304 -
+2017-06-09 15:50:45  INFO 192.168.201.94 - - [09/Jun/2017 15:50:45] "GET /static/js/admin.js HTTP/1.1" 304 -
+2017-06-09 15:50:45  INFO 192.168.201.94 - - [09/Jun/2017 15:50:45] "GET /static/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0 HTTP/1.1" 304 -
+2017-06-09 15:50:45  INFO 192.168.201.94 - - [09/Jun/2017 15:50:45] "GET /static/layui/font/iconfont.woff?v=1.0.9 HTTP/1.1" 304 -
+2017-06-09 15:50:45  INFO 192.168.201.94 - - [09/Jun/2017 15:50:45] "GET /static/layui/lay/modules/element.js HTTP/1.1" 304 -
+2017-06-09 15:50:46  INFO 192.168.201.94 - - [09/Jun/2017 15:50:46] "GET /static/layui/lay/modules/jquery.js HTTP/1.1" 304 -
+2017-06-09 15:50:46  INFO 192.168.201.94 - - [09/Jun/2017 15:50:46] "GET /static/layui/lay/modules/layer.js HTTP/1.1" 304 -
+2017-06-09 15:50:46  INFO 192.168.201.94 - - [09/Jun/2017 15:50:46] "GET /static/layui/css/modules/layer/default/layer.css?v=3.0.3303 HTTP/1.1" 304 -
+2017-06-09 15:50:46  INFO 192.168.201.94 - - [09/Jun/2017 15:50:46] "GET /home HTTP/1.1" 200 -
+2017-06-09 15:50:46  INFO 192.168.201.94 - - [09/Jun/2017 15:50:46] "GET /static/layui/css/layui.css HTTP/1.1" 304 -
+2017-06-09 15:50:46  INFO 192.168.201.94 - - [09/Jun/2017 15:50:46] "GET /static/css/admin.css HTTP/1.1" 304 -
+2017-06-09 15:50:46  INFO 192.168.201.94 - - [09/Jun/2017 15:50:46] "GET /static/assets/css/vendor/bootstrap/bootstrap.min.css HTTP/1.1" 304 -
+2017-06-09 15:50:46  INFO 192.168.201.94 - - [09/Jun/2017 15:50:46] "GET /static/assets/css/vendor/animate/animate.min.css HTTP/1.1" 304 -
+2017-06-09 15:50:46  INFO 192.168.201.94 - - [09/Jun/2017 15:50:46] "GET /static/font-awesome-4.7.0/css/font-awesome.min.css HTTP/1.1" 304 -
+2017-06-09 15:50:46  INFO 192.168.201.94 - - [09/Jun/2017 15:50:46] "GET /static/assets/js/vendor/mmenu/css/jquery.mmenu.all.css HTTP/1.1" 304 -
+2017-06-09 15:50:46  INFO 192.168.201.94 - - [09/Jun/2017 15:50:46] "GET /static/assets/js/vendor/videobackground/css/jquery.videobackground.css HTTP/1.1" 304 -
+2017-06-09 15:50:46  INFO 192.168.201.94 - - [09/Jun/2017 15:50:46] "GET /static/assets/css/vendor/bootstrap-checkbox.css HTTP/1.1" 304 -
+2017-06-09 15:50:46  INFO 192.168.201.94 - - [09/Jun/2017 15:50:46] "GET /static/assets/css/minimal.css HTTP/1.1" 304 -
+2017-06-09 15:50:46  INFO 192.168.201.94 - - [09/Jun/2017 15:50:46] "GET /static/layui/layui.js HTTP/1.1" 304 -
+2017-06-09 15:50:46  INFO 192.168.201.94 - - [09/Jun/2017 15:50:46] "GET /static/assets/js/jquery.js HTTP/1.1" 304 -
+2017-06-09 15:50:46  INFO 192.168.201.94 - - [09/Jun/2017 15:50:46] "GET /static/assets/js/vendor/mmenu/js/jquery.mmenu.min.js HTTP/1.1" 304 -
+2017-06-09 15:50:46  INFO 192.168.201.94 - - [09/Jun/2017 15:50:46] "GET /static/assets/js/vendor/sparkline/jquery.sparkline.min.js HTTP/1.1" 304 -
+2017-06-09 15:50:46  INFO 192.168.201.94 - - [09/Jun/2017 15:50:46] "GET /static/assets/js/vendor/nicescroll/jquery.nicescroll.min.js HTTP/1.1" 304 -
+2017-06-09 15:50:46  INFO 192.168.201.94 - - [09/Jun/2017 15:50:46] "GET /static/assets/js/vendor/animate-numbers/jquery.animateNumbers.js HTTP/1.1" 304 -
+2017-06-09 15:50:46  INFO 192.168.201.94 - - [09/Jun/2017 15:50:46] "GET /static/assets/js/vendor/videobackground/jquery.videobackground.js HTTP/1.1" 304 -
+2017-06-09 15:50:46  INFO 192.168.201.94 - - [09/Jun/2017 15:50:46] "GET /static/assets/js/vendor/blockui/jquery.blockUI.js HTTP/1.1" 304 -
+2017-06-09 15:50:46  INFO 192.168.201.94 - - [09/Jun/2017 15:50:46] "GET /static/assets/js/minimal.min.js HTTP/1.1" 304 -
+2017-06-09 15:51:03  DEBUG Looking for jobs to run
+2017-06-09 15:51:03  DEBUG Next wakeup is due at 2017-06-09 15:52:03.534360+08:00 (in 59.998530 seconds)
+2017-06-09 15:51:03  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:52:03 CST)" (scheduled at 2017-06-09 15:51:03.534360+08:00)
+2017-06-09 15:51:03  ERROR Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:52:03 CST)" raised an exception
+Traceback (most recent call last):
+  File "/usr/local/python27/lib/python2.7/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/opt/dark_web_config/jobs.py", line 11, in wxwarn
+    host_list=dark_status.query.all()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 498, in __get__
+    return type.query_class(mapper, session=self.sa.session())
+  File "/usr/local/python27/lib/python2.7/site-packages/sqlalchemy/orm/scoping.py", line 78, in __call__
+    return self.registry()
+  File "/usr/local/python27/lib/python2.7/site-packages/sqlalchemy/util/_collections.py", line 990, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "/usr/local/python27/lib/python2.7/site-packages/sqlalchemy/orm/session.py", line 2861, in __call__
+    return self.class_(**local_kw)
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 145, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 922, in engine
+    return self.get_engine()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 941, in get_engine
+    return connector.get_engine()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 533, in get_engine
+    uri = self.get_uri()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 524, in get_uri
+    return self._app.config['SQLALCHEMY_DATABASE_URI']
+  File "/usr/local/python27/lib/python2.7/site-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+  File "/usr/local/python27/lib/python2.7/site-packages/werkzeug/local.py", line 306, in _get_current_object
+    return self.__local()
+  File "/usr/local/python27/lib/python2.7/site-packages/flask/globals.py", line 51, in _find_app
+    raise RuntimeError(_app_ctx_err_msg)
+RuntimeError: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+to interface with the current application object in a way.  To solve
+this set up an application context with app.app_context().  See the
+documentation for more information.
+2017-06-09 15:51:18  INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2017-06-09 15:51:18  INFO Added job "wxwarn" to job store "default"
+2017-06-09 15:51:18  INFO Scheduler started
+2017-06-09 15:51:18  DEBUG Looking for jobs to run
+2017-06-09 15:51:18  DEBUG Next wakeup is due at 2017-06-09 15:52:18.788680+08:00 (in 59.990439 seconds)
+2017-06-09 15:51:18  INFO  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2017-06-09 15:52:18  DEBUG Looking for jobs to run
+2017-06-09 15:52:18  DEBUG Next wakeup is due at 2017-06-09 15:53:18.788680+08:00 (in 59.999090 seconds)
+2017-06-09 15:52:18  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:53:18 CST)" (scheduled at 2017-06-09 15:52:18.788680+08:00)
+2017-06-09 15:52:19  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:53:18 CST)" executed successfully
+2017-06-09 15:53:18  DEBUG Looking for jobs to run
+2017-06-09 15:53:18  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:53:18 CST)" (scheduled at 2017-06-09 15:53:18.788680+08:00)
+2017-06-09 15:53:18  DEBUG Next wakeup is due at 2017-06-09 15:54:18.788680+08:00 (in 59.996179 seconds)
+2017-06-09 15:53:19  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 15:54:18 CST)" executed successfully
+2017-06-09 16:20:50  INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2017-06-09 16:20:50  INFO Added job "wxwarn" to job store "default"
+2017-06-09 16:20:50  INFO Scheduler started
+2017-06-09 16:20:50  DEBUG Looking for jobs to run
+2017-06-09 16:20:50  DEBUG Next wakeup is due at 2017-06-09 16:21:50.033599+08:00 (in 59.989235 seconds)
+2017-06-09 16:20:50  INFO  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2017-06-09 16:21:50  DEBUG Looking for jobs to run
+2017-06-09 16:21:50  DEBUG Next wakeup is due at 2017-06-09 16:22:50.033599+08:00 (in 59.999156 seconds)
+2017-06-09 16:21:50  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 16:22:50 CST)" (scheduled at 2017-06-09 16:21:50.033599+08:00)
+2017-06-09 16:21:50  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 16:22:50 CST)" executed successfully
+2017-06-09 16:23:02  INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2017-06-09 16:23:02  INFO Added job "wxwarn" to job store "default"
+2017-06-09 16:23:02  INFO Scheduler started
+2017-06-09 16:23:02  DEBUG Looking for jobs to run
+2017-06-09 16:23:02  DEBUG Next wakeup is due at 2017-06-09 16:24:02.085344+08:00 (in 59.986772 seconds)
+2017-06-09 16:23:02  INFO  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2017-06-09 16:24:02  DEBUG Looking for jobs to run
+2017-06-09 16:24:02  DEBUG Next wakeup is due at 2017-06-09 16:25:02.085344+08:00 (in 59.998558 seconds)
+2017-06-09 16:24:02  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 16:25:02 CST)" (scheduled at 2017-06-09 16:24:02.085344+08:00)
+2017-06-09 16:24:02  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 16:25:02 CST)" executed successfully
+2017-06-09 16:24:33  INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2017-06-09 16:24:33  INFO Added job "wxwarn" to job store "default"
+2017-06-09 16:24:33  INFO Scheduler started
+2017-06-09 16:24:33  DEBUG Looking for jobs to run
+2017-06-09 16:24:33  DEBUG Next wakeup is due at 2017-06-09 16:25:33.629790+08:00 (in 59.987564 seconds)
+2017-06-09 16:24:33  INFO  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2017-06-09 16:25:33  DEBUG Looking for jobs to run
+2017-06-09 16:25:33  DEBUG Next wakeup is due at 2017-06-09 16:26:33.629790+08:00 (in 59.996584 seconds)
+2017-06-09 16:25:33  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 16:26:33 CST)" (scheduled at 2017-06-09 16:25:33.629790+08:00)
+2017-06-09 16:25:34  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 16:26:33 CST)" executed successfully
+2017-06-09 16:25:49  INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2017-06-09 16:25:49  INFO Added job "wxwarn" to job store "default"
+2017-06-09 16:25:49  INFO Scheduler started
+2017-06-09 16:25:49  DEBUG Looking for jobs to run
+2017-06-09 16:25:49  DEBUG Next wakeup is due at 2017-06-09 16:26:49.734457+08:00 (in 59.989466 seconds)
+2017-06-09 16:25:49  INFO  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2017-06-09 16:26:49  DEBUG Looking for jobs to run
+2017-06-09 16:26:49  DEBUG Next wakeup is due at 2017-06-09 16:27:49.734457+08:00 (in 59.998328 seconds)
+2017-06-09 16:26:49  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 16:27:49 CST)" (scheduled at 2017-06-09 16:26:49.734457+08:00)
+2017-06-09 16:26:50  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 16:27:49 CST)" executed successfully
+2017-06-09 18:43:24  INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2017-06-09 18:43:24  INFO Added job "wxwarn" to job store "default"
+2017-06-09 18:43:24  INFO Scheduler started
+2017-06-09 18:43:24  DEBUG Looking for jobs to run
+2017-06-09 18:43:24  DEBUG Next wakeup is due at 2017-06-09 18:44:24.908531+08:00 (in 59.929587 seconds)
+2017-06-09 18:43:25  INFO  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2017-06-09 18:44:24  DEBUG Looking for jobs to run
+2017-06-09 18:44:24  DEBUG Next wakeup is due at 2017-06-09 18:45:24.908531+08:00 (in 59.998073 seconds)
+2017-06-09 18:44:24  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 18:45:24 CST)" (scheduled at 2017-06-09 18:44:24.908531+08:00)
+2017-06-09 18:44:24  ERROR Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 18:45:24 CST)" raised an exception
+Traceback (most recent call last):
+  File "/usr/local/python27/lib/python2.7/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/opt/dark_web_config/jobs.py", line 21, in wxwarn
+    if time.time() - time.mktime(time.strptime(str(host["update_time"]),"%Y-%m-%d %H:%M:%S")) > 300:
+NameError: global name 'time' is not defined
+2017-06-09 18:44:53  INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2017-06-09 18:44:53  INFO Added job "wxwarn" to job store "default"
+2017-06-09 18:44:53  INFO Scheduler started
+2017-06-09 18:44:53  DEBUG Looking for jobs to run
+2017-06-09 18:44:53  DEBUG Next wakeup is due at 2017-06-09 18:45:53.166754+08:00 (in 59.844658 seconds)
+2017-06-09 18:44:53  INFO  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2017-06-09 18:45:53  DEBUG Looking for jobs to run
+2017-06-09 18:45:53  DEBUG Next wakeup is due at 2017-06-09 18:46:53.166754+08:00 (in 59.998302 seconds)
+2017-06-09 18:45:53  INFO Running job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 18:46:53 CST)" (scheduled at 2017-06-09 18:45:53.166754+08:00)
+2017-06-09 18:45:54  INFO Job "wxwarn (trigger: interval[0:01:00], next run at: 2017-06-09 18:46:53 CST)" executed successfully
