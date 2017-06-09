@@ -55,6 +55,7 @@ def list():
     hostresult=[]
     hostresult_web=[]
     totalinfo={"error":0}
+    rond=1
     for host in hostlist:
         if time.time() - time.mktime(time.strptime(str(host.update_time),"%Y-%m-%d %H:%M:%S")) > 300:
             host.message=u"dark上报异常"
@@ -68,8 +69,12 @@ def list():
                 host.status=0
                 totalinfo["error"]+=1
         hostresult.append(host)
-    hostresult=sorted(hostresult,key=lambda x:x.status)
-    return render_template('lists.html',hostlist=hostresult,totalinfo=totalinfo)
+    for item in hostresult:
+        item.id=rond
+        hostresult_web.append(item)
+        rond+=1 
+    hostresult_web=sorted(hostresult_web,key=lambda x:x.status)
+    return render_template('lists.html',hostlist=hostresult_web,totalinfo=totalinfo)
 @app.route('/addhost',methods=['GET'])
 @login_required
 def addhost():
