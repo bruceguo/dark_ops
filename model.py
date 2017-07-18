@@ -32,5 +32,14 @@ class dark_status(db.Model):
     update_time = db.Column(db.DateTime, nullable=False)
     def __repr__(self):
         return json.dumps({"mid":self.mid,"dark_version":self.dark_version,"id":self.id,"new_config_version":self.new_config_version,"old_config_version":self.old_config_version,"status":self.old_config_version,"boot_time":self.boot_time,"update_time":self.update_time,"dark_num":self.dark_num},cls=MyEncoder) 
+class status_history(db.Model):
+    __tablename__ = 'status_history'
+    id = db.Column(db.Integer, primary_key=True)
+    mid = db.Column(db.String(100), unique=True)
+    last_status = db.Column(db.Boolean, nullable=False)
+    alarm_time = db.Column(db.DateTime, nullable=True)
+    alarm_times = db.Column(db.Integer, nullable=False)
+    def __repr__(self):
+        return json.dumps({"mid":self.mid,"last_status":self.last_status,"alarm_time":self.alarm_time,"alarm_times":self.alarm_times}) 
 if __name__=="__main__":
     manager.run()
