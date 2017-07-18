@@ -5,29 +5,9 @@ from flask import request
 from flask import render_template
 from flask import jsonify,abort 
 from model import db,dark_status,app
-from flask_apscheduler import APScheduler
 from functools import wraps
-import logging
 import time
 import json
-#日志模式初始化
-logging.basicConfig(level="DEBUG",
-                format='%(asctime)s  %(levelname)s %(message)s',
-                datefmt='%Y-%m-%d %H:%M:%S',
-                filename='./log/dark_status.log',
-                filemode='a')
-class Config(object):
-    JOBS = [
-        {
-            'id': 'wxwarn',
-            'func': 'jobs:wxwarn',
-            'args': ["dark"],
-            'trigger': 'interval',
-            'seconds': 60
-        }
-    ]
-
-    SCHEDULER_API_ENABLED = False
 def login_required(func):
     @wraps(func)
     def decorated_function(*args, **kwargs):
@@ -37,16 +17,15 @@ def login_required(func):
         return redirect(url_for('login', next=request.url))
     return decorated_function
 
-#@app.route('/logout')
-#def loginout():
-#    session.pop('logged_in', None)
-#    session.pop('username', None)
-#    return redirect(url_for("login"))
+@app.route('/logout')
+def loginout():
+    session.pop('logged_in', None)
+    session.pop('username', None)
+    return redirect(url_for("login"))
     
 @app.route('/login',methods=['GET','POST'])
 def login():
     error = None
-    print request.values
     if request.method == 'POST':
         if request.values['name'] != app.config['USERNAME']:
             error='Invalid username'
@@ -116,7 +95,7 @@ def home():
     return render_template('home.html',hoststotal=hoststotal,normalnum=normalnum)
 @app.route('/api/collect_dark_status',methods=['POST'])
 def collect_info():
-    print  request.values
+    print request.values
     if request.values.get("mid",None) and request.values.get("update_time",None):
         result=dark_status.query.filter_by(mid= request.values["mid"]).all()
         if len(result)==0:
@@ -174,8 +153,4 @@ def delte_host():
         return jsonify({"error":1,"msg":"mid not find"})
 
 if __name__=='__main__':
-    app.config.from_object(Config())
-    scheduler = APScheduler()
-    scheduler.init_app(app)
-    scheduler.start()
-    app.run(host="0.0.0.0",port=8888)
+    app.run()
