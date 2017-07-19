@@ -40,6 +40,10 @@ class weixinalarm:
 		    return access_token
                 else:
                     access_token=self.get_access_token()
+                    timestamp=time.time()
+                    tokentime=access_token+"^"+str(timestamp).split(".")[0]
+                    with open("/tmp/weixinalarm","w") as fd:
+                        fd.write(tokentime)
 		    return access_token
         else:
             access_token=self.get_access_token()

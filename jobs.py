@@ -7,6 +7,7 @@ import time
 import logging
 import urllib
 import urllib2
+import time
 corpid="ww3a7da140a1da4c3b"
 secrect="HC-iSwV8-ZIKUva4XUfUfozYdbZQcdECXQZSMjZBW-g"
 weixinsender=weixinalarm(corpid=corpid,secrect=secrect)
@@ -25,6 +26,49 @@ logging.basicConfig(level="DEBUG",
                 datefmt='%Y-%m-%d %H:%M:%S',
                 filename='./log/dark_status.log',
                 filemode='a')
+def alarmpolicy(mid,des):
+    sql="select * from status_history where mid='%s';" %(str(mid))
+    cur.execute(sql)
+    status_info=cur.fetchall()
+    if len(status_info):
+        if time.time()- int(status_info["alarm_time"])<= 3600 and int(status_info["alarm_times"]) <= 2:
+            weixinsender.sendmsg(title="dark",description=des)
+            count=int(status_info["alarm_times"])+1
+            update_sql = "UPDATE status_history SET alarm_times = '%d' WHERE mid = '%s'" % (count,mid)
+            try:
+                cur.execute(update_sql)  
+                conn.commit()
+            except Exception,e:
+                logging.error("'%s' 数据更新异常:'%s'" %(mid,str(e)))
+            else:
+                logging.info("'%s' 数据更新成功'" %(mid))
+        elif time.time()- int(status_info["alarm_time"])<= 3600 and int(status_info["alarm_times"]) > 2:
+            logging.info("'%s'报警次数已达上限'" %(mid)) 
+        elif time.time()- int(status_info["alarm_time"])> 3600:
+            weixinsender.sendmsg(title="dark",description=des)
+            update_sql = "UPDATE status_history SET alarm_times = '%d',alarm_time='%d' WHERE mid = '%s'" % (0,time.time(),mid)
+            try:
+               cur.execute(update_sql) 
+               conn.commit()
+            except Exception,e:
+                logging.error(str(e))
+                logging.error("'%s' 数据更新异常:'%s'" %(mid,str(e)))
+            else:
+                logging.info("'%s' 数据更新成功'" %(mid))
+    else:
+        weixinsender.sendmsg(title="dark",description=des)
+        update_sql = "UPDATE status_history SET alarm_times = '%d',alarm_time='%d' WHERE mid = '%s'" % (0,time.time(),mid)
+        try:
+           cur.execute(update_sql) 
+           conn.commit()
+        except Exception,e:
+            logging.error(str(e))
+            logging.error("'%s' 数据更新异常:'%s'" %(mid,str(e)))
+        else:
+            logging.info("'%s' 数据更新成功'" %(mid))
+        
+         
+
 @timer(180)
 def wxwarn(arg):
     sql="select * from dark_status;"
@@ -43,7 +87,8 @@ def wxwarn(arg):
         else:
             logging.info("node is ok")
             continue 
-        weixinsender.sendmsg(title="dark",description=des)
+#        weixinsender.sendmsg(title="dark",description=des)
+        alarmpolicy(host["mid"],des)
 
 @timer(30)
 def checkjsproxy(arg):
