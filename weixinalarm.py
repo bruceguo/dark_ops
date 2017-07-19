@@ -26,6 +26,7 @@ class weixinalarm:
             res_data = urllib2.urlopen(access_token_url,timeout=3)
             access_token=json.loads(res_data.read())["access_token"]
         except Exception,e:
+            logging.info(str(e))
             logging.info("access_token获取超时")
             return None 
         else:
@@ -40,6 +41,10 @@ class weixinalarm:
 		    return access_token
                 else:
                     access_token=self.get_access_token()
+                    timestamp=time.time()
+                    tokentime=access_token+"^"+str(timestamp).split(".")[0]
+                    with open("/tmp/weixinalarm","w") as fd:
+                        fd.write(tokentime)
 		    return access_token
         else:
             access_token=self.get_access_token()
