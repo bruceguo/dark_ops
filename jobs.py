@@ -13,7 +13,7 @@ config=ConfigObj("etc/processmonitor.conf",encoding="UTF8")
 corpid=config["weixin"]["corpid"]
 secrect=config["weixin"]["secrect"]
 weixinsender=weixinalarm(corpid=corpid,secrect=secrect)
-times=config["alarm"]["times"]
+times=int(config["alarm"]["times"])-2
 import MySQLdb
 conn=MySQLdb.connect(
         host=config["mysql"]["host"],
@@ -33,10 +33,14 @@ def alarmpolicy(mid,des):
     sql="select * from status_history where mid='%s';" %(str(mid))
     cur.execute(sql)
     status_info=cur.fetchall()
+    logging.info(len(status_info))
     if len(status_info):
-        if time.time()- int(status_info["alarm_time"])<= 3600 and int(status_info["alarm_times"]) <= times:
-            weixinsender.sendmsg(title="dark",description=des)
-            count=int(status_info["alarm_times"])+1
+        if int(time.time())- round(float(status_info[0]["alarm_time"]))<= 3600 and int(status_info[0]["alarm_times"]) <= times:
+	    if int(status_info[0]["alarm_times"]) == times:
+                weixinsender.sendmsg(title="dark(当前时间最后一次报警)",description=des)
+	    else:
+                weixinsender.sendmsg(title="dark",description=des)
+            count=int(status_info[0]["alarm_times"])+1
             update_sql = "UPDATE status_history SET alarm_times = '%d' WHERE mid = '%s'" % (count,mid)
             try:
                 cur.execute(update_sql)  
@@ -45,9 +49,9 @@ def alarmpolicy(mid,des):
                 logging.error("'%s' 数据更新异常:'%s'" %(mid,str(e)))
             else:
                 logging.info("'%s' 数据更新成功'" %(mid))
-        elif time.time()- int(status_info["alarm_time"])<= 3600 and int(status_info["alarm_times"]) > times:
+        elif int(time.time())- round(float(status_info[0]["alarm_time"]))<= 3600 and int(status_info[0]["alarm_times"]) > times:
             logging.info("'%s'报警次数已达上限'" %(mid)) 
-        elif time.time()- int(status_info["alarm_time"])> 3600:
+        elif time.time()- int(status_info[0]["alarm_time"])> 3600:
             weixinsender.sendmsg(title="dark",description=des)
             update_sql = "UPDATE status_history SET alarm_times = '%d',alarm_time='%d' WHERE mid = '%s'" % (0,time.time(),mid)
             try:
@@ -73,7 +77,7 @@ def alarmpolicy(mid,des):
         
          
 
-@timer(10)
+@timer(2)
 def wxwarn(arg):
     sql="select * from dark_status;"
     cur.execute(sql)

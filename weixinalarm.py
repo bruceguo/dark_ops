@@ -60,7 +60,7 @@ class weixinalarm:
                 send_info={
 	        	"touser" : "@all",
 	        	"msgtype" : "text",
-	        	"agentid" : 1000005,
+	        	"agentid" : 1000006,
                 "text":{
                     "content":str(title)+":"+str(description)
                     }
