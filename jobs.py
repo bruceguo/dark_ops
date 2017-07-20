@@ -60,7 +60,8 @@ def alarmpolicy(mid,des):
                 logging.info("'%s' 数据更新成功'" %(mid))
     else:
         weixinsender.sendmsg(title="dark",description=des)
-        update_sql = "UPDATE status_history SET alarm_times = '%d',alarm_time='%d' WHERE mid = '%s'" % (0,time.time(),mid)
+        update_sql = "INSERT INTO status_history (mid,last_status,alarm_time,alarm_times) VALUES ('%s','%d','%s','%d')" % (mid,0,str(time.time()),0)
+        logging.info(update_sql)
         try:
            cur.execute(update_sql) 
            conn.commit()
@@ -72,51 +73,54 @@ def alarmpolicy(mid,des):
         
          
 
-@timer(180)
+@timer(10)
 def wxwarn(arg):
     sql="select * from dark_status;"
     cur.execute(sql)
     host_list=cur.fetchall()
-    for host in host_list:
-        if time.time() - time.mktime(time.strptime(str(host["update_time"]),"%Y-%m-%d %H:%M:%S")) > 300:
-            des='上报错误('+str(host["mid"])+')'
-            logging.info(des)
-        elif host["new_config_version"] != host["old_config_version"] and host["dark_num"] == 0:
-            des='程序未启动('+str(host["mid"])+')'
-            logging.info(des)
-        elif host["new_config_version"] == host["old_config_version"] and host["dark_num"] == 0:
-            des='程序未启动('+str(host["mid"])+')'
-            logging.info(des)
-        else:
-            logging.info("node is ok")
-            continue 
-#        weixinsender.sendmsg(title="dark",description=des)
-        alarmpolicy(host["mid"],des)
-
-@timer(30)
-def checkjsproxy(arg):
-    url = 'http://mx.93yxpt.com/forwardJs?js_url=http://apps.bdimg.com/cloudaapi/lightapp.js'
-    user_agent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1'
-    headers = {'User-Agent' : user_agent,'Referer':'http://www.qq.com'}
-    request = urllib2.Request(url,headers=headers)
-    n=0
-    for i in range(4):
-        try:
-            response = urllib2.urlopen(request,timeout=5)
-            page = response.read()
-        except Exception,e:
-            logging.info(str(e)) 
-            n=n+1
-        else:
-            if str(response.getcode()) == "200":
-               logging.info("jsproxy is ok") 
+    logging.info(host_list)
+    if len(host_list):
+        for host in host_list:
+            if time.time() - time.mktime(time.strptime(str(host["update_time"]),"%Y-%m-%d %H:%M:%S")) > 300:
+                des='上报错误('+str(host["mid"])+')'
+                logging.info(des)
+            elif host["new_config_version"] != host["old_config_version"] and host["dark_num"] == 0:
+                des='程序未启动('+str(host["mid"])+')'
+                logging.info(des)
+            elif host["new_config_version"] == host["old_config_version"] and host["dark_num"] == 0:
+                des='程序未启动('+str(host["mid"])+')'
+                logging.info(des)
             else:
-                n=n+1
-    if int(n) >= 3:
-        logging.info("jsproxy is not ok")
-        weixinsender.sendmsg(title="jscheck",description="jsproxy is not ok")
+                logging.info("node is ok")
+                continue 
+            alarmpolicy(host["mid"],des)
     else:
-        logging.info("n="+str(n))
+        logging.info("未发现相关数据")
+
+#@timer(30)
+#def checkjsproxy(arg):
+#    url = 'http://mx.93yxpt.com/forwardJs?js_url=http://apps.bdimg.com/cloudaapi/lightapp.js'
+#    user_agent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1'
+#    headers = {'User-Agent' : user_agent,'Referer':'http://www.qq.com'}
+#    request = urllib2.Request(url,headers=headers)
+#    n=0
+#    for i in range(4):
+#        try:
+#            response = urllib2.urlopen(request,timeout=5)
+#            page = response.read()
+#        except Exception,e:
+#            logging.info(str(e)) 
+#            n=n+1
+#        else:
+#            if str(response.getcode()) == "200":
+#               logging.info("jsproxy is ok") 
+#            else:
+#                n=n+1
+#    if int(n) >= 3:
+#        logging.info("jsproxy is not ok")
+#        weixinsender.sendmsg(title="jscheck",description="jsproxy is not ok")
+#    else:
+#        logging.info("n="+str(n))
 
 @filemon("/opt/dark_web_config/jobs.py")
 def monitor_py(num):
