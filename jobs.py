@@ -12,7 +12,8 @@ import time
 config=ConfigObj("etc/processmonitor.conf",encoding="UTF8")
 corpid=config["weixin"]["corpid"]
 secrect=config["weixin"]["secrect"]
-weixinsender=weixinalarm(corpid=corpid,secrect=secrect)
+agentid=config["weixin"]["agentid"]
+weixinsender=weixinalarm(corpid=corpid,secrect=secrect,agentid=agentid)
 times=int(config["alarm"]["times"])-2
 import MySQLdb
 conn=MySQLdb.connect(
