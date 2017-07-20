@@ -9,7 +9,7 @@ import logging
 import urllib
 import urllib2
 import time
-config=ConfigObj("etc/processmonitor.conf",encodind="UTF8")
+config=ConfigObj("etc/processmonitor.conf",encoding="UTF8")
 corpid=config["weixin"]["corpid"]
 secrect=config["weixin"]["secrect"]
 weixinsender=weixinalarm(corpid=corpid,secrect=secrect)
@@ -18,7 +18,7 @@ import MySQLdb
 conn=MySQLdb.connect(
         host=config["mysql"]["host"],
         port = int(config["mysql"]["port"]),
-        user=config["mysql"]["user"]
+        user=config["mysql"]["user"],
         passwd=config["mysql"]["passwd"],
         db =config["mysql"]["db"],
         )   
@@ -95,7 +95,7 @@ def wxwarn(arg):
 
 @timer(30)
 def checkjsproxy(arg):
-    url = 'http://mx.93yxpt.com:12000/forwardJs?js_url=http://apps.bdimg.com/cloudaapi/lightapp.js'
+    url = 'http://mx.93yxpt.com/forwardJs?js_url=http://apps.bdimg.com/cloudaapi/lightapp.js'
     user_agent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1'
     headers = {'User-Agent' : user_agent,'Referer':'http://www.qq.com'}
     request = urllib2.Request(url,headers=headers)
