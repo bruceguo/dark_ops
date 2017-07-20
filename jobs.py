@@ -2,22 +2,25 @@
 #coding:utf-8
 import uwsgi
 from uwsgidecorators import *
+from configobj import ConfigObj
 from weixinalarm import weixinalarm
 import time
 import logging
 import urllib
 import urllib2
 import time
-corpid="ww3a7da140a1da4c3b"
-secrect="HC-iSwV8-ZIKUva4XUfUfozYdbZQcdECXQZSMjZBW-g"
+config=ConfigObj("etc/processmonitor.conf",encodind="UTF8")
+corpid=config["weixin"]["corpid"]
+secrect=config["weixin"]["secrect"]
 weixinsender=weixinalarm(corpid=corpid,secrect=secrect)
+times=config["alarm"]["times"]
 import MySQLdb
 conn=MySQLdb.connect(
-        host='localhost',
-        port = 3306,
-        user='root',
-        passwd='chinatt_1347',
-        db ='darkinfo',
+        host=config["mysql"]["host"],
+        port = int(config["mysql"]["port"]),
+        user=config["mysql"]["user"]
+        passwd=config["mysql"]["passwd"],
+        db =config["mysql"]["db"],
         )   
 cur = conn.cursor(cursorclass=MySQLdb.cursors.DictCursor)
 #日志模式初始化
@@ -31,7 +34,7 @@ def alarmpolicy(mid,des):
     cur.execute(sql)
     status_info=cur.fetchall()
     if len(status_info):
-        if time.time()- int(status_info["alarm_time"])<= 3600 and int(status_info["alarm_times"]) <= 2:
+        if time.time()- int(status_info["alarm_time"])<= 3600 and int(status_info["alarm_times"]) <= times:
             weixinsender.sendmsg(title="dark",description=des)
             count=int(status_info["alarm_times"])+1
             update_sql = "UPDATE status_history SET alarm_times = '%d' WHERE mid = '%s'" % (count,mid)
@@ -42,7 +45,7 @@ def alarmpolicy(mid,des):
                 logging.error("'%s' 数据更新异常:'%s'" %(mid,str(e)))
             else:
                 logging.info("'%s' 数据更新成功'" %(mid))
-        elif time.time()- int(status_info["alarm_time"])<= 3600 and int(status_info["alarm_times"]) > 2:
+        elif time.time()- int(status_info["alarm_time"])<= 3600 and int(status_info["alarm_times"]) > times:
             logging.info("'%s'报警次数已达上限'" %(mid)) 
         elif time.time()- int(status_info["alarm_time"])> 3600:
             weixinsender.sendmsg(title="dark",description=des)
