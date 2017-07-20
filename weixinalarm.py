@@ -19,8 +19,8 @@ logging.basicConfig(level="DEBUG",
 class weixinalarm(object):
     def __init__(self,corpid,secrect,agentid):
         self.corpid=corpid
-	self.secrect=secrect
-	self.agentid=agentid
+        self.secrect=secrect
+        self.agentid=agentid
     def get_access_token(self):
         access_token_url="https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid="+self.corpid+"&corpsecret="+self.secrect
         try:
@@ -76,8 +76,11 @@ class weixinalarm(object):
         except Exception,e:
             logging.error(str(e))
         else:
-            logging.info(res_info)
-            logging.info("报警正常")
+            alarm_result=json.loads(res_info)
+            if int(alarm_result["errcode"])==0:
+                logging.info("报警正常")
+            else:
+                logging.info(alarm_result["errmsg"])
         finally:
             if response:
                 response.close()

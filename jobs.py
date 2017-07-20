@@ -9,9 +9,11 @@ import logging
 import urllib
 import urllib2
 import time
+reload(sys)
+sys.setdefaultencoding('utf8')
 config=ConfigObj("etc/processmonitor.conf",encoding="UTF8")
-corpid=config["weixin"]["corpid"]
 secrect=config["weixin"]["secrect"]
+corpid=config["weixin"]["corpid"]
 agentid=config["weixin"]["agentid"]
 weixinsender=weixinalarm(corpid=corpid,secrect=secrect,agentid=agentid)
 times=int(config["alarm"]["times"])-2
@@ -23,6 +25,7 @@ conn=MySQLdb.connect(
         passwd=config["mysql"]["passwd"],
         db =config["mysql"]["db"],
         )   
+conn.autocommit(True)
 cur = conn.cursor(cursorclass=MySQLdb.cursors.DictCursor)
 #日志模式初始化
 logging.basicConfig(level="DEBUG",
@@ -34,7 +37,6 @@ def alarmpolicy(mid,des):
     sql="select * from status_history where mid='%s';" %(str(mid))
     cur.execute(sql)
     status_info=cur.fetchall()
-    logging.info(len(status_info))
     if len(status_info):
         if int(time.time())- round(float(status_info[0]["alarm_time"]))<= 3600 and int(status_info[0]["alarm_times"]) <= times:
 	    if int(status_info[0]["alarm_times"]) == times:
@@ -51,8 +53,8 @@ def alarmpolicy(mid,des):
             else:
                 logging.info("'%s' 数据更新成功'" %(mid))
         elif int(time.time())- round(float(status_info[0]["alarm_time"]))<= 3600 and int(status_info[0]["alarm_times"]) > times:
-            logging.info("'%s'报警次数已达上限'" %(mid)) 
-        elif time.time()- int(status_info[0]["alarm_time"])> 3600:
+            logging.info("'%s':报警次数已达上限" %(mid)) 
+        elif time.time()- round(float(status_info[0]["alarm_time"]))> 3600:
             weixinsender.sendmsg(title="dark",description=des)
             update_sql = "UPDATE status_history SET alarm_times = '%d',alarm_time='%d' WHERE mid = '%s'" % (0,time.time(),mid)
             try:
@@ -78,12 +80,11 @@ def alarmpolicy(mid,des):
         
          
 
-@timer(2)
+@timer(1)
 def wxwarn(arg):
     sql="select * from dark_status;"
     cur.execute(sql)
     host_list=cur.fetchall()
-    logging.info(host_list)
     if len(host_list):
         for host in host_list:
             if time.time() - time.mktime(time.strptime(str(host["update_time"]),"%Y-%m-%d %H:%M:%S")) > 300:
