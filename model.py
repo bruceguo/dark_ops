@@ -38,6 +38,7 @@ class status_history(db.Model):
     mid = db.Column(db.String(100), unique=True)
     last_status = db.Column(db.Boolean, nullable=False)
     alarm_time = db.Column(db.String(100), nullable=True)
+    last_alarm_time = db.Column(db.String(100), nullable=True)
     alarm_times = db.Column(db.Integer, nullable=False)
     def __repr__(self):
         return json.dumps({"mid":self.mid,"last_status":self.last_status,"alarm_time":self.alarm_time,"alarm_times":self.alarm_times}) 

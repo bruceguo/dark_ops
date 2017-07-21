@@ -12,9 +12,9 @@ import time
 reload(sys)
 sys.setdefaultencoding('utf8')
 config=ConfigObj("etc/processmonitor.conf",encoding="UTF8")
+agentid=config["weixin"]["agentid"]
 secrect=config["weixin"]["secrect"]
 corpid=config["weixin"]["corpid"]
-agentid=config["weixin"]["agentid"]
 weixinsender=weixinalarm(corpid=corpid,secrect=secrect,agentid=agentid)
 times=int(config["alarm"]["times"])-2
 import MySQLdb
@@ -44,7 +44,7 @@ def alarmpolicy(mid,des):
 	    else:
                 weixinsender.sendmsg(title="dark",description=des)
             count=int(status_info[0]["alarm_times"])+1
-            update_sql = "UPDATE status_history SET alarm_times = '%d' WHERE mid = '%s'" % (count,mid)
+            update_sql = "UPDATE status_history SET alarm_times = '%d' , last_alarm_time= '%s',last_status = '%d' WHERE mid = '%s'" % (count,str(time.time()),0,mid)
             try:
                 cur.execute(update_sql)  
                 conn.commit()
@@ -56,7 +56,7 @@ def alarmpolicy(mid,des):
             logging.info("'%s':报警次数已达上限" %(mid)) 
         elif time.time()- round(float(status_info[0]["alarm_time"]))> 3600:
             weixinsender.sendmsg(title="dark",description=des)
-            update_sql = "UPDATE status_history SET alarm_times = '%d',alarm_time='%d' WHERE mid = '%s'" % (0,time.time(),mid)
+            update_sql = "UPDATE status_history SET alarm_times = '%d',alarm_time='%d' ,alarm_time='%s',last_status = '%d' WHERE mid = '%s'" % (0,time.time(),str(time.time()),0,mid)
             try:
                cur.execute(update_sql) 
                conn.commit()
@@ -67,7 +67,7 @@ def alarmpolicy(mid,des):
                 logging.info("'%s' 数据更新成功'" %(mid))
     else:
         weixinsender.sendmsg(title="dark",description=des)
-        update_sql = "INSERT INTO status_history (mid,last_status,alarm_time,alarm_times) VALUES ('%s','%d','%s','%d')" % (mid,0,str(time.time()),0)
+        update_sql = "INSERT INTO status_history (mid,last_status,alarm_time,last_alarm_time,alarm_times) VALUES ('%s','%d','%s','%s','%d')" % (mid,0,str(time.time()),str(time.time()),0)
         logging.info(update_sql)
         try:
            cur.execute(update_sql) 
@@ -79,8 +79,31 @@ def alarmpolicy(mid,des):
             logging.info("'%s' 数据更新成功'" %(mid))
         
          
-
-@timer(1)
+def checkstatus(mid):
+    sql="select * from status_history where mid='%s';" %(str(mid))
+    cur.execute(sql)
+    check_info=cur.fetchall()
+    if len(check_info):
+        if int(check_info[0]["last_status"])==0:
+            timerange=int(time.time())-round(float(check_info[0]["last_alarm_time"]))
+            weixinsender.sendmsg(title="dark(恢复通知)",description=mid+"已从异常中恢复,异常持续时间:"+str(timerange))  
+            update_sql = "UPDATE status_history SET last_status = '%d' WHERE mid = '%s'" % (1,mid)
+            try:
+               cur.execute(update_sql) 
+               conn.commit()
+            except Exception,e:
+                logging.error(str(e))
+                logging.error("'%s' 数据更新异常:'%s'" %(mid,str(e)))
+            else:
+                logging.info("'%s' 数据更新成功'" %(mid))
+        else:
+            logging.info(mid+":状态未发生异常")
+    else:
+        logging.info(mid+":状态未发生异常")
+        
+            
+    
+@timer(2)
 def wxwarn(arg):
     sql="select * from dark_status;"
     cur.execute(sql)
@@ -98,6 +121,7 @@ def wxwarn(arg):
                 logging.info(des)
             else:
                 logging.info("node is ok")
+                checkstatus(str(host["mid"]))
                 continue 
             alarmpolicy(host["mid"],des)
     else:

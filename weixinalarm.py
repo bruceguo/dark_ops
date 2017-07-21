@@ -67,7 +67,8 @@ class weixinalarm(object):
                     }
 	        	}
                 logging.info(send_info)
-                send_info_urlencode = json.dumps(send_info,ensure_ascii=False)
+                send_info_urlencode = json.dumps(send_info)
+                #send_info_urlencode = json.dumps(send_info,ensure_ascii=False)
                 req=urllib2.Request(url = send_url,data =send_info_urlencode)
                 response=urllib2.urlopen(req,timeout=3)
                 res_info=response.read()

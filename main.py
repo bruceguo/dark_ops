@@ -56,7 +56,7 @@ def list():
     totalinfo={"error":0}
     rond=1
     for host in hostlist:
-        if time.time() - time.mktime(time.strptime(str(host.update_time),"%Y-%m-%d %H:%M:%S")) > 300:
+        if abs(time.time() - time.mktime(time.strptime(str(host.update_time),"%Y-%m-%d %H:%M:%S"))) > 300:
             host.message=u"dark上报异常"
             host.status=0
             totalinfo["error"]+=1
