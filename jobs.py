@@ -81,6 +81,10 @@ def alarmpolicy(mid,des):
         else:
             logging.info("'%s' 数据更新成功'" %(mid))
         
+def stamp2str(secs):
+    m,s = divmod(int(secs), 60)
+    h, m = divmod(m, 60)
+    return h,m,s
          
 def checkstatus(mid):
     sql="select * from status_history where mid='%s';" %(str(mid))
@@ -89,7 +93,9 @@ def checkstatus(mid):
     if len(check_info):
         if int(check_info[0]["last_status"])==0:
             timerange=int(time.time())-round(float(check_info[0]["alarm_time"]))
-            weixinsender.sendmsg(title="dark(恢复通知)",description=mid+"已从异常中恢复,异常持续时间:"+str(timerange))  
+            hours,minutes,sec=stamp2str(timerange)
+            timedesc=str(hours)+"小时"+str(minutes)+"分"+str(sec)+"秒"
+            weixinsender.sendmsg(title="dark(恢复通知)",description=mid+"已从异常中恢复,异常持续时间:"+str(timedesc))  
             update_sql = "UPDATE status_history SET last_status = '%d' , alarm_times='%d' WHERE mid = '%s'" % (1,0,mid)
             try:
                cur.execute(update_sql) 

@@ -15,12 +15,15 @@ function(exports) {
                 btn: btn ? btn: ["提交", "重置"],
                 content: url,
                 yes: function(index, layero) {
-                    var array = layer.getChildFrame("form").serializeArray();
-                    var fd = {};
-                    $.each(array,function() {
-                        fd[this.name] = this.value
-                    });
-                    api.submit(url, fd)
+//                    var array = layer.getChildFrame("form").serializeArray();
+//                    var fd = {};
+//                    $.each(array,function() {
+//                        fd[this.name] = this.value
+//                    });
+//                    api.submit(url, fd)
+              var rowsobj=document.getElementsByClassName("tableTrSelect");
+              var mid = rowsobj[0].cells[1].innerHTML;
+              
                 },
                 btn2: function(index, layero) {
                     var formObj = layer.getChildFrame("form");
