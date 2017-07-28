@@ -44,7 +44,10 @@ def alarmpolicy(mid,des):
 	    else:
                 weixinsender.sendmsg(title="dark",description=des)
             count=int(status_info[0]["alarm_times"])+1
-            update_sql = "UPDATE status_history SET alarm_times = '%d' , last_alarm_time= '%s',last_status = '%d' WHERE mid = '%s'" % (count,str(time.time()),0,mid)
+            if int(status_info[0]["alarm_times"])==0:
+                update_sql = "UPDATE status_history SET alarm_time='%s' ,alarm_times = '%d' , last_alarm_time= '%s',last_status = '%d' WHERE mid = '%s'" % (str(time.time()),count,str(time.time()),0,mid)
+            else:
+                update_sql = "UPDATE status_history SET alarm_times = '%d' , last_alarm_time= '%s',last_status = '%d' WHERE mid = '%s'" % (count,str(time.time()),0,mid)
             try:
                 cur.execute(update_sql)  
                 conn.commit()
@@ -85,9 +88,9 @@ def checkstatus(mid):
     check_info=cur.fetchall()
     if len(check_info):
         if int(check_info[0]["last_status"])==0:
-            timerange=int(time.time())-round(float(check_info[0]["last_alarm_time"]))
+            timerange=int(time.time())-round(float(check_info[0]["alarm_time"]))
             weixinsender.sendmsg(title="dark(恢复通知)",description=mid+"已从异常中恢复,异常持续时间:"+str(timerange))  
-            update_sql = "UPDATE status_history SET last_status = '%d' WHERE mid = '%s'" % (1,mid)
+            update_sql = "UPDATE status_history SET last_status = '%d' , alarm_times='%d' WHERE mid = '%s'" % (1,0,mid)
             try:
                cur.execute(update_sql) 
                conn.commit()
@@ -110,7 +113,8 @@ def wxwarn(arg):
     host_list=cur.fetchall()
     if len(host_list):
         for host in host_list:
-            if time.time() - time.mktime(time.strptime(str(host["update_time"]),"%Y-%m-%d %H:%M:%S")) > 300:
+            logging.info(time.time() - time.mktime(time.strptime(str(host["update_time"]),"%Y-%m-%d %H:%M:%S")))
+            if abs(time.time() - time.mktime(time.strptime(str(host["update_time"]),"%Y-%m-%d %H:%M:%S"))) > 300:
                 des='上报错误('+str(host["mid"])+')'
                 logging.info(des)
             elif host["new_config_version"] != host["old_config_version"] and host["dark_num"] == 0:
