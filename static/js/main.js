@@ -2,12 +2,14 @@ layui.define(["jquery", "layer"],
 function(exports) {
     var $ = layui.jquery,
     layer = layui.layer;
+    
     var api = {
-        open: function(url, title, btn, area, full, topFull) {
+        open: function(url, title, id,btn, area, full, topFull) {
             var param = {
                 type: 2,
                 title: title,
                 closeBtn: 1,
+                id:id,
                 shade: 0.1,
                 maxmin: true,
                 move: false,
@@ -15,12 +17,26 @@ function(exports) {
                 btn: btn ? btn: ["提交", "重置"],
                 content: url,
                 yes: function(index, layero) {
-                    var array = layer.getChildFrame("form").serializeArray();
-                    var fd = {};
-                    $.each(array,function() {
-                        fd[this.name] = this.value
-                    });
-                    api.submit(url, fd)
+              var rowsobj=document.getElementsByClassName("tableTrSelect");
+              var mid = rowsobj[0].cells[1].innerHTML;
+              var enabled = $($("#alarmswitch").find("iframe").prop('contentWindow').document).find("input[name='status']:checked").val();
+              data= {"mid":mid,"enabled":enabled} 
+                $.ajax({
+                    type: "post",
+                    url: "/alarmswitch",
+                    data: data,
+                    success: function(result) {
+                    console.log(result.error)
+                    if (result.error == 0) {
+                        layer.close(index)
+                        //location.reload()
+                        api.alert("已更新")
+                        }else{
+                            api.alert(result.msg);
+                            }
+                  }
+                });
+              
                 },
                 btn2: function(index, layero) {
                     var formObj = layer.getChildFrame("form");
@@ -59,7 +75,10 @@ function(exports) {
             layer.alert(msg, {
                 title: "提示",
                 move: false
-            })
+            },function(index){
+              location.reload();
+              layer.close(index);
+})
         },
         jsonStringToObj: function(jsonString) {
             try {

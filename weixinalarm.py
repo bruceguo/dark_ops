@@ -16,10 +16,11 @@ logging.basicConfig(level="DEBUG",
                 datefmt='%Y-%m-%d %H:%M:%S',
                 filename='./log/dark_status.log',
                 filemode='a')
-class weixinalarm:
-    def __init__(self,corpid,secrect):
+class weixinalarm(object):
+    def __init__(self,corpid,secrect,agentid):
         self.corpid=corpid
-	self.secrect=secrect
+        self.secrect=secrect
+        self.agentid=agentid
     def get_access_token(self):
         access_token_url="https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid="+self.corpid+"&corpsecret="+self.secrect
         try:
@@ -61,13 +62,14 @@ class weixinalarm:
                 send_info={
 	        	"touser" : "@all",
 	        	"msgtype" : "text",
-	        	"agentid" : 1000005,
+	        	"agentid" : self.agentid,
                 "text":{
                     "content":str(title)+":"+str(description)
                     }
 	        	}
                 logging.info(send_info)
-                send_info_urlencode = json.dumps(send_info,ensure_ascii=False)
+                send_info_urlencode = json.dumps(send_info)
+                #send_info_urlencode = json.dumps(send_info,ensure_ascii=False)
                 req=urllib2.Request(url = send_url,data =send_info_urlencode)
                 response=urllib2.urlopen(req,timeout=3)
                 res_info=response.read()
@@ -76,8 +78,11 @@ class weixinalarm:
         except Exception,e:
             logging.error(str(e))
         else:
-            logging.info(res_info)
-            logging.info("报警正常")
+            alarm_result=json.loads(res_info)
+            if int(alarm_result["errcode"])==0:
+                logging.info("报警正常")
+            else:
+                logging.info(alarm_result["errmsg"])
         finally:
             if response:
                 response.close()

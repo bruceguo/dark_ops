@@ -35,7 +35,8 @@
 						<th>编号</th>
 						<th>区域代码</th>
 						<th>dark版本</th>
-						<th>配置文件同步状态</th>
+						<th>配置同步状态</th>
+						<th>报警开关</th>
 						<th>dark启动时间</th>
 						<th>dark进程数</th>
 						<th>更新时间</th>
@@ -54,6 +55,11 @@
                         {% else %}
 						<td><i class="fa fa-info-circle fa-2x" style="color:red"></i></td>
                         {%endif%}
+                                                {% if host.enabled == 1 %}
+						<td><font color="green">开</font></td>
+                                                {% else %}
+						<td><font color="red">关</font></td>
+                                                {% endif %} 
 						{% if host.dark_num < 1 %}
 						<td>dark未启动</td>
                                                 {% else %}

@@ -45,25 +45,16 @@ function() {
                 });
             }
         }
-        if (t.hasClass("layui-btn-warm")) {
-            var id = t.data("menuid") ? t.data("menuid") : new Date().getTime();
-            var mainHeight = o(parent.document).height() - 60 - 41 - 5 - 44;
-            parent.layui.element().tabAdd("top-tab", {
-                title: t.html(),
-                content: '<iframe src="' + url + '" style="height:' + mainHeight + 'px;"></iframe>',
-                id: id
-            });
-            parent.layui.element().tabChange("top-tab", id);
-            return false
-        }
+        if (t.hasClass("layui-btn-normal")) {
         if (url){
             var urlParamchange = m.selectTrData();
             if (urlParamchange.s == 1) {
                 m.alert(urlParamchange.msg);
                 return false
             }
-             m.open(url, t.html())
+             m.open(url, t.html(),"alarmswitch")
             }
+        }
 
     })
 });
