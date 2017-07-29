@@ -6,8 +6,17 @@ from flask import render_template
 from flask import jsonify,abort 
 from model import db,dark_status,app
 from functools import wraps
+from WXBizMsgCrypt import WXBizMsgCrypt
+import xml.etree.cElementTree as ET
 import time
+import logging
 import json
+#日志模式初始化
+logging.basicConfig(level="DEBUG",
+                format='%(asctime)s  %(levelname)s %(message)s',
+                datefmt='%Y-%m-%d %H:%M:%S',
+                filename='./log/dark_status.log',
+                filemode='a')
 def login_required(func):
     @wraps(func)
     def decorated_function(*args, **kwargs):
@@ -151,6 +160,54 @@ def delte_host():
             return jsonify({"error":0})
     else:
         return jsonify({"error":1,"msg":"mid not find"})
+
+@app.route('/alarmswitch',methods=['POST'])
+@login_required
+def alarmswitch():
+    print request.values
+    mid=request.values.get("mid",None)
+    enabled=request.values.get("enabled",None)
+    if all([mid,enabled]):
+        try:
+            enabled_result=dark_status.query.filter_by(mid=request.values["mid"]).first()
+            enabled_result.enabled=int(enabled)
+            db.session.commit()
+        except Exception,e:
+            logging.error(str(e))
+            return jsonify({"error":1,"msg":str(e)})
+        else:
+            return jsonify({"error":0})
+    else:
+        return jsonify({"error":1,"msg":"mid or enabled is null"})
+
+@app.route('/weixin/api_info',methods=['POST','GET','PUT'])
+def weixinapi():
+    sVerifyMsgSig=request.args.get("msg_signature")
+    sVerifyTimeStamp=request.args.get("timestamp")
+    sVerifyNonce=request.args.get("nonce")
+    sVerifyEchoStr=request.args.get("echostr",None)
+    sToken = "n4qNeb1yaa97NTN"
+    sEncodingAESKey = "egSYpRdPluyV68CPE63SJ1vmLNPf4YleTX3ftwXBoLv"
+    sCorpID = "ww3a7da140a1da4c3b"
+    wxcpt=WXBizMsgCrypt(sToken,sEncodingAESKey,sCorpID)
+    if request.method=="POST":
+        sReqData=request.data
+        ret,sMsg=wxcpt.DecryptMsg( sReqData, sVerifyMsgSig,sVerifyTimeStamp, sVerifyNonce)
+        if ret ==0:
+            xml_tree = ET.fromstring(sMsg)
+            content = xml_tree.find("Content").text
+            ToUserName=xml_tree.find("ToUserName").text
+            FromUserName=xml_tree.find("FromUserName").text
+            AgentID=xml_tree.find("AgentID").text
+            sRespData = "<xml><ToUserName>"+ToUserName+"</ToUserName><FromUserName>"+FromUserName+"</FromUserName><CreateTime>1476422779</CreateTime><MsgType>text</MsgType><Content>你好</Content><MsgId>1456453720</MsgId><AgentID>"+AgentID+"</AgentID></xml>"
+            ret,sEncryptMsg=wxcpt.EncryptMsg(sRespData, sVerifyNonce, sVerifyTimeStamp)
+            return sEncryptMsg
+    else:
+        ret,sEchoStr=wxcpt.VerifyURL(sVerifyMsgSig, sVerifyTimeStamp,sVerifyNonce,sVerifyEchoStr)
+        if ret == 0:
+            return sEchoStr
+        
+        
 
 if __name__=='__main__':
     app.run()
