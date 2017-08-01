@@ -18,16 +18,23 @@ corpid=config["weixin"]["corpid"]
 weixinsender=weixinalarm(corpid=corpid,secrect=secrect,agentid=agentid)
 times=int(config["alarm"]["times"])-2
 import MySQLdb
-conn=MySQLdb.connect(
-        host=config["mysql"]["host"],
-        port = int(config["mysql"]["port"]),
-        user=config["mysql"]["user"],
-        passwd=config["mysql"]["passwd"],
-        db =config["mysql"]["db"],
-        )   
-conn.ping(True)
-conn.autocommit(True)
-cur = conn.cursor(cursorclass=MySQLdb.cursors.DictCursor)
+try:
+    conn=MySQLdb.connect(
+            host=config["mysql"]["host"],
+            port = int(config["mysql"]["port"]),
+            user=config["mysql"]["user"],
+            passwd=config["mysql"]["passwd"],
+            db =config["mysql"]["db"],
+            )   
+    conn.ping(True)
+    conn.autocommit(True)
+except Exception,e:
+    weixinsender.sendmsg(title="数据库连接错误",description=str(e))
+    logging.error(str(e))
+    uwsgi.reload()    
+else:
+    logging.info("数据库连接成功")
+    cur = conn.cursor(cursorclass=MySQLdb.cursors.DictCursor)
 #日志模式初始化
 logging.basicConfig(level="DEBUG",
                 format='%(asctime)s  %(levelname)s %(message)s',
