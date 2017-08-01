@@ -25,6 +25,7 @@ conn=MySQLdb.connect(
         passwd=config["mysql"]["passwd"],
         db =config["mysql"]["db"],
         )   
+conn.ping(True)
 conn.autocommit(True)
 cur = conn.cursor(cursorclass=MySQLdb.cursors.DictCursor)
 #日志模式初始化
@@ -173,4 +174,9 @@ def monitor_py(num):
 @filemon("/opt/dark_web_config/main.py")
 def monitor_py(num):
     logging.info("main.py has been modified,reboot")
+    uwsgi.reload()
+
+@filemon("/opt/dark_web_config/etc/processmonitor.conf")
+def monitor_py(num):
+    logging.info("configfile has been modified,reboot")
     uwsgi.reload()
