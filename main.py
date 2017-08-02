@@ -62,26 +62,34 @@ def list():
     hostlist=dark_status.query.all()
     hostresult=[]
     hostresult_web=[]
+    host_unabled=[]
     totalinfo={"error":0}
     rond=1
     for host in hostlist:
-        if abs(time.time() - time.mktime(time.strptime(str(host.update_time),"%Y-%m-%d %H:%M:%S"))) > 300:
-            host.message=u"dark上报异常"
-            host.status=0
-            totalinfo["error"]+=1
-        else:
-            if host.new_config_version==host.old_config_version and host.boot_time !="" and host.dark_num != 0:
-                host.message=u"dark程序正常"
-            else:
-                host.message=u"dark程序异常"
+        if host.enabled:
+            if abs(time.time() - time.mktime(time.strptime(str(host.update_time),"%Y-%m-%d %H:%M:%S"))) > 300:
+                host.message=u"dark上报异常"
                 host.status=0
                 totalinfo["error"]+=1
-        hostresult.append(host)
+            else:
+                if host.new_config_version==host.old_config_version and host.boot_time !="" and host.dark_num != 0:
+                    host.message=u"dark程序正常"
+                else:
+                    host.message=u"dark程序异常"
+                    host.status=0
+                    totalinfo["error"]+=1
+            hostresult.append(host)
+        else:
+            host.message=u"报警已关闭"
+            host.status=0
+            totalinfo["error"]+=1
+            host_unabled.append(host)
     for item in hostresult:
         item.id=rond
         hostresult_web.append(item)
         rond+=1 
     hostresult_web=sorted(hostresult_web,key=lambda x:x.status)
+    hostresult_web.extend(host_unabled)
     return render_template('lists.html',hostlist=hostresult_web,totalinfo=totalinfo)
 @app.route('/addhost',methods=['GET'])
 @login_required
