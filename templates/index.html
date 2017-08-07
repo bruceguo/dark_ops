@@ -41,14 +41,24 @@
             <div class="layui-side-scroll">
             	<ul class="layui-nav layui-nav-tree left-menu" lay-filter="left-menu">
                     <li class="layui-nav-item layui-this">
-                        <a href="javascript:;" data-url="/home" data-id="1"><i class="fa fa-home" aria-hidden="true">  监控首页</i></a>
+                        <a href="javascript:;" data-url="/home" data-id="monitorhome" ><i class="fa fa-home" aria-hidden="true">  监控首页</i></a>
                     </li>
                     <li class="layui-nav-item">
                         <a href="javascript:;"><i class="fa fa-cog" aria-hidden="true">  监控管理</i></a>
                         <dl class="layui-nav-child">
                             <dd>
-                                <a href="javascript:;" data-url="/list" data-id="2"><i class="fa fa-th-list" aria-hidden="true">  主机监控列表</i></a>
+                                <a href="javascript:;" data-url="/list" data-id="monitorlist"><i class="fa fa-th-list" aria-hidden="true">  主机监控列表</i></a>
                             </dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;"><i class="fa fa-bandcamp" aria-hidden="true">  业务监控列表</i></a>
+                        <dl class="layui-nav-child">
+                        {% for host in hostinfolist %}
+                            <dd>
+                                <a href="javascript:;" data-url="/showhostmonitor?id={{host.id}}" data-id="{{host.id}}"><i class="fa fa-th-list" aria-hidden="true">  {{host.description}}</i></a>
+                            </dd>
+                         {% endfor %}
                         </dl>
                     </li>
                 </ul>

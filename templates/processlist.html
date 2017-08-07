@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta HTTP-EQUIV="Refresh" CONTENT="60">
+    <title>dark状态监控</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css"/>
+    <link rel="stylesheet" href="/static/css/admin.css"/>
+    <link href="/static/circliful/css/jquery.circliful.css" rel="stylesheet" type="text/css" />
+    <link href="/static/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<style type="text/css">  
+            td{  
+              text-align:center;
+            } 
+        </style>  
+</head>
+<body>
+	<div class="container">
+          <blockquote class="layui-elem-quote">系统信息概览</blockquote>
+            <div class="circlcontainer">
+            
+                <div class="circlrow">
+                    <div class="col-lg-2">
+                        <div class="circlcenter">
+                        <div id="test-circle" data-animation="1" data-animationStep="6" data-foregroundBorderWidth="5" data-backgroundColor="none" data-fillColor="#eee" data-percent="100" data-iconColor="#3498DB" data-icon="f007" data-iconSize="40" data-iconPosition="middle" data-pointSize="10" data-text="users:{{host.users}}" data-textBelow="true"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="circlcenter">
+                        <div id="test-circle1" data-animation="1" data-animationStep="6" data-foregroundBorderWidth="5" data-backgroundColor="none" data-fillColor="#eee" data-percent="100" data-iconColor="#3498DB" data-icon="f0ae" data-iconSize="40" data-iconPosition="middle" data-pointSize="10" data-text="load:{{host.load}}" data-textBelow="true"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="circlcenter">
+                        <div id="test-circle2" data-animation="1" data-animationStep="6" data-foregroundBorderWidth="5" data-backgroundColor="none" data-fillColor="#eee" data-percent="{{host.memory}}" data-iconColor="#3498DB" data-icon="f21e" data-iconSize="40" data-iconPosition="middle" data-pointSize="10" data-text="memory" data-textBelow="true"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="circlcenter">
+                        <div id="test-circle3" data-animation="1" data-animationStep="6" data-foregroundBorderWidth="5" data-backgroundColor="none" data-fillColor="#eee" data-percent="{{host.disk}}" data-iconColor="#3498DB" data-icon="f0a0"  data-iconSize="40" data-iconPosition="middle" data-pointSize="10" data-text="disk" data-textBelow="true"></div>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+<hr>
+		<div class="table-list">
+			<table id = "darkinfo-table" class="layui-table" lay-skin="line">
+				<thead>
+					<tr>
+						<th>业务进程</th>
+						<th>监听端口</th>
+						<th>更新时间</th>
+						<th>备注</th>
+					</tr>
+				</thead>
+				<tbody>
+                    {% for hostinfo in hostinfolist %}
+					<tr data-mid={{hostinfo.id}}>
+						<td>{{hostinfo.process}}</td>
+						<td>{{hostinfo.listenport}}</td>
+						<td>{{hostinfo.updatetime}}</td>
+						<td>{{hostinfo.message}}</td>
+					</tr>
+                    {% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script type="text/javascript" src="/static/layui/layui.js"></script>
+        <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="/static/circliful/js/jquery.circliful.min.js"></script>
+<script>
+    $( document ).ready(function() {
+        $("#test-circle").circliful();
+        $("#test-circle1").circliful();
+        $("#test-circle2").circliful({progressColor:{ 90:"#FF0000",60:"#00FF00",75:"#FFFF00"}});
+        $("#test-circle3").circliful({progressColor:{ 90:"#FF0000",60:"#00FF00",75:"#FFFF00"}});
+    });
+</script>
+</body>
+</html>
+</html>
