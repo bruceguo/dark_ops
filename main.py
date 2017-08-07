@@ -4,7 +4,7 @@ from flask import session,redirect,url_for,escape
 from flask import request
 from flask import render_template
 from flask import jsonify,abort 
-from model import db,dark_status,app
+from model import db,dark_status,app,business_info
 from functools import wraps
 from WXBizMsgCrypt import WXBizMsgCrypt
 import xml.etree.cElementTree as ET
@@ -54,7 +54,8 @@ def login():
 @login_required
 def index():
     username=session.get("username")
-    return render_template("index.html",username=username) 
+    hostinfolist=business_info.query.all()
+    return render_template("index.html",username=username,hostinfolist=hostinfolist) 
 
 @app.route('/list',methods=['GET'])
 @login_required
@@ -110,9 +111,9 @@ def home():
                 pass
     normalnum=len(hostresult)
     return render_template('home.html',hoststotal=hoststotal,normalnum=normalnum)
+
 @app.route('/api/collect_dark_status',methods=['POST'])
 def collect_info():
-    print request.values
     if request.values.get("mid",None) and request.values.get("update_time",None):
         result=dark_status.query.filter_by(mid= request.values["mid"]).all()
         if len(result)==0:
@@ -154,7 +155,6 @@ def collect_info():
 @app.route('/api/del_host',methods=['POST'])
 @login_required
 def delte_host():
-    print  request.values
     mid=request.values.get("mid",None)
     if mid:
         try:
@@ -187,6 +187,65 @@ def alarmswitch():
             return jsonify({"error":0})
     else:
         return jsonify({"error":1,"msg":"mid or enabled is null"})
+
+@app.route('/posthostinfo',methods=['POST'])
+def hostinfo():
+    if request.form.get("host_info",None):
+         info_dict=request.form["host_info"]
+         ip=eval(info_dict)["ip_dict"][(eval(info_dict)["ip_dict"].keys()[0])]
+         description=eval(info_dict)["description"]
+         try:
+             info_result=business_info.query.filter_by(ip=ip).all()
+             if len(info_result)==0:
+                 db.session.add(business_info(ip=ip,description=description,information=info_dict))
+                 db.session.commit()
+             else:
+                 update_sql=business_info.query.filter_by(ip=ip).first()
+                 update_sql.information=info_dict
+                 update_sql.description=description
+                 db.session.commit()
+         except Exception,e:
+             logging.error("主机信息更新错误"+str(e))
+             return jsonify({"error":1,"msg":str(e)})
+         else:
+             logging.info("主机信息更新正常")
+             return jsonify({"error":0})
+    else:
+        return jsonify({"error":1,"msg":"info Incomplete"})
+
+@app.route('/showhostmonitor')
+@login_required
+def showhostinfo():
+    id=request.args.get("id",None)
+    host={}
+    hostinfolist=[]
+    if id:
+         try:
+             show_result=business_info.query.filter_by(id=id).first()
+         except Exception,e:
+             logging.error("主机信息查询错误"+str(e))
+         else:
+             logging.info("主机信息查询正常")
+             totaldic=eval(show_result.information)
+             host["users"]=len(totaldic["user_info"])
+             host["load"]=totaldic["cpu_info"]["load_avg"].split()[0]
+             host["memory"]=float(totaldic["mem_info"]["used"])/int(totaldic["mem_info"]["total"])*100
+             host["disk"]=[disk["percent"] for disk in totaldic["disk_info"] if disk["mountpoint"]=="/"]
+             for procs in totaldic["processlist"]:
+                 if len([procport for procport in totaldic["port_info"] if procport[0] == procs])==0:
+                     hostinfolist.append({"id":show_result.id,"process":procs,"listenport":"未监听端口","updatetime":show_result.updatetime,"message":"正常"})
+                 elif len([procport for procport in totaldic["port_info"] if procport[0] == procs])==1:
+                     hostinfolist.append({"id":show_result.id,"process":procs,"listenport":[procport[1] for procport in totaldic["port_info"] if procport[0] == procs][0],"updatetime":show_result.updatetime,"message":"正常"})
+                 else:
+                     portinfo=[]
+                     for lport in [procport for procport in totaldic["port_info"] if procport[0] == procs]:
+                         portinfo.append(lport[1])
+                     hostinfolist.append({"id":show_result.id,"process":procs,"listenport":",".join(portinfo),"updatetime":show_result.updatetime,"message":"正常"})
+                      
+                         
+             return render_template("processlist.html",host=host,hostinfolist=hostinfolist)  
+    else:
+        return jsonify({"error":1,"msg":"args Incomplete"})
 
 @app.route('/weixin/api_info',methods=['POST','GET','PUT'])
 def weixinapi():
