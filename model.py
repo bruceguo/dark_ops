@@ -43,5 +43,15 @@ class status_history(db.Model):
     alarm_times = db.Column(db.Integer, nullable=False)
     def __repr__(self):
         return json.dumps({"mid":self.mid,"last_status":self.last_status,"alarm_time":self.alarm_time,"alarm_times":self.alarm_times}) 
+class business_info(db.Model):
+    __tablename__ = 'business_info'
+    id = db.Column(db.Integer, primary_key=True)
+    ip = db.Column(db.String(100), unique=True)
+    description = db.Column(db.String(100), unique=True)
+    information=db.Column(db.Text(1200))
+    updatetime = db.Column(db.TIMESTAMP(True), nullable=False)
+
+    def __repr__(self):
+        return json.dumps({"id":self.id,"ip":self.ip,"infomation":self.information,"updatetime":self.updatetime,"description":self.description}) 
 if __name__=="__main__":
     manager.run()
