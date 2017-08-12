@@ -36,7 +36,8 @@ class dark_status(db.Model):
 class status_history(db.Model):
     __tablename__ = 'status_history'
     id = db.Column(db.Integer, primary_key=True)
-    mid = db.Column(db.String(100), unique=True)
+    mid = db.Column(db.String(100))
+    item_type=db.Column(db.String(100),server_default="dark")
     last_status = db.Column(db.Boolean, nullable=False)
     alarm_time = db.Column(db.String(100), nullable=True)
     last_alarm_time = db.Column(db.String(100), nullable=True)

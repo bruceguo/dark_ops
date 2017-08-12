@@ -233,16 +233,23 @@ def showhostinfo():
              host["disk"]=[disk["percent"] for disk in totaldic["disk_info"] if disk["mountpoint"]=="/"]
              for procs in totaldic["processlist"]:
                  if len([procport for procport in totaldic["port_info"] if procport[0] == procs])==0:
-                     hostinfolist.append({"id":show_result.id,"process":procs,"listenport":"未监听端口","updatetime":show_result.updatetime,"message":"正常"})
+                     if abs(time.time() - time.mktime(time.strptime(str(show_result.updatetime),"%Y-%m-%d %H:%M:%S"))) > 200:
+                         hostinfolist.append({"id":show_result.id,"process":procs,"listenport":"未监听端口","updatetime":show_result.updatetime,"message":"上报异常"})
+                     else:
+                         hostinfolist.append({"id":show_result.id,"process":procs,"listenport":"未监听端口","updatetime":show_result.updatetime,"message":"正常"})
                  elif len([procport for procport in totaldic["port_info"] if procport[0] == procs])==1:
-                     hostinfolist.append({"id":show_result.id,"process":procs,"listenport":[procport[1] for procport in totaldic["port_info"] if procport[0] == procs][0],"updatetime":show_result.updatetime,"message":"正常"})
+                     if abs(time.time() - time.mktime(time.strptime(str(show_result.updatetime),"%Y-%m-%d %H:%M:%S"))) > 200:
+                         hostinfolist.append({"id":show_result.id,"process":procs,"listenport":[procport[1] for procport in totaldic["port_info"] if procport[0] == procs][0],"updatetime":show_result.updatetime,"message":"上报异常"})
+                     else:
+                         hostinfolist.append({"id":show_result.id,"process":procs,"listenport":[procport[1] for procport in totaldic["port_info"] if procport[0] == procs][0],"updatetime":show_result.updatetime,"message":"正常"})
                  else:
                      portinfo=[]
                      for lport in [procport for procport in totaldic["port_info"] if procport[0] == procs]:
                          portinfo.append(lport[1])
-                     hostinfolist.append({"id":show_result.id,"process":procs,"listenport":",".join(portinfo),"updatetime":show_result.updatetime,"message":"正常"})
-                      
-                         
+                     if abs(time.time() - time.mktime(time.strptime(str(show_result.updatetime),"%Y-%m-%d %H:%M:%S"))) > 200:
+                         hostinfolist.append({"id":show_result.id,"process":procs,"listenport":",".join(portinfo),"updatetime":show_result.updatetime,"message":"上报异常"})
+                     else:
+                         hostinfolist.append({"id":show_result.id,"process":procs,"listenport":",".join(portinfo),"updatetime":show_result.updatetime,"message":"正常"})
              return render_template("processlist.html",host=host,hostinfolist=hostinfolist)  
     else:
         return jsonify({"error":1,"msg":"args Incomplete"})
