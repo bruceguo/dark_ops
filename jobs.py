@@ -166,7 +166,7 @@ def wxwarn(arg):
         else:
             logging.info("未发现相关数据")
 
-@timer(6)
+@timer(300)
 def checkdisk(arg):
     with getMysqlConnection() as db:
         sql="select * from business_info;"
@@ -186,7 +186,7 @@ def checkdisk(arg):
         else:
             logging.info("未发现disk相关数据")
 
-@timer(6)
+@timer(300)
 def checkmem(arg):
     with getMysqlConnection() as db:
         sql="select * from business_info;"
@@ -206,7 +206,7 @@ def checkmem(arg):
         else:
             logging.info("未发现mem相关数据")
 
-@timer(6)
+@timer(300)
 def checkload(arg):
     with getMysqlConnection() as db:
         sql="select * from business_info;"
@@ -226,7 +226,7 @@ def checkload(arg):
         else:
             logging.info("未发现load相关数据")
 
-@timer(6)
+@timer(10)
 def checkprocesslist(arg):
     with getMysqlConnection() as db:
         sql="select * from business_info;"
@@ -248,7 +248,7 @@ def checkprocesslist(arg):
         else:
             logging.info("未发现load相关数据")
 
-@timer(4)
+@timer(60)
 def checkreport(arg):
     with getMysqlConnection() as db:
         sql="select * from business_info;"
