@@ -8,7 +8,6 @@ import time
 import logging
 import urllib
 import urllib2
-import time
 reload(sys)
 sys.setdefaultencoding('utf8')
 config=ConfigObj("etc/processmonitor.conf",encoding="UTF8")
@@ -112,9 +111,7 @@ def checkstatus(mid,itemtype):
         sql="select * from status_history where mid='%s' and item_type='%s';" %(str(mid),itemtype)
         db.cursor.execute(sql)
         check_info=db.cursor.fetchall()
-        logging.info(str(check_info))
         if len(check_info):
-            logging.info("1"+str(check_info))
             if int(check_info[0]["last_status"])==0:
                 timerange=int(time.time())-round(float(check_info[0]["alarm_time"]))
                 hours,minutes,sec=stamp2str(timerange)
@@ -175,8 +172,9 @@ def checkdisk(arg):
         if len(disk_list):
             for diskinfo in disk_list:
                 infodict=eval(diskinfo["information"])
-                if int([diskitem for diskitem in infodict["disk_info"] if diskitem["mountpoint"]== "/"][0]["percent"]) > 90:
-                    des='根分区大于90%,及时清理('+str(diskinfo["description"])+')'
+                rootusage=float([diskitem for diskitem in infodict["disk_info"] if diskitem["mountpoint"]== "/"][0]["percent"])
+                if rootusage >= 90:
+                    des='根分区已使用'+str(rootusage)+'%,及时清理('+str(diskinfo["description"])+')'
                     logging.info(des)
                 else:
                     logging.info("磁盘检测正常")
@@ -195,7 +193,7 @@ def checkmem(arg):
         if len(mem_list):
             for meminfo in mem_list:
                 infodict=eval(meminfo["information"])
-                if float(infodict["mem_info"]["used"])/float(infodict["mem_info"]["total"]) > 80:
+                if float(infodict["mem_info"]["used"])/float(infodict["mem_info"]["total"])*100 > 80:
                     des='内存大于80%,及时处理('+str(meminfo["description"])+')'
                     logging.info(des)
                 else:
@@ -215,8 +213,8 @@ def checkload(arg):
         if len(load_list):
             for loadinfo in load_list:
                 infodict=eval(loadinfo["information"])
-                if float(infodict["cpu_info"]["load_avg"].split()[0]) > float(infodict["cpu_info"]["logical_cores"]):
-                    des='负载过高，及时处理('+str(loadinfo["description"])+')'
+                if float(infodict["cpu_info"]["load_avg"].split()[0]) > float(infodict["cpu_info"]["logical_cores"])*1.5:
+                    des='负载过高，及时处理('+str(loadinfo["description"])+')'+' value:'+str(infodict["cpu_info"]["load_avg"].split()[0])
                     logging.info(des)
                 else:
                     logging.info("负载检测正常")
@@ -267,31 +265,32 @@ def checkreport(arg):
             logging.info("未发现report相关数据")
 
 
-@timer(30)
-def checkjsproxy(arg):
-    url = 'http://mx.93yxpt.com/forwardJs?js_url=http://apps.bdimg.com/cloudaapi/lightapp.js&append_js=append_jscode.js'
-    user_agent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1'
-    headers = {'User-Agent' : user_agent,'Referer':'http://www.qq.com'}
-    request = urllib2.Request(url,headers=headers)
-    n=0
-    for i in range(4):
-        try:
-            response = urllib2.urlopen(request,timeout=5)
-            page = response.read()
-        except Exception,e:
-            logging.info(str(e)) 
-            n=n+1
-        else:
-            if str(response.getcode()) == "200":
-               logging.info("jsproxy is ok") 
-            else:
-                n=n+1
-    if int(n) >= 3:
-        logging.info("jsproxy is not ok")
-        weixinsender.sendmsg(title="jscheck",description="jsproxy is not ok")
-    else:
-        logging.info("n="+str(n))
-
+#@timer(5)
+#def checkjsproxy(arg):
+#    url = 'http://mx.93yxpt.com/forwardJs?js_url=http://apps.bdimg.com/cloudaapi/lightapp.js&append_js=append_jscode.js'
+#    user_agent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1'
+#    headers = {'User-Agent' : user_agent,'Referer':'http://www.qq.com'}
+#    request = urllib2.Request(url,headers=headers)
+#    n=0
+#    for i in range(4):
+#        try:
+#            response = urllib2.urlopen(request,timeout=5)
+#            page = response.read()
+#            time.sleep(1)
+#        except Exception,e:
+#            logging.info(str(e)) 
+#            n=n+1
+#        else:
+#            if str(response.getcode()) == "200":
+#               logging.info("jsproxy is ok") 
+#            else:
+#                n=n+1
+#    if int(n) >= 3:
+#        logging.info("jsproxy is not ok")
+#        weixinsender.sendmsg(title="jscheck",description="jsproxy is not ok")
+#    else:
+#        logging.info("n="+str(n))
+#
 
 @filemon("/opt/dark_web_config/jobs.py")
 def monitor_py(num):

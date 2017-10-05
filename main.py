@@ -75,6 +75,8 @@ def list():
             else:
                 if host.new_config_version==host.old_config_version and host.boot_time !="" and host.dark_num != 0:
                     host.message=u"dark程序正常"
+                elif host.new_config_version != host.old_config_version and host.boot_time !="" and host.dark_num != 0:
+                    host.message=u"配置更新中"
                 else:
                     host.message=u"dark程序异常"
                     host.status=0
@@ -107,6 +109,8 @@ def home():
         else:
             if host.new_config_version==host.old_config_version and host.boot_time !="" and host.dark_num != 0:
                 hostresult.append(host)
+            elif host.new_config_version != host.old_config_version and host.boot_time !="" and host.dark_num != 0:
+                hostresult.append(host) 
             else:
                 pass
     normalnum=len(hostresult)
@@ -192,7 +196,7 @@ def alarmswitch():
 def hostinfo():
     if request.form.get("host_info",None):
          info_dict=request.form["host_info"]
-         ip=eval(info_dict)["ip_dict"][(eval(info_dict)["ip_dict"].keys()[0])]
+         ip=eval(info_dict)["ip_dict"]['gatewayifaceip']
          description=eval(info_dict)["description"]
          try:
              info_result=business_info.query.filter_by(ip=ip).all()
