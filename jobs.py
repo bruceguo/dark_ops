@@ -15,7 +15,7 @@ secrect=config["weixin"]["secrect"]
 agentid=config["weixin"]["agentid"]
 corpid=config["weixin"]["corpid"]
 weixinsender=weixinalarm(corpid=corpid,secrect=secrect,agentid=agentid)
-times=int(config["alarm"]["times"])-2
+times=int(config["alarm"]["times"])
 import MySQLdb
 from DBUtils.PersistentDB import PersistentDB
 #try:
@@ -61,7 +61,10 @@ def alarmpolicy(mid,des,itemtype):
                 if int(status_info[0]["alarm_times"]) == times:
                     weixinsender.sendmsg(title=itemtype+"(当前时间最后一次报警)",description=des)
                 else:
-                    weixinsender.sendmsg(title=itemtype,description=des)
+                    logging.info(des+"["+str(int(status_info[0]["alarm_times"])+1)+"]")
+                    logging.info(int(time.time())- round(float(status_info[0]["alarm_time"])))
+                    logging.info(status_info[0]["alarm_times"])
+                    weixinsender.sendmsg(title=itemtype,description=des+"["+str(int(status_info[0]["alarm_times"])+1)+"]")
                 count=int(status_info[0]["alarm_times"])+1
                 if int(status_info[0]["alarm_times"])==0:
                     update_sql = "UPDATE status_history SET alarm_time='%s' ,alarm_times = '%d' , last_alarm_time= '%s',last_status = '%d' WHERE mid = '%s' and item_type= '%s'" % (str(time.time()),count,str(time.time()),0,mid,itemtype)
@@ -76,10 +79,11 @@ def alarmpolicy(mid,des,itemtype):
                     else:
                         logging.info("'%s' type('%s') 数据更新成功" %(mid,itemtype))
             elif int(time.time())- round(float(status_info[0]["alarm_time"]))<= 3600 and int(status_info[0]["alarm_times"]) > times:
+                logging.info(status_info[0]["alarm_times"])
                 logging.info("'%s':报警次数已达上限('%s')" %(mid,itemtype)) 
             elif time.time()- round(float(status_info[0]["alarm_time"]))> 3600:
-                weixinsender.sendmsg(title=itemtype,description=des)
-                update_sql = "UPDATE status_history SET alarm_times = '%d',alarm_time='%d' ,alarm_time='%s',last_status = '%d' WHERE mid = '%s' and item_type = '%s' " % (0,time.time(),str(time.time()),0,mid,itemtype)
+                weixinsender.sendmsg(title=itemtype,description=des+"[1]")
+                update_sql = "UPDATE status_history SET alarm_times = '%d',alarm_time='%d' ,alarm_time='%s',last_status = '%d' WHERE mid = '%s' and item_type = '%s' " % (1,time.time(),str(time.time()),0,mid,itemtype)
                 with getMysqlConnection() as db:
                     try:
                        db.cursor.execute(update_sql) 
@@ -90,8 +94,8 @@ def alarmpolicy(mid,des,itemtype):
                     else:
                         logging.info("'%s' type('%s') 数据更新成功" %(mid,itemtype))
         else:
-            weixinsender.sendmsg(title=itemtype,description=des)
-            update_sql = "INSERT INTO status_history (mid,last_status,alarm_time,last_alarm_time,alarm_times,item_type) VALUES ('%s','%d','%s','%s','%d','%s')" % (mid,0,str(time.time()),str(time.time()),0,itemtype)
+            weixinsender.sendmsg(title=itemtype,description=des+"[1]")
+            update_sql = "INSERT INTO status_history (mid,last_status,alarm_time,last_alarm_time,alarm_times,item_type) VALUES ('%s','%d','%s','%s','%d','%s')" % (mid,0,str(time.time()),str(time.time()),1,itemtype)
             with getMysqlConnection() as db:
                 try:
                    db.cursor.execute(update_sql) 
@@ -134,7 +138,7 @@ def checkstatus(mid,itemtype):
             
             
     
-@timer(180)
+@timer(5)
 def wxwarn(arg):
     with getMysqlConnection() as db:
         sql="select * from dark_status;"
