@@ -28,7 +28,7 @@
                     <li class="layui-nav-item layui-this"><a href="javascript:;">监控面板</a></li>
                 </ul>
                 <div style="position:absolute;right:5%;top:10px;">
-                <a href="/logout" ><font style="color:white;font-size=16px;line-height:40px;">欢迎你！{{username}}</font></a>
+                <a href="javascript:;" ><font style="color:white;font-size=16px;line-height:40px;">欢迎你！{{username}}</font></a>
                 </div>
                 <div style="position:absolute;right:1%;top:10px;">
                 <a href="/logout" ><font style="color:white;font-size=16px;line-height:40px;">登出</font></a>
@@ -47,12 +47,12 @@
                         <a href="javascript:;"><i class="fa fa-cog" aria-hidden="true">  监控管理</i></a>
                         <dl class="layui-nav-child">
                             <dd>
-                                <a href="javascript:;" data-url="/list" data-id="monitorlist"><i class="fa fa-th-list" aria-hidden="true">  主机监控列表</i></a>
+                                <a href="javascript:;" data-url="/list" data-id="monitorlist"><i class="fa fa-th-list" aria-hidden="true">  进程监控列表</i></a>
                             </dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="javascript:;"><i class="fa fa-bandcamp" aria-hidden="true">  业务监控列表</i></a>
+                        <a href="javascript:;"><i class="fa fa-bandcamp" aria-hidden="true">  业务主机列表</i></a>
                         <dl class="layui-nav-child">
                         {% for host in hostinfolist %}
                             <dd>
@@ -61,6 +61,11 @@
                          {% endfor %}
                         </dl>
                     </li>
+                   {% if username  and username == "admin" %}
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" data-url="/controllist" data-id="controllist"><i class="fa fa-american-sign-language-interpreting" aria-hidden="true">  业务控制面板</i></a>
+                    </li>
+                   {% endif %}
                 </ul>
             </div>
         </div>

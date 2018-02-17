@@ -16,6 +16,7 @@ app.config['SQLALCHEMY_DATABASE_URI']='mysql://root:chinatt_1347@localhost:3306/
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=True
 app.config['USERNAME']="admin"
 app.config['PASSWORD']="admin888"
+app.config['SUPERPASSWORD']="1cfaed75dcb7cca2c94c5031ce05eb88"
 app.config['SECRET_KEY'] = 'jjskdjlkasjdlfjalk'
 db = SQLAlchemy(app)
 manager = Manager(app)
@@ -44,6 +45,19 @@ class status_history(db.Model):
     alarm_times = db.Column(db.Integer, nullable=False)
     def __repr__(self):
         return json.dumps({"mid":self.mid,"last_status":self.last_status,"alarm_time":self.alarm_time,"alarm_times":self.alarm_times}) 
+
+class control_info(db.Model):
+    __tablename__ = 'control_info'
+    id = db.Column(db.Integer, primary_key=True)
+    mid = db.Column(db.String(100),unique=True)
+    destory_option=db.Column(db.Boolean,server_default="0")
+    deploy_option = db.Column(db.Boolean,server_default="1")
+    alive_info = db.Column(db.Boolean, server_default="1")
+    type_info=db.Column(db.String(100),nullable=False)
+    msg=db.Column(db.String(100),server_default="waitting update")
+    def __repr__(self):
+        return json.dumps({"mid":self.mid,"id":self.id,"destory_option":self.destory_option,"deploy_option":self.deploy_option,"alive_info":self.alive_info,"msg":self.msg})
+ 
 class business_info(db.Model):
     __tablename__ = 'business_info'
     id = db.Column(db.Integer, primary_key=True)
