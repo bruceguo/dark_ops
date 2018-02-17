@@ -1,7 +1,7 @@
 layui.use(["element", "layer"],
 function() {
     var $ = layui.jquery,
-    element = layui.element(),
+    element = layui.element,
     layer = layui.layer;
     var l_o = $(".left-menu"),
     tab = "top-tab",
