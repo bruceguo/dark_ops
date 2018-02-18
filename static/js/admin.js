@@ -7,7 +7,7 @@ function() {
     tab = "top-tab",
     l_m = "left-menu",
     t_m = "top-menu";
-    var mainHeight = $(window).height() - 60 - 41 - 44 - 5;
+    var mainHeight = $(document).height();
     element.on("nav(" + t_m + ")",
     function(data) {
         l_o.hide().eq(data.index()).show()

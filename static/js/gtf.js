@@ -11,10 +11,6 @@ function() {
         var fh = (s.length ? s.height() : 0) + (b.length ? b.height() : 0);
         fh && o(window).scrollTop() > fh ? b.addClass("listTopFixed") : b.removeClass("listTopFixed")
     });
-    l.on("click", "tbody tr",
-    function() {
-        o(this).toggleClass("tableTrSelect").siblings().removeClass("tableTrSelect")
-    });
     if (o(tb).length) {
         layui.tabletree({
             elem: tb

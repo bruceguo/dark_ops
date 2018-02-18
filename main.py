@@ -68,10 +68,11 @@ def index():
     hostinfolist=business_info.query.all()
     return render_template("index.html",username=username,hostinfolist=hostinfolist) 
 
-@app.route('/list',methods=['GET'])
+@app.route('/api/darkinfolist',methods=['GET'])
 @login_required
-def list():
+def hostinfodictlist():
     hostlist=dark_status.query.all()
+    base_info={"code": 0,"msg": "","count": 1000,"data": []} 
     hostresult=[]
     hostresult_web=[]
     host_unabled=[]
@@ -82,29 +83,55 @@ def list():
             if abs(time.time() - time.mktime(time.strptime(str(host.update_time),"%Y-%m-%d %H:%M:%S"))) > 300:
                 host.message=u"dark上报异常"
                 host.status=0
+                host.version_status=0
                 totalinfo["error"]+=1
             else:
                 if host.new_config_version==host.old_config_version and host.boot_time !="" and host.dark_num != 0:
+                    host.version_status=1
                     host.message=u"dark程序正常"
                 elif host.new_config_version != host.old_config_version and host.boot_time !="" and host.dark_num != 0:
+                    host.version_status=0
                     host.message=u"配置更新中"
                 else:
                     host.message=u"dark程序异常"
+                    host.version_status=0
                     host.status=0
                     totalinfo["error"]+=1
-            hostresult.append(host)
+            hostresult.append({"enabled":host.enabled,"message":host.message,"version_status": host.version_status, "status": host.status, "update_time":str(host.update_time), "boot_time":str(host.boot_time), "id": host.id,"mid": host.mid, "dark_num": host.dark_num, "dark_version": host.dark_version})
         else:
             host.message=u"报警已关闭"
+            host.version_status=0
             host.status=0
             totalinfo["error"]+=1
-            host_unabled.append(host)
+            hostresult.append({"enabled":host.enabled,"message":host.message,"version_status": host.version_status, "status": host.status, "update_time":str(host.update_time), "boot_time":str(host.boot_time), "id": host.id,"mid": host.mid, "dark_num": host.dark_num, "dark_version": host.dark_version})
     for item in hostresult:
-        item.id=rond
+        item["id"]=rond
         hostresult_web.append(item)
         rond+=1 
-    hostresult_web=sorted(hostresult_web,key=lambda x:x.status)
+    hostresult_web=sorted(hostresult_web,key=lambda x:x["status"])
     hostresult_web.extend(host_unabled)
-    return render_template('lists.html',hostlist=hostresult_web,totalinfo=totalinfo)
+    base_info["data"]=hostresult_web
+    return jsonify(base_info)
+
+@app.route('/list',methods=['GET'])
+@login_required
+def totallist():
+    hostlist=dark_status.query.all()
+    totalinfo={"error":0}
+    for host in hostlist:
+        if host.enabled:
+            if abs(time.time() - time.mktime(time.strptime(str(host.update_time),"%Y-%m-%d %H:%M:%S"))) > 300:
+                totalinfo["error"]+=1
+            else:
+                if host.new_config_version==host.old_config_version and host.boot_time !="" and host.dark_num != 0:
+                    pass
+                elif host.new_config_version != host.old_config_version and host.boot_time !="" and host.dark_num != 0:
+                    pass
+                else:
+                    totalinfo["error"]+=1
+        else:
+            totalinfo["error"]+=1
+    return render_template('lists.html',totalinfo=totalinfo)
 
 @app.route('/controllist',methods=['GET'])
 @login_required
