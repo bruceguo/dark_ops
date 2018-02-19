@@ -145,6 +145,19 @@ def controllist():
             hostlist.append({"msg":infoobj.msg,"id":infoobj.id,"mid":infoobj.mid,"darktype":infoobj.type_info,"cleanswitch":infoobj.destory_option,"deployswitch":infoobj.deploy_option,"aliveswitch":infoobj.alive_info})
         return render_template('controllist.html',hostlist=hostlist)
         
+@app.route('/api/controllistinfo',methods=['GET'])
+@login_required
+def controllistinfo():
+    controlinfolist=control_info.query.all()
+    hostlist=[]
+    base_info={"code": 0,"msg": "","count": 1000,"data": []} 
+    if len(controlinfolist)==0:
+        return jsonify(base_info) 
+    else:
+        for infoobj in controlinfolist:
+            hostlist.append({"msg":infoobj.msg,"id":infoobj.id,"mid":infoobj.mid,"darktype":infoobj.type_info,"cleanswitch":infoobj.destory_option,"deployswitch":infoobj.deploy_option,"aliveswitch":infoobj.alive_info})
+            base_info["data"]=hostlist
+        return jsonify(base_info)
 
 @app.route('/addhost',methods=['GET'])
 @login_required
@@ -297,6 +310,7 @@ def controldkstatus():
     mid=request.form.get("mid")
     passwd=request.form.get("passwd")
     md5passwd=md5pas(passwd)
+    print request.form
     choice={"true":1,"false":0}
     if md5passwd == app.config["SUPERPASSWORD"]: 
         try:

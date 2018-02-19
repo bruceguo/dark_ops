@@ -16,9 +16,9 @@ app.config['SQLALCHEMY_DATABASE_URI']='mysql://root:chinatt_1347@localhost:3306/
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=True
 app.config['USERNAME']="admin"
 app.config['PASSWORD']="admin888"
-app.config['SUPERPASSWORD']="1cfaed75dcb7cca2c94c5031ce05eb88"
+app.config['SUPERPASSWORD']="e10adc3949ba59abbe56e057f20f883e"
 app.config['SECRET_KEY'] = 'jjskdjlkasjdlfjalk'
-db = SQLAlchemy(app)
+db = SQLAlchemy(app, use_native_unicode="utf8")
 manager = Manager(app)
 class dark_status(db.Model):
     __tablename__ = 'dark_status'

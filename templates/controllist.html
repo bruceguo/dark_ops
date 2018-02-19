@@ -9,78 +9,50 @@
     <link rel="stylesheet" href="/static/css/admin.css"/>
     <link rel="stylesheet" href="/static/switch/ios6switch.css"/>
     <link href="/static/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<style type="text/css">  
-            td{  
-              text-align:center;
-            } 
-        </style>  
 </head>
 <body>
-	<div class="container">
-		<div class="table-list">
-			<table id = "darkinfo-table" class="layui-table" lay-skin="line">
-				<thead>
-					<tr>
-						<th>编号</th>
-						<th>区域代码</th>
-						<th>dark类型</th>
-						<th>清理开关</th>
-						<th>运行开关</th>
-						<th style="width:25%;">状态</th>
-					</tr>
-				</thead>
-				<tbody>
-                    {% for host in hostlist %}
-					<tr data-mid={{host.mid}}>
-						<td>{{host.id}}</td>
-						<td>{{host.mid}}</td>
-						<td>{{host.darktype}}</td>
-
-						{% if host.cleanswitch == 1 %}
-						<td><input name="destory_option" type="checkbox" class="mycheckbox" checked/></td>
-                                                {% else %}
-						<td><input name="destory_option" type="checkbox" class="mycheckbox" /></td>
-                                                {% endif %}
-
-						{% if host.aliveswitch == 1 %}
-						<td><input name="alive_info" type="checkbox" class="mycheckbox" checked/></td>
-                                                {% else %}
-						<td><input name="alive_info" type="checkbox" class="mycheckbox" /></td>
-                                                {% endif %}
-						<td style="width:25%;">{{ host.msg }}</td>
-					</tr>
-                    {% endfor %}
-				</tbody>
-			</table>
-		</div>
-	</div>
+        <table id = "darkinfo-table" lay-filter="darkcontrol"></table>
 	<script type="text/javascript" src="/static/layui/layui.js"></script>
         <script type="text/javascript" src="/static/js/control.js"></script>
-        <script type="text/javascript" src="/static/switch/js/jquery-1.11.0.min.js"></script>
-        <script type="text/javascript" src="/static/switch/ios6switch.js"></script>
         <script>
-$(".mycheckbox").ios6switch({
-	switchoffText: "off",
-	switchonText: "on",
-        size:16
-});
-var switchel = $(".mycheckbox");
-for(var i = 0;i < switchel.length; i++) {
-$(".mycheckbox")[i].onchange=function(){
-console.log(this.checked);
-var currentel=this;
-layui.use('layer', function(){
-  var layer = layui.layer;
+layui.use(['layer','table'], function(){
+  var layer = layui.layer,
+  form=layui.form,table=layui.table,$=layui.jquery;
+  var tableIns=table.render({
+    elem: '#darkinfo-table'
+    ,url:'/api/controllistinfo'
+    ,style:'nob'
+    ,even: true 
+    ,cols: [[
+      {field:'id', title:'编号',align:"center"}
+      ,{field:'mid', title:'区域代码',align:"center"}
+      ,{field:'darktype', title: 'dark类型',align:"center"}
+      ,{field:'cleanswitch', title:'清理开关',align:"center", templet:function(d){
+        if (d.cleanswitch ==1 ){
+            return '<input type="checkbox" name="destory_option" value="'+d.mid+'" lay-skin="switch" lay-text="on|off" lay-filter="switchDemo" checked>'
+        }else{
+            return '<input type="checkbox" name="destory_option" value="'+d.mid+'" lay-skin="switch" lay-text="on|off" lay-filter="switchDemo">'
+            }}}
+      ,{field:'aliveswitch', title:'运行开关',align:"center", templet:function(e){
+        if (e.aliveswitch ==1 ){
+            return '<input type="checkbox" name="alive_info" value="'+e.mid+'" lay-skin="switch" lay-text="on|off" lay-filter="switchDemo" checked>'
+        }else{
+            return '<input type="checkbox" name="alive_info" value="'+e.mid+'" lay-skin="switch" lay-text="on|off" lay-filter="switchDemo">'
+            }}}
+      ,{field:'msg', title: '状态',align:"center",width:300}
+    ]]
+  });
+form.on('switch(switchDemo)', function(obj){
 layer.confirm('确定进行该操作?', {
   btn: ['确定','取消'],
 cancel: function(index, layero){ 
-window.location.reload();
+tableIns.reload();
 }    
  
 }, function(){
-  var mid = $(currentel).parent().parent().data("mid");
-  var name = $(currentel).attr("name");
-  var opt = currentel.checked;
+  var mid = obj.value;
+  var name=obj.elem.getAttribute("name");
+  var opt = obj.elem.checked;
   layer.prompt(
 {
   formType: 1,
@@ -96,7 +68,7 @@ window.location.reload();
         layer.msg('修改成功', {icon: 1});
         }else{
         layer.msg(result.msg, {icon: 2});
-setTimeout("window.location.reload();",1500);
+        tableIns.reload();
 }
     });
   layer.close(index);
@@ -104,17 +76,12 @@ setTimeout("window.location.reload();",1500);
 
 
 }, function(){
-window.location.reload();
+tableIns.reload();
 });
+  });
 
   
 });  
-
-
-}
-}
-
-
       </script>
 </body>
 </html>
