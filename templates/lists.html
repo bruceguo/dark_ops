@@ -23,10 +23,10 @@
         elem: '#darkinfo-table'
         ,url: '/api/darkinfolist'
         ,cols: [[ 
-          {field: 'id', title: '编号',width:'5%', align:'center'}
-          ,{field: 'mid', title: '区域代码',width:'15%', align:'center'}
-          ,{field: 'dark_version', title: 'dark版本',width:'7%', align:'center'}
-          ,{field: 'enabled' ,width:'7%', align:'center',title: '报警开关',templet:function(d){
+          {field: 'id', title: '编号', align:'center'}
+          ,{field: 'mid', title: '区域代码' ,width:180,align:'center'}
+          ,{field: 'dark_version',width:100, title: 'dark版本', align:'center'}
+          ,{field: 'enabled' , width:100,align:'center',title: '报警开关',templet:function(d){
            if (d.enabled==1){
              return '<input type="checkbox" name="switchalarm" value='+d.mid+' lay-skin="switch" lay-text="开|关" lay-filter="switchDemo" checked>';
             }else{
@@ -34,31 +34,31 @@
             }
       } 
           } 
-          ,{field: 'dark_num', title: 'dark进程数',width:'8%', align:'center'}
-          ,{field: 'boot_time',width:'14%', align:'center', title: 'dark启动时间',templet: function(e){
+          ,{field: 'dark_num', width:100, title: 'dark进程数', align:'center'}
+          ,{field: 'boot_time',width:160, align:'center', title: 'dark启动时间',templet: function(e){
            if (e.dark_num < 1){
         return 'dark未启动';
            }else{
         return e.boot_time;
         }
       }}
-          ,{field: 'update_time',width:'14%', align:'center', title: '更新时间'}
-          ,{field: 'version_status',width:'7%', align:'center',title: '同步状态',templet: function(g){
+          ,{field: 'update_time', width:160,align:'center', title: '更新时间'}
+          ,{field: 'version_status',width:110, align:'center',title: '同步状态',templet: function(g){
            if (g.version_status==1){
              return '<i class="fa fa-circle fa-2x " style="color:green"></i>';
             }else{
              return '<i class="fa fa-info-circle fa-2x" style="color:red"></i>'; 
             }
       }}
-          ,{field: 'status', title: '状态',width:'6%',align:'center',templet: function(f){
+          ,{field: 'status', title: '状态',align:'center',templet: function(f){
            if (f.status==1){
         return '<i class="fa fa-circle fa-2x " style="color:green"></i>';
           }else{
         return '<i class="fa fa-info-circle fa-2x" style="color:red"></i>';
 }
       }}
-          ,{field: 'message', title: '备注',width:'10%',align:'center'}
-          ,{fixed: 'right',title:'操作', width:72, align:'center', toolbar: '#barDemo'}
+          ,{field: 'message',width:150, title: '备注',align:'center'}
+          ,{fixed: 'right',title:'操作',width:72, align:'center', toolbar: '#barDemo'}
         ]]
   });
 table.on('tool(darkinfolist)', function(obj){
