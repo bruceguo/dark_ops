@@ -42,7 +42,11 @@ def loginout():
     session.pop('logged_in', None)
     session.pop('username', None)
     return redirect(url_for("login"))
-    
+
+@app.route('/api/nodejson')
+def nodejson():
+    return '[{title:"节点1",value:"jd1",data:[{title:"节点1.1",value:"jd1.1",data:[]},{title:"节点1.2",value:"jd1.2",data:[]},{title:"节点1.3",value:"jd1.3",data:[]},{title:"节点1.4",value:"jd1.4",data:[]}]},{title:"节点2",value:"jd2",data:[{title:"节点2.1",value:"jd2.1",data:[]},{title:"节点2.2",value:"jd2.2",data:[{title:"节点2.2.1",value:"jd2.2.1",data:[]},{title:"节点2.2.2",value:"jd2.2.2",data:[]},{title:"节点2.2.3",value:"jd2.2.3",data:[]},{title:"节点2.2.4",value:"jd2.2.4",data:[]}]},{title:"节点2.3",value:"jd2.3",data:[]},{title:"节点2.4",value:"jd2.4",data:[]}]},{title:"节点3",value:"jd3",data:[]},{title:"节点4",value:"jd4",data:[{title:"节点4.1",value:"jd4.1",data:[{title:"节点4.1.1",value:"jd4.1.1",data:[{title:"节点4.1.1.1",value:"jd4.1.1.1",data:[]},{title:"节点4.1.1.2",value:"jd4.1.1.2",data:[{title:"节点4.1.1.2.1",value:"jd4.1.1.2.1",data:[]}]}]}]},{title:"节点4.2",value:"jd4.2",data:[]},{title:"节点4.3",value:"jd4.3",data:[]},{title:"节点4.4",value:"jd4.4",data:[]},{title:"节点4.5",value:"jd4.5",data:[]},{title:"节点4.6",value:"jd4.6",checked:true,disabled:true,data:[]}]}]' 
+
 @app.route('/login',methods=['GET','POST'])
 def login():
     error = None
