@@ -138,7 +138,7 @@ def checkstatus(mid,itemtype):
             
             
     
-@timer(5)
+@timer(180)
 def wxwarn(arg):
     with getMysqlConnection() as db:
         sql="select * from dark_status;"
@@ -296,17 +296,17 @@ def checkreport(arg):
 #        logging.info("n="+str(n))
 #
 
-@filemon("/opt/dark_web_config/jobs.py")
+@filemon("/opt/dark_ops/jobs.py")
 def monitor_py(num):
     logging.info("jobs.py has been modified,reboot")
     uwsgi.reload()
 
-@filemon("/opt/dark_web_config/main.py")
+@filemon("/opt/dark_ops/main.py")
 def monitor_py(num):
     logging.info("main.py has been modified,reboot")
     uwsgi.reload()
 
-@filemon("/opt/dark_web_config/etc/processmonitor.conf")
+@filemon("/opt/dark_ops/etc/processmonitor.conf")
 def monitor_py(num):
     logging.info("configfile has been modified,reboot")
     uwsgi.reload()
