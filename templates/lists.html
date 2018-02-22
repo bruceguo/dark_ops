@@ -4,84 +4,110 @@
     <meta charset="UTF-8"/>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
-    <meta HTTP-EQUIV="Refresh" CONTENT="60">
-    <title>dark状态监控</title>
+    <title>dark运维平台</title>
     <link rel="stylesheet" href="/static/layui/css/layui.css"/>
     <link rel="stylesheet" href="/static/css/admin.css"/>
     <link href="/static/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<style type="text/css">  
-            td{  
-              text-align:center;
-            } 
-        </style>  
 </head>
 <body>
-	<div class="container">
-		<div class="handle-btn">
-			<button class="layui-btn layui-btn-small layui-btn-normal" data-url="/addhost"><i class="layui-icon">&#xe628</i> 报警开关</button>
-			<button class="layui-btn layui-btn-small layui-btn-danger" ><i class="layui-icon">&#xe640;</i> 删除</button>
-{% if totalinfo.error == 0 %}
-<button class="layui-btn layui-btn-small layui-btn-radius"><marquee  scrollAmount=2 behavior = "nlternate" onmouseover=this.stop() onmouseout=this.start() align=center width=500>实时状态：所有节点dark进程正常</marquee></button>
-{% else %}
-<button class="layui-btn layui-btn-small layui-btn-radius"><marquee  scrollAmount=2 behavior = "nlternate" onmouseover=this.stop() onmouseout=this.start() align=center width=500  ><font color=red>实时状态：{{totalinfo.error}}个节点异常，请注意！</font></marquee></button>
-{% endif %}
-
-		</div>
-
-		<div class="table-list">
-			<table id = "darkinfo-table" class="layui-table" lay-skin="line">
-				<thead>
-					<tr>
-						<th>编号</th>
-						<th>区域代码</th>
-						<th>dark版本</th>
-						<th>报警开关</th>
-						<th>dark进程数</th>
-						<th>dark启动时间</th>
-						<th>更新时间</th>
-						<th>配置同步状态</th>
-						<th>状态</th>
-						<th>备注</th>
-					</tr>
-				</thead>
-				<tbody>
-                    {% for host in hostlist %}
-					<tr data-mid={{host.mid}}>
-						<td>{{host.id}}</td>
-						<td>{{host.mid}}</td>
-						<td>{{host.dark_version}}</td>
-                                                {% if host.enabled == 1 %}
-						<td><font color="green">开</font></td>
-                                                {% else %}
-						<td><font color="red">关</font></td>
-                                                {% endif %} 
-						<td>{{host.dark_num}}</td>
-						{% if host.dark_num < 1 %}
-						<td>dark未启动</td>
-                                                {% else %}
-						<td>{{host.boot_time}}</td>
-                                                {% endif %}
-						<td>{{host.update_time}}</td>
-						{% if host.new_config_version == host.old_config_version %}
-						<td><i class="fa fa-circle fa-2x " style="color:green"></i></td>
-                        {% else %}
-						<td><i class="fa fa-info-circle fa-2x" style="color:red"></i></td>
-                        {%endif%}
-                        {% if host.status %}
-						<td><i class="fa fa-circle fa-2x " style="color:green"></i></td>
-                        {% else %}
-						<td><i class="fa fa-info-circle fa-2x" style="color:red"></i></td>
-                        {%endif%}
-						<td>{{host.message}}</td>
-
-					</tr>
-                    {% endfor %}
-				</tbody>
-			</table>
-		</div>
-	</div>
+    <table id = "darkinfo-table" lay-filter="darkinfolist">
 	<script type="text/javascript" src="/static/layui/layui.js"></script>
-    <script type="text/javascript" src="/static/js/gtf.js"></script>
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+    <script>
+    layui.use('table', function(){
+      var table = layui.table
+      ,form = layui.form,$=layui.jquery; 
+      var tableIns=table.render({
+        elem: '#darkinfo-table'
+        ,url: '/api/darkinfolist'
+        ,cols: [[ 
+          {field: 'id', title: '编号', align:'center'}
+          ,{field: 'mid', title: '区域代码' ,width:180,align:'center'}
+          ,{field: 'dark_version',width:100, title: 'dark版本', align:'center'}
+          ,{field: 'enabled' , width:100,align:'center',title: '报警开关',templet:function(d){
+           if (d.enabled==1){
+             return '<input type="checkbox" name="switchalarm" value='+d.mid+' lay-skin="switch" lay-text="开|关" lay-filter="switchDemo" checked>';
+            }else{
+             return '<input type="checkbox" name="switchalarm" value='+d.mid+' lay-skin="switch" lay-text="开|关" lay-filter="switchDemo">'; 
+            }
+      } 
+          } 
+          ,{field: 'dark_num', width:100, title: 'dark进程数', align:'center'}
+          ,{field: 'boot_time',width:160, align:'center', title: 'dark启动时间',templet: function(e){
+           if (e.dark_num < 1){
+        return 'dark未启动';
+           }else{
+        return e.boot_time;
+        }
+      }}
+          ,{field: 'update_time', width:160,align:'center', title: '更新时间'}
+          ,{field: 'version_status',width:110, align:'center',title: '同步状态',templet: function(g){
+           if (g.version_status==1){
+             return '<i class="fa fa-circle fa-2x " style="color:green"></i>';
+            }else{
+             return '<i class="fa fa-info-circle fa-2x" style="color:red"></i>'; 
+            }
+      }}
+          ,{field: 'status', title: '状态',align:'center',templet: function(f){
+           if (f.status==1){
+        return '<i class="fa fa-circle fa-2x " style="color:green"></i>';
+          }else{
+        return '<i class="fa fa-info-circle fa-2x" style="color:red"></i>';
+}
+      }}
+          ,{field: 'message',width:150, title: '备注',align:'center'}
+          ,{fixed: 'right',title:'操作',width:72, align:'center', toolbar: '#barDemo'}
+        ]]
+  });
+table.on('tool(darkinfolist)', function(obj){
+    var data = obj.data;
+     if(obj.event === 'del'){
+      layer.confirm('真的删除行么', function(index){
+                data= {"mid":data.mid}
+                console.log(data);
+                $.ajax({
+                    type: "post",
+                    url: "/api/del_host",
+                    data: data,
+                    success: function(result) {
+                    if (result.error == 0) {
+                        layer.msg("已删除");
+                        obj.del();
+                        layer.close(index);
+                        }else{
+                            layer.msg(result.msg);
+                            }
+                  }
+                });
+      });
+    }
+  });
+       form.on('switch(switchDemo)', function(obj){
+                var checkdict=new Array();
+                checkdict["true"]=1;
+                checkdict["false"]=0;
+                data= {"mid":this.value,"enabled":checkdict[obj.elem.checked]}
+                console.log(data);
+                $.ajax({
+                    type: "post",
+                    url: "/alarmswitch",
+                    data: data,
+                    success: function(result) {
+                    if (result.error == 0) {
+                        layer.msg("已更新")
+                        tableIns.reload();
+                        }else{
+                            layer.msg(result.msg);
+                            }
+                  }
+                });
+       });
+setInterval(tableIns.reload,10000);
+      
+    });
+    </script>
 </body>
 </html>
 </html>

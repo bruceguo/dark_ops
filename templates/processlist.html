@@ -4,82 +4,109 @@
     <meta charset="UTF-8"/>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
-    <meta HTTP-EQUIV="Refresh" CONTENT="60">
-    <title>dark状态监控</title>
+    <title>dark运维平台</title>
     <link rel="stylesheet" href="/static/layui/css/layui.css"/>
     <link rel="stylesheet" href="/static/css/admin.css"/>
     <link href="/static/circliful/css/jquery.circliful.css" rel="stylesheet" type="text/css" />
     <link href="/static/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<style type="text/css">  
-            td{  
-              text-align:center;
-            } 
-        </style>  
 </head>
 <body>
-	<div class="container">
-          <blockquote class="layui-elem-quote">系统信息概览</blockquote>
-            <div class="circlcontainer">
-            
-                <div class="circlrow">
-                    <div class="col-lg-2">
+        <blockquote class="layui-elem-quote">系统信息概览</blockquote><div id="hostid" style="display:none;">{{id}}</div>
+            <div class="layui-fluid">
+              <div class="layui-row">
+                <div class="layui-col-md12"> 
+                <div class="layui-row">
+                    <div class="layui-col-md3 layui-col-xs6 layui-col-sm6">
                         <div class="circlcenter">
-                        <div id="test-circle" data-animation="1" data-animationStep="6" data-foregroundBorderWidth="5" data-backgroundColor="none" data-fillColor="#eee" data-percent="100" data-iconColor="#3498DB" data-icon="f007" data-iconSize="40" data-iconPosition="middle" data-pointSize="10" data-text="users:{{host.users}}" data-textBelow="true"></div>
+                        <div id="user-circle" data-animation="1" data-animationStep="6" data-foregroundBorderWidth="5" data-backgroundColor="none" data-fillColor="#eee" data-percent="100" data-iconColor="#3498DB" data-icon="f007" data-iconSize="40" data-iconPosition="middle" data-pointSize="10"  data-textBelow="true"></div>
                         </div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="layui-col-md3 layui-col-xs6 layui-col-sm6">
                         <div class="circlcenter">
-                        <div id="test-circle1" data-animation="1" data-animationStep="6" data-foregroundBorderWidth="5" data-backgroundColor="none" data-fillColor="#eee" data-percent="100" data-iconColor="#3498DB" data-icon="f0ae" data-iconSize="40" data-iconPosition="middle" data-pointSize="10" data-text="load:{{host.load}}" data-textBelow="true"></div>
+                        <div id="load-circle" data-animation="1" data-animationStep="6" data-foregroundBorderWidth="5" data-backgroundColor="none" data-fillColor="#eee" data-percent="100" data-iconColor="#3498DB" data-icon="f0ae" data-iconSize="40" data-iconPosition="middle" data-pointSize="10"  data-textBelow="true"></div>
                         </div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="layui-col-md3 layui-col-xs6 layui-col-sm6">
                         <div class="circlcenter">
-                        <div id="test-circle2" data-animation="1" data-animationStep="6" data-foregroundBorderWidth="5" data-backgroundColor="none" data-fillColor="#eee" data-percent="{{host.memory}}" data-iconColor="#3498DB" data-icon="f21e" data-iconSize="40" data-iconPosition="middle" data-pointSize="10" data-text="memory" data-textBelow="true"></div>
+                        <div id="mem-circle" data-animation="1" data-animationStep="6" data-foregroundBorderWidth="5" data-backgroundColor="none" data-fillColor="#eee"  data-iconColor="#3498DB" data-icon="f21e" data-iconSize="40" data-iconPosition="middle" data-pointSize="10" data-text="memory" data-textBelow="true"></div>
                         </div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="layui-col-md3 layui-col-xs6 layui-col-sm6">
                         <div class="circlcenter">
-                        <div id="test-circle3" data-animation="1" data-animationStep="6" data-foregroundBorderWidth="5" data-backgroundColor="none" data-fillColor="#eee" data-percent="{{host.disk}}" data-iconColor="#3498DB" data-icon="f0a0"  data-iconSize="40" data-iconPosition="middle" data-pointSize="10" data-text="disk" data-textBelow="true"></div>
+                        <div id="disk-circle" data-animation="1" data-animationStep="6" data-foregroundBorderWidth="5" data-backgroundColor="none" data-fillColor="#eee"  data-iconColor="#3498DB" data-icon="f0a0"  data-iconSize="40" data-iconPosition="middle" data-pointSize="10" data-text="disk" data-textBelow="true"></div>
                         </div>
                     </div>
+                    <div class="layui-col-md12">
+                <table id = "darkinfo-table" lay-filter="hostmonitorinfo"></table>
+                    </div>
+                   </div>
                 </div>
             
             </div>
-<hr>
-		<div class="table-list">
-			<table id = "darkinfo-table" class="layui-table" lay-skin="line">
-				<thead>
-					<tr>
-						<th>业务进程</th>
-						<th>监听端口</th>
-						<th>更新时间</th>
-						<th>备注</th>
-					</tr>
-				</thead>
-				<tbody>
-                    {% for hostinfo in hostinfolist %}
-					<tr data-mid={{hostinfo.id}}>
-						<td>{{hostinfo.process}}</td>
-						<td>{{hostinfo.listenport}}</td>
-						<td>{{hostinfo.updatetime}}</td>
-						<td>{{hostinfo.message}}</td>
-					</tr>
-                    {% endfor %}
-				</tbody>
-			</table>
-		</div>
-	</div>
 	<script type="text/javascript" src="/static/layui/layui.js"></script>
         <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
         <script src="/static/circliful/js/jquery.circliful.min.js"></script>
+        <script src="/static/layui-xtree/layui-xtree.js"></script>
 <script>
     $( document ).ready(function() {
-        $("#test-circle").circliful();
-        $("#test-circle1").circliful();
-        $("#test-circle2").circliful({progressColor:{ 90:"#FF0000",60:"#00FF00",75:"#FFFF00"}});
-        $("#test-circle3").circliful({progressColor:{ 90:"#FF0000",60:"#00FF00",75:"#FFFF00"}});
+        var id=$('#hostid').html();
+        $.ajax({
+            url:'/api/hostsysteminfo?id='+id,
+            type:'GET', //GET
+            async:true,    //或false,是否异步
+            timeout:5000,    //超时时间
+            dataType:'json',    //返回的数据格式：json/xml/html/script/jsonp/text
+            success:function(data,textStatus,jqXHR){
+                console.log(data)
+                console.log(textStatus)
+                console.log(jqXHR)
+                if (data.error==0){
+                $("#user-circle").circliful({text:"users:"+data.users});
+                $("#load-circle").circliful({text:"load:"+data.load});
+                $("#mem-circle").circliful({progressColor:{ 90:"#FF0000",60:"#00FF00",75:"#FFFF00"},percent:data.memory});
+                $("#disk-circle").circliful({progressColor:{ 90:"#FF0000",60:"#00FF00",75:"#FFFF00"},percent:data.disk});
+                }else{
+               console.log(data.msg); 
+               }
+            },
+            error:function(xhr,textStatus){
+                console.log('错误')
+                console.log(xhr)
+                console.log(textStatus)
+            },
+            complete:function(){
+                console.log('结束')
+            }
+        })
     });
 </script>
+<script>
+layui.use(['table','form'], function(){
+  var table = layui.table,
+  form=layui.form;
+
+  var id=$('#hostid').html();
+//  var xtree2 = new layuiXtree({
+//      elem: 'xtree1'  //(必填) 放置xtree的容器id，不要带#号
+//       , isopen: false 
+//      , form: form    //(必填) layui 的 from
+//      , data: '/api/nodejson'  //(必填) 数据接口，需要返回以上结构的json字符串（数据格式在下面）
+//  }); 
+  
+  table.render({
+    elem: '#darkinfo-table'
+    ,skin: 'nob'
+    ,url: '/api/hostprocesslist?id='+id //数据接口
+    ,height:'full'
+    ,cols: [[ 
+      {field: 'process',align:"center", title: '业务进程'}
+      ,{field: 'listenport', align:"center",title: '监听端口'}
+      ,{field: 'updatetime', align:"center",title: '更新时间'}
+      ,{field: 'message',align:"center", title: '备注'}
+    ]]
+  });
+  
+});
+</script>
 </body>
-</html>
 </html>

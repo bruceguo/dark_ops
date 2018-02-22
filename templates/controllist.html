@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <title>dark运维平台</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css"/>
+    <link rel="stylesheet" href="/static/css/admin.css"/>
+    <link rel="stylesheet" href="/static/switch/ios6switch.css"/>
+    <link href="/static/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+        <table id = "darkinfo-table" lay-filter="darkcontrol"></table>
+	<script type="text/javascript" src="/static/layui/layui.js"></script>
+        <script type="text/javascript" src="/static/js/control.js"></script>
+        <script>
+layui.use(['layer','table'], function(){
+  var layer = layui.layer,
+  form=layui.form,table=layui.table,$=layui.jquery;
+  var tableIns=table.render({
+    elem: '#darkinfo-table'
+    ,url:'/api/controllistinfo'
+    ,style:'nob'
+    ,even: true 
+    ,cols: [[
+      {field:'id', title:'编号',align:"center"}
+      ,{field:'mid', title:'区域代码',align:"center"}
+      ,{field:'darktype', title: 'dark类型',align:"center"}
+      ,{field:'cleanswitch', title:'清理开关',align:"center", templet:function(d){
+        if (d.cleanswitch ==1 ){
+            return '<input type="checkbox" name="destory_option" value="'+d.mid+'" lay-skin="switch" lay-text="on|off" lay-filter="switchDemo" checked>'
+        }else{
+            return '<input type="checkbox" name="destory_option" value="'+d.mid+'" lay-skin="switch" lay-text="on|off" lay-filter="switchDemo">'
+            }}}
+      ,{field:'aliveswitch', title:'运行开关',align:"center", templet:function(e){
+        if (e.aliveswitch ==1 ){
+            return '<input type="checkbox" name="alive_info" value="'+e.mid+'" lay-skin="switch" lay-text="on|off" lay-filter="switchDemo" checked>'
+        }else{
+            return '<input type="checkbox" name="alive_info" value="'+e.mid+'" lay-skin="switch" lay-text="on|off" lay-filter="switchDemo">'
+            }}}
+      ,{field:'msg', title: '状态',align:"center",width:300}
+    ]]
+  });
+form.on('switch(switchDemo)', function(obj){
+layer.confirm('确定进行该操作?', {
+  btn: ['确定','取消'],
+cancel: function(index, layero){ 
+tableIns.reload();
+}    
+ 
+}, function(){
+  var mid = obj.value;
+  var name=obj.elem.getAttribute("name");
+  var opt = obj.elem.checked;
+  layer.prompt(
+{
+  formType: 1,
+  value: '',
+  title: '超级密码'
+},
+
+   function(value, index, elem){
+  var passwd = value;
+  $.post("/api/controldkstatus",{"mid":mid,"name":name,"opt":opt,"passwd":passwd},function(result){
+        console.log(result);
+        if (result.error == 0){
+        layer.msg('修改成功', {icon: 1});
+        }else{
+        layer.msg(result.msg, {icon: 2});
+        tableIns.reload();
+}
+    });
+  layer.close(index);
+  });
+
+
+}, function(){
+tableIns.reload();
+});
+  });
+
+  
+});  
+      </script>
+</body>
+</html>
+</html>

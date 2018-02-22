@@ -1,13 +1,13 @@
 layui.use(["element", "layer"],
 function() {
     var $ = layui.jquery,
-    element = layui.element(),
+    element = layui.element,
     layer = layui.layer;
     var l_o = $(".left-menu"),
     tab = "top-tab",
     l_m = "left-menu",
     t_m = "top-menu";
-    var mainHeight = $(window).height() - 60 - 41 - 44 - 5;
+    var mainHeight = $(document).height()+1000;
     element.on("nav(" + t_m + ")",
     function(data) {
         l_o.hide().eq(data.index()).show()

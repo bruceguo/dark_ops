@@ -138,7 +138,7 @@ def checkstatus(mid,itemtype):
             
             
     
-@timer(180)
+@timer(5)
 def wxwarn(arg):
     with getMysqlConnection() as db:
         sql="select * from dark_status;"
