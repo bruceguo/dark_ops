@@ -54,9 +54,10 @@ class control_info(db.Model):
     deploy_option = db.Column(db.Boolean,server_default="1")
     alive_info = db.Column(db.Boolean, server_default="1")
     type_info=db.Column(db.String(100),nullable=False)
+    update_time = db.Column(db.DateTime, nullable=False)
     msg=db.Column(db.String(100),server_default="waitting update")
     def __repr__(self):
-        return json.dumps({"mid":self.mid,"id":self.id,"destory_option":self.destory_option,"deploy_option":self.deploy_option,"alive_info":self.alive_info,"msg":self.msg})
+        return json.dumps({"mid":self.mid,"id":self.id,"destory_option":self.destory_option,"deploy_option":self.deploy_option,"alive_info":self.alive_info,"msg":self.msg,"update_time":self.update_time},cls=MyEncoder)
  
 class business_info(db.Model):
     __tablename__ = 'business_info'
