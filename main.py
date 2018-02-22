@@ -112,8 +112,7 @@ def hostinfodictlist():
         item["id"]=rond
         hostresult_web.append(item)
         rond+=1 
-    hostresult_web=sorted(hostresult_web,key=lambda x:x["status"])
-    hostresult_web.extend(host_unabled)
+    hostresult_web=sorted(hostresult_web,key=lambda x:x["status"],reverse=True)
     base_info["data"]=hostresult_web
     return jsonify(base_info)
 
