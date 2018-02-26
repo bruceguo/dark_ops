@@ -46,14 +46,14 @@ body{overflow-y: scroll;}
         }
       }}
           ,{field: 'update_time', width:200,align:'center', title: '更新时间'}
-          ,{field: 'version_status',width:170, align:'center',title: '同步状态',templet: function(g){
+          ,{field: 'version_status',width:100, align:'center',title: '同步状态',templet: function(g){
            if (g.version_status==1){
              return '<i class="fa fa-circle fa-2x " style="color:green"></i>';
             }else{
              return '<i class="fa fa-info-circle fa-2x" style="color:red"></i>'; 
             }
       }}
-          ,{field: 'status', title: '状态',align:'center',width:170,templet: function(f){
+          ,{field: 'status', title: '状态',align:'center',width:100,templet: function(f){
            if (f.status==1){
         return '<i class="fa fa-circle fa-2x " style="color:green"></i>';
           }else{

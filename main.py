@@ -9,6 +9,7 @@ from functools import wraps
 from WXBizMsgCrypt import WXBizMsgCrypt
 import xml.etree.cElementTree as ET
 import time
+from datetime import datetime
 import logging
 import json
 import sys
@@ -158,7 +159,7 @@ def controllistinfo():
         return jsonify(base_info) 
     else:
         for infoobj in controlinfolist:
-            hostlist.append({"msg":infoobj.msg,"id":infoobj.id,"mid":infoobj.mid,"darktype":infoobj.type_info,"cleanswitch":infoobj.destory_option,"deployswitch":infoobj.deploy_option,"aliveswitch":infoobj.alive_info})
+            hostlist.append({"msg":infoobj.msg,"id":infoobj.id,"mid":infoobj.mid,"darktype":infoobj.type_info,"cleanswitch":infoobj.destory_option,"deployswitch":infoobj.deploy_option,"aliveswitch":infoobj.alive_info,"update_time":str(infoobj.update_time)})
             base_info["data"]=hostlist
         return jsonify(base_info)
 
@@ -270,7 +271,9 @@ def dkcontrol():
             ciphertext = cryptor.encrypt(correctstr(text))
             return jsonify({"objinfo":b2a_hex(ciphertext)})
         else:
-            db.session.add(control_info(mid=mid,type_info=dktype))
+            nowtime=datetime.now()
+            strnowtime=nowtime.strftime('%Y-%m-%d %H:%M:%S')
+            db.session.add(control_info(mid=mid,type_info=dktype,update_time=strnowtime))
             db.session.commit()
             text=json.dumps({u'error': 1, u'msg': 'no info,register later'})
             ciphertext = cryptor.encrypt(correctstr(text))
@@ -299,6 +302,9 @@ def dkcontrol():
                    crrentdkreport.msg=u"程序存在未运行,未发现crontab配置"
                 else:
                    crrentdkreport.msg=u"状态未知"
+            nowtime=datetime.now()
+            strnowtime=nowtime.strftime('%Y-%m-%d %H:%M:%S')
+            crrentdkreport.update_time=strnowtime
             db.session.commit()        
         except Exception,e:
             return jsonify({"error":1,"msg":str(e)})

@@ -15,8 +15,8 @@ app=Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI']='mysql://root:chinatt_1347@localhost:3306/darkinfo'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=True
 app.config['USERNAME']="admin"
-app.config['PASSWORD']="admin888"
-app.config['SUPERPASSWORD']="e10adc3949ba59abbe56e057f20f883e"
+app.config['PASSWORD']="DID0YHRVU5Aek2PyZkrPI8MiH0wx5WY8"
+app.config['SUPERPASSWORD']="950e8b125a3aaccbf557806e7b164189"
 app.config['SECRET_KEY'] = 'jjskdjlkasjdlfjalk'
 db = SQLAlchemy(app, use_native_unicode="utf8")
 manager = Manager(app)
